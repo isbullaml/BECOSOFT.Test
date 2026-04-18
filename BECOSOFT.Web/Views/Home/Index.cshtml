@@ -1,3 +1,39 @@
-﻿<div id="main-content" class="col-12">
-    ...
+﻿@model BECOSOFT.Web.Models.VatSearchViewModel
+@using BECOSOFT.Web.Extensions
+<div id="main-content" class="col-12">
+
+    <div class="bcs-card shadow-sm">
+        <div class="bcs-card-header">
+            <h5 class="mb-0 bcs-color-text-secondary"> @BECOSOFT.Core.Resources.General_Accounting</h5>
+        </div>
+        <div class="card-body">
+
+            @using (Html.BeginForm("", "", FormMethod.Post, new { id = "vatForm" }))
+            {
+                <div class="form-group">
+                    <label>@BECOSOFT.Web.Resources.Vat_Number</label>
+
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.VatNumber, new { @class = "form-control" })
+
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-danger" type="submit">
+                                @BECOSOFT.Core.Resources.General_Search
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="vatResultContainer" class="mt-3" style="display:none;">
+                        <div id="vatResultMessage" class="small p-2 rounded"></div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script src="~/Scripts/Home/vat-search.js"></script>
+}

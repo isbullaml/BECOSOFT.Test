@@ -267,4 +267,16 @@
   <data name="WebsiteUser_RemoveFilteredContacts" xml:space="preserve">
     <value>Gefilterde klanten verwijderen</value>
   </data>
+  <data name="Vat_Number" xml:space="preserve">
+    <value>VAT Number</value>
+  </data>
+  <data name="Error_VatNumberNotExist" xml:space="preserve">
+    <value>This VAT number does not exist!</value>
+  </data>
+  <data name="Vat_Result" xml:space="preserve">
+    <value>Company :{0}</value>
+  </data>
+  <data name="Error_InvalidVatNumber" xml:space="preserve">
+    <value>Invalid Vat Number</value>
+  </data>
 </root>

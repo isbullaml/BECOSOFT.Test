@@ -28,6 +28,7 @@ namespace BECOSOFT.Web {
                 "~/Scripts/image-utilities.js",
                 "~/Scripts/checkUrl.js",
                 "~/Scripts/jquery.validate.min.js",
+                "~/Scripts/jquery.validate.unobtrusive.min.js",
                 "~/Scripts/jquery.unobtrusive-ajax.min.js",
                 "~/Scripts/becosoft.suggestags.js",
                 "~/Scripts/jquery.dirtyforms.min.js");

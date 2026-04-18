@@ -299,6 +299,9 @@
     <Compile Include="Extensions\LabelForExtensions.cs" />
     <Compile Include="Helpers\Base64Helper.cs" />
     <Compile Include="Helpers\LoggingContractResolver.cs" />
+    <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\VatResult.cs" />
+    <Compile Include="Models\VatSearchViewModel.cs" />
     <Compile Include="Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -347,6 +350,7 @@
     <Content Include="js-tree\themes\default\style.min.css" />
     <Content Include="js-tree\themes\default\throbber.gif" />
     <Content Include="Scripts\Article\ArticlePurchaseWizard.js" />
+    <Content Include="Scripts\Home\vat-search.js" />
     <Content Include="Scripts\infotemplates.js" />
     <Content Include="Scripts\ai-descriptions.js" />
     <Content Include="Scripts\nonmodaldialog.js" />
@@ -856,7 +860,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="froala-editor\css\plugins\" />
-    <Folder Include="Models\" />
+    <Folder Include="Scripts\Article\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.fr.resx" />

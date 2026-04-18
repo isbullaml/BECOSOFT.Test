@@ -412,6 +412,15 @@ namespace BECOSOFT.Web {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Vat Number.
+        /// </summary>
+        public static string Error_InvalidVatNumber {
+            get {
+                return ResourceManager.GetString("Error_InvalidVatNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The page you are trying to visit, does not exist..
         /// </summary>
         public static string Error_NotFound {
@@ -444,6 +453,15 @@ namespace BECOSOFT.Web {
         public static string Error_Retry {
             get {
                 return ResourceManager.GetString("Error_Retry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This VAT number does not exist!.
+        /// </summary>
+        public static string Error_VatNumberNotExist {
+            get {
+                return ResourceManager.GetString("Error_VatNumberNotExist", resourceCulture);
             }
         }
         
@@ -489,6 +507,24 @@ namespace BECOSOFT.Web {
         public static string Subject {
             get {
                 return ResourceManager.GetString("Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Number.
+        /// </summary>
+        public static string Vat_Number {
+            get {
+                return ResourceManager.GetString("Vat_Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company :{0}.
+        /// </summary>
+        public static string Vat_Result {
+            get {
+                return ResourceManager.GetString("Vat_Result", resourceCulture);
             }
         }
         
