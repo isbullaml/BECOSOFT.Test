@@ -1,0 +1,498 @@
+#region PDFsharp - A .NET library for processing PDF
+
+//
+// Authors:
+//   Stefan Lange
+//
+// Copyright (c) 2005-2017 empira Software GmbH, Cologne Area (Germany)
+//
+// http://www.pdfsharp.com
+// http://sourceforge.net/projects/pdfsharp
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the "Software"),
+// to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+// and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+
+#endregion
+
+// #??? Clean up
+
+using BECOSOFT.Utilities.Printing.PdfSharp.Drawing.Enums;
+using BECOSOFT.Utilities.Printing.PdfSharp.Fonts;
+using BECOSOFT.Utilities.Printing.PdfSharp.Fonts.OpenType;
+using BECOSOFT.Utilities.Printing.PdfSharp.Internal;
+using BECOSOFT.Utilities.Printing.PdfSharp.Pdf.Enums;
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.Globalization;
+using GdiFontFamily = System.Drawing.FontFamily;
+using GdiFont = System.Drawing.Font;
+using GdiFontStyle = System.Drawing.FontStyle;
+
+// ReSharper disable ConvertToAutoProperty
+
+namespace BECOSOFT.Utilities.Printing.PdfSharp.Drawing {
+    /// <summary>
+    /// Defines an object used to draw text.
+    /// </summary>
+    [DebuggerDisplay("{DebuggerDisplay}")]
+    public sealed class XFont {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFont"/> class.
+        /// </summary>
+        /// <param name="familyName">Name of the font family.</param>
+        /// <param name="emSize">The em size.</param>
+        public XFont(string familyName, double emSize)
+            : this(familyName, emSize, XFontStyle.Regular, new XPdfFontOptions(GlobalFontSettings.DefaultFontEncoding)) {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFont"/> class.
+        /// </summary>
+        /// <param name="familyName">Name of the font family.</param>
+        /// <param name="emSize">The em size.</param>
+        /// <param name="style">The font style.</param>
+        public XFont(string familyName, double emSize, XFontStyle style)
+            : this(familyName, emSize, style, new XPdfFontOptions(GlobalFontSettings.DefaultFontEncoding)) {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFont"/> class.
+        /// </summary>
+        /// <param name="familyName">Name of the font family.</param>
+        /// <param name="emSize">The em size.</param>
+        /// <param name="style">The font style.</param>
+        /// <param name="pdfOptions">Additional PDF options.</param>
+        public XFont(string familyName, double emSize, XFontStyle style, XPdfFontOptions pdfOptions) {
+            _familyName = familyName;
+            _emSize = emSize;
+            _style = style;
+            _pdfOptions = pdfOptions;
+            Initialize();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFont"/> class with enforced style simulation.
+        /// Only for testing PDFsharp.
+        /// </summary>
+        internal XFont(string familyName, double emSize, XFontStyle style, XPdfFontOptions pdfOptions, XStyleSimulations styleSimulations) {
+            _familyName = familyName;
+            _emSize = emSize;
+            _style = style;
+            _pdfOptions = pdfOptions;
+            OverrideStyleSimulations = true;
+            StyleSimulations = styleSimulations;
+            Initialize();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFont"/> class from a System.Drawing.FontFamily.
+        /// </summary>
+        /// <param name="fontFamily">The System.Drawing.FontFamily.</param>
+        /// <param name="emSize">The em size.</param>
+        /// <param name="style">The font style.</param>
+        public XFont(GdiFontFamily fontFamily, double emSize, XFontStyle style)
+            : this(fontFamily, emSize, style, new XPdfFontOptions(GlobalFontSettings.DefaultFontEncoding)) {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFont"/> class from a System.Drawing.FontFamily.
+        /// </summary>
+        /// <param name="fontFamily">The System.Drawing.FontFamily.</param>
+        /// <param name="emSize">The em size.</param>
+        /// <param name="style">The font style.</param>
+        /// <param name="pdfOptions">Additional PDF options.</param>
+        public XFont(GdiFontFamily fontFamily, double emSize, XFontStyle style, XPdfFontOptions pdfOptions) {
+            _familyName = fontFamily.Name;
+            _gdiFontFamily = fontFamily;
+            _emSize = emSize;
+            _style = style;
+            _pdfOptions = pdfOptions;
+            InitializeFromGdi();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFont"/> class from a System.Drawing.Font.
+        /// </summary>
+        /// <param name="font">The System.Drawing.Font.</param>
+        public XFont(GdiFont font)
+            : this(font, new XPdfFontOptions(GlobalFontSettings.DefaultFontEncoding)) {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFont"/> class from a System.Drawing.Font.
+        /// </summary>
+        /// <param name="font">The System.Drawing.Font.</param>
+        /// <param name="pdfOptions">Additional PDF options.</param>
+        public XFont(GdiFont font, XPdfFontOptions pdfOptions) {
+            if (font.Unit != GraphicsUnit.World) {
+                throw new ArgumentException("Font must use GraphicsUnit.World.");
+            }
+            _gdiFont = font;
+            Debug.Assert(font.Name == font.FontFamily.Name);
+            _familyName = font.Name;
+            _emSize = font.Size;
+            _style = FontStyleFrom(font);
+            _pdfOptions = pdfOptions;
+            InitializeFromGdi();
+        }
+
+        //// Methods
+        //public Font(Font prototype, FontStyle newStyle);
+        //public Font(FontFamily family, float emSize);
+        //public Font(string familyName, float emSize);
+        //public Font(FontFamily family, float emSize, FontStyle style);
+        //public Font(FontFamily family, float emSize, GraphicsUnit unit);
+        //public Font(string familyName, float emSize, FontStyle style);
+        //public Font(string familyName, float emSize, GraphicsUnit unit);
+        //public Font(FontFamily family, float emSize, FontStyle style, GraphicsUnit unit);
+        //public Font(string familyName, float emSize, FontStyle style, GraphicsUnit unit);
+        ////public Font(FontFamily family, float emSize, FontStyle style, GraphicsUnit unit, byte gdiCharSet);
+        ////public Font(string familyName, float emSize, FontStyle style, GraphicsUnit unit, byte gdiCharSet);
+        ////public Font(FontFamily family, float emSize, FontStyle style, GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont);
+        ////public Font(string familyName, float emSize, FontStyle style, GraphicsUnit unit, byte gdiCharSet, bool gdiVerticalFont);
+        //public object Clone();
+        //private static FontFamily CreateFontFamilyWithFallback(string familyName);
+        //private void Dispose(bool disposing);
+        //public override bool Equals(object obj);
+        //protected override void Finalize();
+        //public static Font FromHdc(IntPtr hdc);
+        //public static Font FromHfont(IntPtr hfont);
+        //public static Font FromLogFont(object lf);
+        //public static Font FromLogFont(object lf, IntPtr hdc);
+        //public override int GetHashCode();
+
+        /// <summary>
+        /// Initializes this instance by computing the glyph typeface, font family, font source and TrueType fontface.
+        /// (PDFsharp currently only deals with TrueType fonts.)
+        /// </summary>
+        private void Initialize() {
+            var fontResolvingOptions = OverrideStyleSimulations
+                ? new FontResolvingOptions(_style, StyleSimulations)
+                : new FontResolvingOptions(_style);
+
+            // HACK: 'PlatformDefault' is used in unit test code.
+            if (StringComparer.OrdinalIgnoreCase.Compare(_familyName, GlobalFontSettings.DefaultFontName) == 0) {
+                _familyName = "Calibri";
+            }
+
+            // In principle an XFont is an XGlyphTypeface plus an em-size.
+            _glyphTypeface = XGlyphTypeface.GetOrCreateFrom(_familyName, fontResolvingOptions);
+            // Create font by using font family.
+            XFontSource fontSource; // Not needed here.
+            _gdiFont = FontHelper.CreateFont(_familyName, (float)_emSize, (GdiFontStyle)(_style & XFontStyle.BoldItalic), out fontSource);
+
+            CreateDescriptorAndInitializeFontMetrics();
+        }
+
+        /// <summary>
+        /// A GDI+ font object is used to setup the internal font objects.
+        /// </summary>
+        private void InitializeFromGdi() {
+            try {
+                Lock.EnterFontFactory();
+                if (_gdiFontFamily != null) {
+                    // Create font based on its family.
+                    _gdiFont = new Font(_gdiFontFamily, (float)_emSize, (GdiFontStyle)_style, GraphicsUnit.World);
+                }
+
+                if (_gdiFont != null) {
+                    _familyName = _gdiFont.FontFamily.Name;
+                    // TODO: _glyphTypeface = XGlyphTypeface.GetOrCreateFrom(_gdiFont);
+                } else {
+                    Debug.Assert(false);
+                }
+
+                if (_glyphTypeface == null) {
+                    _glyphTypeface = XGlyphTypeface.GetOrCreateFromGdi(_gdiFont);
+                }
+
+                CreateDescriptorAndInitializeFontMetrics();
+            } finally { Lock.ExitFontFactory(); }
+        }
+
+        /// <summary>
+        /// Code separated from Metric getter to make code easier to debug.
+        /// (Setup properties in their getters caused side effects during debugging because Visual Studio calls a getter
+        /// to early to show its value in a debugger window.)
+        /// </summary>
+        private void CreateDescriptorAndInitializeFontMetrics() // TODO: refactor
+        {
+            Debug.Assert(_fontMetrics == null, "InitializeFontMetrics() was already called.");
+            _descriptor = (OpenTypeDescriptor)FontDescriptorCache.GetOrCreateDescriptorFor(this); //_familyName, _style, _glyphTypeface.Fontface);
+            _fontMetrics = new XFontMetrics(_descriptor.FontName, _descriptor.UnitsPerEm, _descriptor.Ascender, _descriptor.Descender,
+                                            _descriptor.Leading, _descriptor.LineSpacing, _descriptor.CapHeight, _descriptor.XHeight, _descriptor.StemV, 0, 0, 0,
+                                            _descriptor.UnderlinePosition, _descriptor.UnderlineThickness, _descriptor.StrikeoutPosition, _descriptor.StrikeoutSize);
+
+            var fm = Metrics;
+
+            // Already done in CreateDescriptorAndInitializeFontMetrics.
+            //if (_descriptor == null)
+            //    _descriptor = (OpenTypeDescriptor)FontDescriptorStock.Global.CreateDescriptor(this);  //(Name, (XGdiFontStyle)Font.Style);
+
+            UnitsPerEm = _descriptor.UnitsPerEm;
+            CellAscent = _descriptor.Ascender;
+            CellDescent = _descriptor.Descender;
+            CellSpace = _descriptor.LineSpacing;
+
+            Debug.Assert(fm.UnitsPerEm == _descriptor.UnitsPerEm);
+        }
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        /// <summary>
+        /// Gets the XFontFamily object associated with this XFont object.
+        /// </summary>
+        [Browsable(false)]
+        public XFontFamily FontFamily => _glyphTypeface.FontFamily;
+
+        /// <summary>
+        /// WRONG: Gets the face name of this Font object.
+        /// Indeed it returns the font family name.
+        /// </summary>
+        // [Obsolete("This function returns the font family name, not the face name. Use xxx.FontFamily.Name or xxx.FaceName")]
+        public string Name => _glyphTypeface.FontFamily.Name;
+
+        internal string FaceName => _glyphTypeface.FaceName;
+
+        /// <summary>
+        /// Gets the em-size of this font measured in the unit of this font object.
+        /// </summary>
+        public double Size => _emSize;
+
+        private readonly double _emSize;
+
+        /// <summary>
+        /// Gets style information for this Font object.
+        /// </summary>
+        [Browsable(false)]
+        public XFontStyle Style => _style;
+
+        private readonly XFontStyle _style;
+
+        /// <summary>
+        /// Indicates whether this XFont object is bold.
+        /// </summary>
+        public bool Bold => (_style & XFontStyle.Bold) == XFontStyle.Bold;
+
+        /// <summary>
+        /// Indicates whether this XFont object is italic.
+        /// </summary>
+        public bool Italic => (_style & XFontStyle.Italic) == XFontStyle.Italic;
+
+        /// <summary>
+        /// Indicates whether this XFont object is stroke out.
+        /// </summary>
+        public bool Strikeout => (_style & XFontStyle.Strikeout) == XFontStyle.Strikeout;
+
+        /// <summary>
+        /// Indicates whether this XFont object is underlined.
+        /// </summary>
+        public bool Underline => (_style & XFontStyle.Underline) == XFontStyle.Underline;
+
+        /// <summary>
+        /// Temporary HACK for XPS to PDF converter.
+        /// </summary>
+        internal bool IsVertical {
+            get { return _isVertical; }
+            set { _isVertical = value; }
+        }
+
+        private bool _isVertical;
+
+
+        /// <summary>
+        /// Gets the PDF options of the font.
+        /// </summary>
+        public XPdfFontOptions PdfOptions => _pdfOptions ?? (_pdfOptions = new XPdfFontOptions());
+
+        private XPdfFontOptions _pdfOptions;
+
+        /// <summary>
+        /// Indicates whether this XFont is encoded as Unicode.
+        /// </summary>
+        internal bool Unicode => _pdfOptions != null && _pdfOptions.FontEncoding == PdfFontEncoding.Unicode;
+
+        /// <summary>
+        /// Gets the cell space for the font. The CellSpace is the line spacing, the sum of CellAscent and CellDescent and optionally some extra space.
+        /// </summary>
+        public int CellSpace {
+            get { return _cellSpace; }
+            internal set { _cellSpace = value; }
+        }
+
+        private int _cellSpace;
+
+        /// <summary>
+        /// Gets the cell ascent, the area above the base line that is used by the font.
+        /// </summary>
+        public int CellAscent {
+            get { return _cellAscent; }
+            internal set { _cellAscent = value; }
+        }
+
+        private int _cellAscent;
+
+        /// <summary>
+        /// Gets the cell descent, the area below the base line that is used by the font.
+        /// </summary>
+        public int CellDescent {
+            get { return _cellDescent; }
+            internal set { _cellDescent = value; }
+        }
+
+        private int _cellDescent;
+
+        /// <summary>
+        /// Gets the font metrics.
+        /// </summary>
+        /// <value>The metrics.</value>
+        public XFontMetrics Metrics {
+            get {
+                // Code moved to InitializeFontMetrics().
+                //if (_fontMetrics == null)
+                //{
+                //    FontDescriptor descriptor = FontDescriptorStock.Global.CreateDescriptor(this);
+                //    _fontMetrics = new XFontMetrics(descriptor.FontName, descriptor.UnitsPerEm, descriptor.Ascender, descriptor.Descender,
+                //        descriptor.Leading, descriptor.LineSpacing, descriptor.CapHeight, descriptor.XHeight, descriptor.StemV, 0, 0, 0);
+                //}
+                Debug.Assert(_fontMetrics != null, "InitializeFontMetrics() not yet called.");
+                return _fontMetrics;
+            }
+        }
+
+        private XFontMetrics _fontMetrics;
+
+        /// <summary>
+        /// Returns the line spacing, in pixels, of this font. The line spacing is the vertical distance
+        /// between the base lines of two consecutive lines of text. Thus, the line spacing includes the
+        /// blank space between lines along with the height of the character itself.
+        /// </summary>
+        public double GetHeight() {
+            var value = CellSpace * _emSize / UnitsPerEm;
+            return value;
+        }
+
+        /// <summary>
+        /// Returns the line spacing, in the current unit of a specified Graphics object, of this font.
+        /// The line spacing is the vertical distance between the base lines of two consecutive lines of
+        /// text. Thus, the line spacing includes the blank space between lines along with the height of
+        /// </summary>
+        [Obsolete("Use GetHeight() without parameter.")]
+        public double GetHeight(XGraphics graphics) {
+            throw new InvalidOperationException("Honestly: Use GetHeight() without parameter!");
+        }
+
+        /// <summary>
+        /// Gets the line spacing of this font.
+        /// </summary>
+        [Browsable(false)]
+        public int Height =>
+            // Implementation from System.Drawing.Font.cs
+            (int)Math.Ceiling(GetHeight());
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        internal XGlyphTypeface GlyphTypeface => _glyphTypeface;
+
+        private XGlyphTypeface _glyphTypeface;
+
+
+        internal OpenTypeDescriptor Descriptor {
+            get { return _descriptor; }
+            private set { _descriptor = value; }
+        }
+
+        private OpenTypeDescriptor _descriptor;
+
+
+        internal string FamilyName => _familyName;
+
+        private string _familyName;
+
+
+        internal int UnitsPerEm {
+            get { return _unitsPerEm; }
+            private set { _unitsPerEm = value; }
+        }
+
+        internal int _unitsPerEm;
+
+        /// <summary>
+        /// Override style simulations by using the value of StyleSimulations.
+        /// </summary>
+        internal bool OverrideStyleSimulations;
+
+        /// <summary>
+        /// Used to enforce style simulations by renderer. For development purposes only.
+        /// </summary>
+        internal XStyleSimulations StyleSimulations;
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        
+        /// <summary>
+        /// Gets the GDI family.
+        /// </summary>
+        /// <value>The GDI family.</value>
+        public GdiFontFamily GdiFontFamily => _gdiFontFamily;
+
+        private readonly GdiFontFamily _gdiFontFamily;
+
+        internal GdiFont GdiFont => _gdiFont;
+        private Font _gdiFont;
+
+        internal static XFontStyle FontStyleFrom(GdiFont font) {
+            return
+                (font.Bold ? XFontStyle.Bold : 0) |
+                (font.Italic ? XFontStyle.Italic : 0) |
+                (font.Strikeout ? XFontStyle.Strikeout : 0) |
+                (font.Underline ? XFontStyle.Underline : 0);
+        }
+        
+        /// <summary>
+        /// Implicit conversion form Font to XFont
+        /// </summary>
+        public static implicit operator XFont(GdiFont font) {
+            return new XFont(font);
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        /// <summary>
+        /// Cache PdfFontTable.FontSelector to speed up finding the right PdfFont
+        /// if this font is used more than once.
+        /// </summary>
+        internal string Selector {
+            get { return _selector; }
+            set { _selector = value; }
+        }
+
+        private string _selector;
+
+        /// <summary>
+        /// Gets the DebuggerDisplayAttribute text.
+        /// </summary>
+        // ReSharper disable UnusedMember.Local
+        private string DebuggerDisplay => string.Format(CultureInfo.InvariantCulture, "font=('{0}' {1:0.##})", Name, Size); // ReSharper restore UnusedMember.Local
+    }
+}

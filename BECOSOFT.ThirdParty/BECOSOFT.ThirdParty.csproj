@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--EXTERNAL_PROPERTIES: BuildNumber-->
+<Project Sdk="Microsoft.NET.Sdk"> 
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7D5F4DE8-5E0B-428C-908A-FD5EB39C8879}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BECOSOFT.ThirdParty</RootNamespace>
+    <AssemblyName>BECOSOFT.ThirdParty</AssemblyName>
+    <Version>2.0.0.0</Version>
+    <FileVersion>2.0.0.0</FileVersion>
+    <PackageVersion>2.0.0.0</PackageVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFramework>net48</TargetFramework>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<PublishDocumentationFile>true</PublishDocumentationFile>
+	<DocumentationFile>$(MSBuildThisFileDirectory)\bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+	<Configurations>Debug;Release;NuGet_Release</Configurations>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'NuGet_Release|AnyCPU'">
+    <Description>BECOSOFT ThirdParty project</Description>
+    <Version Condition="'$(BuildNumber)'!=''">$(BuildNumber)</Version>
+    <FileVersion Condition="'$(BuildNumber)'!=''">$(BuildNumber)</FileVersion>
+    <PackageVersion Condition="'$(BuildNumber)'!=''">$(BuildNumber)</PackageVersion>
+    <Authors>Becosoft</Authors>
+    <Company>Becosoft</Company>
+    <IconUrl>https://pbs.twimg.com/profile_images/667668614045011968/oI-Jvdoq_400x400.png</IconUrl>
+    <Tags>BECOSOFT ThirdParty</Tags>
+    <ReleaseNotes>.NET 4.8 version</ReleaseNotes>
+    <Copyright>Copyright 2022 BECOSOFT</Copyright>
+    <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSource>true</IncludeSource>
+	<IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <OutputPath>bin\NuGet_Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <EmbedAllSources>true</EmbedAllSources>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Google\**" />
+    <Compile Remove="SDI\**" />
+    <EmbeddedResource Remove="Google\**" />
+    <EmbeddedResource Remove="SDI\**" />
+    <None Remove="Google\**" />
+    <None Remove="SDI\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BECOSOFT.Data\BECOSOFT.Data.csproj">
+      <Project>{ec633e65-3984-4a8b-a592-b6a972bd1aff}</Project>
+      <Name>BECOSOFT.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BECOSOFT.Utilities\BECOSOFT.Utilities.csproj">
+      <Project>{70d677bc-4564-4284-b318-18782aa6636c}</Project>
+      <Name>BECOSOFT.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+	  <PackageReference Include="BouncyCastle.Cryptography" Version="2.1.1" />
+	  <PackageReference Include="IdentityModel" Version="4.0.0" />
+	  <PackageReference Include="NLog">
+		  <Version>4.7.14</Version>
+	  </PackageReference>
+	  <PackageReference Include="Open.ChannelExtensions" Version="8.4.3" />
+	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
+	  <PackageReference Include="System.Threading.Channels" Version="8.0.0" />
+	  <PackageReference Include="System.Threading.RateLimiting" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

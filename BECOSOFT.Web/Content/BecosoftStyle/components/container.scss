@@ -1,0 +1,299 @@
+@use "../global/variables" as *;
+
+// list groups
+.list-group {
+    > .list-group-item {
+
+        @include bcs-transition-a;
+        border: 1px solid $bcs-color-gray-90;
+        border-bottom-color: $bcs-color-gray-95;
+
+        &:last-child {
+            border-bottom-color: $bcs-color-gray-90;
+        }
+
+        &:hover {
+            background-color: $bcs-color-gray-97;
+        }
+
+        &.active {
+            background-color: $bcs-color-indigo-55;
+
+            * {
+                color: $white;
+            }
+
+            .text-muted {
+                color: rgba($white, 50%);
+            }
+        }
+
+        + .list-group-item {
+            border-top-width: 0px;
+        }
+
+        &:disabled, &.disabled {
+            color: $bcs-color-gray-85;
+        }
+    }
+}
+
+// cards
+.card {
+    border: 1px solid $bcs-color-gray-85;
+
+    .card-header,
+    .card-footer {
+        background-color: $bcs-color-gray-95;
+    }
+
+    .card-header {
+        border-bottom: 1px solid $bcs-color-gray-85;
+    }
+
+    .card-footer {
+        border-top: 1px solid $bcs-color-gray-85;
+    }
+}
+
+@mixin bcs-card-colored($color-main) {
+    border: 1px solid $color-main !important;
+
+    .card-header {
+        background-color: $color-main;
+        border-bottom: 1px solid $color-main;
+        color: $white;
+    }
+
+    .card-body {
+        background-color: $white;
+        border-radius: $bcs-border-radius;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+}
+
+.card.bg-primary,
+.card.border-primary {
+    @include bcs-card-colored($bcs-color-indigo-55);
+}
+
+.card.bg-secondary,
+.card.border-secondary {
+    @include bcs-card-colored($bcs-color-red-75);
+}
+
+.card.bg-success,
+.card.bg-info,
+.card.border-success,
+.card.border-info {
+    @include bcs-card-colored($bcs-color-success-75);
+}
+
+.card.bg-warning,
+.card.bg-danger,
+.card.border-warning,
+.card.border-danger {
+    @include bcs-card-colored($bcs-color-warning-75);
+}
+
+.card.bg-light,
+.card.border-light {
+    @include bcs-card-colored($bcs-color-gray-65);
+}
+
+.card.bg-dark,
+.card.border-dark {
+    @include bcs-card-colored($bcs-color-gray-25);
+}
+
+// collapsed card
+.card > .card-link.collapsed > .card-header {
+    border-bottom-width: 0px;
+}
+
+// list groups
+.list-group {
+
+    .bcs-list-group-upper {
+        border: 1px solid $bcs-color-gray-85;
+        border-bottom: none;
+        border-top-left-radius: $bcs-border-radius;
+        border-top-right-radius: $bcs-border-radius;
+        height: 1.75rem;
+
+        input {
+            border: none;
+            height: 100%;
+            box-shadow: none;
+            border-radius: 0px !important;
+            border-top-left-radius: $bcs-border-radius !important;
+            padding-left: 0.4rem;
+        }
+
+        .bcs-list-group-button-clear-search {
+            background-color: $white !important;
+
+            &:hover {
+                background-color: $bcs-color-gray-97 !important;
+
+                i {
+                    color: $bcs-color-gray-10;
+                }
+            }
+        }
+
+        .bcs-list-group-button,
+        .bcs-list-group-button-collapse {
+            > i::before {
+                display: block;
+                transform: translate(-0.2rem,-0.35rem);
+                font-size: 0.875rem;
+            }
+
+            > i::before {
+                color: $bcs-color-gray-65;
+                @include bcs-transition-a;
+            }
+
+            &:hover {
+                background-color: $bcs-color-gray-93;
+                @include bcs-transition-a;
+
+                > i::before {
+                    color: $bcs-color-indigo-55;
+                    @include bcs-transition-a;
+                }
+            }
+        }
+
+        .bcs-list-group-button-collapse {
+            background-color: $bcs-color-gray-95;
+            width: 2rem;
+            height: 100%;
+            border-radius: 0px;
+            border-top-left-radius: $bcs-border-radius !important;
+            border-bottom-left-radius: $bcs-border-radius !important;
+            border-right: 1px solid $bcs-color-gray-85;
+            @include bcs-transition-a;
+
+            > i::before {
+                transform: translate(0rem, -0.1rem);
+            }
+        }
+
+        .bcs-list-group-button {
+            width: 2rem;
+            height: 100%;
+            border-radius: 0px;
+            padding-left: 1rem;
+            @include bcs-transition-a;
+
+            + .bcs-list-group-button {
+                border-top-right-radius: $bcs-border-radius;
+                border-bottom-right-radius: $bcs-border-radius;
+            }
+
+            &.bcs-list-group-button-select-all {
+                border-left: 1px solid $bcs-color-gray-85;
+            }
+        }
+    }
+
+    .bcs-list-group-lower {
+        border: 1px solid $bcs-color-gray-85;
+        border-top: none;
+        border-bottom-left-radius: $bcs-border-radius;
+        border-bottom-right-radius: $bcs-border-radius;
+
+        > small {
+            letter-spacing: 1px;
+            color: $bcs-color-gray-65;
+        }
+    }
+
+    .list-group {
+        border: 1px solid $bcs-color-gray-85;
+        border-radius: 0px;
+
+        .bcs-list-group-divider {
+            height: 1px;
+            background-color: $bcs-color-gray-85;
+        }
+
+        .list-group-item {
+            margin: 0px;
+            border: 0px;
+            border-bottom: 1px solid $bcs-color-gray-95;
+
+            &:hover {
+                cursor: pointer;
+            }
+            // copied from form.scss
+            input[type="checkbox"] {
+                accent-color: $bcs-color-indigo-55;
+                transform: translate(0,0.0625rem);
+
+                &[disabled]:after:not([checked]) {
+                    position: absolute;
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    background-color: $bcs-color-gray-90;
+                }
+            }
+
+            input[type="checkbox"][disabled]:after {
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .collapse + .collapse.show {
+        > p {
+            border: 1px solid $bcs-color-gray-85;
+            border-bottom: none;
+            border-radius: $bcs-border-radius;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding-left: 0.25rem;
+        }
+
+        > p[title]:not([title=""]) {
+            border-bottom: 1px solid $bcs-color-gray-85;
+        }
+    }
+
+    &[disabled] {
+
+        .bcs-list-group-upper {
+            .bcs-list-group-button-select-all,
+            .bcs-list-group-button-deselect-all {
+                display: none;
+            }
+        }
+
+        .list-group {
+            background-color: $bcs-color-gray-97;
+
+            .list-group-item {
+                background-color: $bcs-color-gray-97;
+                pointer-events: none;
+                border-bottom: none;
+
+
+
+                &:hover {
+                    background-color: $bcs-color-gray-97;
+                    cursor: default;
+                }
+            }
+
+            .bcs-list-group-divider ~ .list-group-item {
+                color: $bcs-color-gray-85;
+            }
+        }
+    }
+}

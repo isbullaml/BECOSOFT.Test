@@ -1,0 +1,54 @@
+﻿/*
+ * Sidebar and navbar
+ */
+
+    .inputtable-table {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        background: white;
+        border: 1px solid;
+        border-collapse: collapse;
+        font-size: 50%;
+
+    }
+
+.inputtable-thead {
+    position: sticky;
+    top: 0;
+    border: 1px solid;
+    border-collapse: collapse;
+    background: white;
+}
+
+.table-input input {
+    width: 100%;
+    border: 1px solid;
+    box-sizing: border-box;
+    text-align: right;
+    background: white;
+}
+
+.table-input thead th {
+    border: 1px solid;
+    border-collapse: collapse;
+    background: #FFFFFF;
+}
+
+
+    .table-input thead th.header-label {
+            color: white;
+            border: 1px solid;
+            border-collapse: collapse;
+     }
+
+.table-input th,
+.table-input td {
+    text-align: center;
+    border: 1px solid;
+    border-collapse: collapse;
+    background: white;
+}
+
+.table-input tbody th.size-header {
+    width: 50px;
+    background: white;
+}

@@ -1,0 +1,37 @@
+@use "variables" as *;
+
+* {
+    font-family: Barlow;
+    color: $bcs-color-gray-25;
+
+    &:focus-visible {
+        @include bcs-outline-default;
+    }
+}
+::selection {
+    background-color: rgba($bcs-color-indigo-55, 25%);
+}
+
+.bg-primary {
+    background-color: $bcs-color-indigo-55 !important;
+}
+.bg-secondary {
+    background-color: $bcs-color-red-75 !important;
+}
+.bg-info,
+.bg-success {
+    background-color: $bcs-color-success-75 !important;
+}
+.bg-warning,
+.bg-danger {
+    background-color: $bcs-color-warning-75 !important;
+}
+.bg-dark {
+    background-color: $bcs-color-gray-25 !important;
+}
+.bg-light {
+    background-color: $bcs-color-gray-95 !important;
+}
+.bg-lighter {
+    background-color: $bcs-color-gray-97 !important;
+}

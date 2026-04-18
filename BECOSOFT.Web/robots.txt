@@ -1,0 +1,9 @@
+﻿# Make changes for all web spiders
+User-agent: *
+Allow: /Assets
+Allow: /assets
+Allow: /Scripts
+Allow: /scripts
+Allow: /Content
+Allow: /content
+Disallow: / 

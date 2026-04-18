@@ -1,0 +1,50 @@
+﻿@using System.Web.Mvc;
+@using BECOSOFT.Web.Extensions.Icons;
+@using BECOSOFT.Utilities.Extensions;
+
+
+@functions {
+    /// <summary>
+    /// Generates a FontAwesome-icon.
+    /// </summary>
+    /// <param name="icon">The icon to generate</param>
+    /// <param name="iconWeight">The weight of the icon</param>
+    /// <param name="iconSize">The size of the icon</param>
+    /// <param name="extraClasses">Extra classes to add to the icon</param>
+    /// <returns>The htmlTag for the icon</returns>
+    public static HelperResult GenerateIcon(FontAwesomeIcons? icon, IconWeight iconWeight = IconWeight.Regular, IconSize iconSize = IconSize.Medium, string extraClasses = "") {
+
+        if (icon == null) return GenerateIconHtml("");
+
+        var classes = new List<string> {
+            icon.GetAttribute<FontAwesomeIconAttribute>().ClassName,
+        };
+
+        var weight = iconWeight.GetAttribute<FontAwesomeWeightAttribute>();
+        if (weight != null) {
+            classes.Add(weight.ClassName);
+        }
+
+        var size = iconSize.GetAttribute<FontAwesomeSizeAttribute>();
+        if (size != null) {
+            classes.Add(size.ClassName);
+        }
+
+        if (extraClasses != "") {
+            classes.Add(extraClasses);
+        }
+
+        var htmlAttributes = $"class=\"{string.Join(" ", classes.Select(HttpUtility.HtmlAttributeEncode))}\"";
+
+        var icontest = $"<i {htmlAttributes}></i>";
+        return GenerateIconHtml(icontest);
+    }
+}
+
+
+@helper GenerateIconHtml(string iconContent) {
+    if (PageContext != null) {
+        var html = ((WebViewPage)PageContext.Page).Html;
+        @html.Raw(iconContent)
+    }
+}

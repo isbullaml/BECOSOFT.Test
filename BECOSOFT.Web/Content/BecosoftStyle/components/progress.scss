@@ -1,0 +1,11 @@
+@use "../global/variables" as *;
+
+.progress {
+    background-color: $bcs-color-gray-95;
+
+    .progress-bar {
+        background-color: $bcs-color-indigo-55;
+    }
+
+    margin-bottom: 10px;
+}

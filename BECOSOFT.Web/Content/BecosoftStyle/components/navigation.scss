@@ -1,0 +1,182 @@
+@use "../global/variables" as *;
+
+// tabs
+.nav-tabs {
+    border-bottom-color: $bcs-color-gray-85;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+
+    > .nav-item > .nav-link {
+        border: none;
+        transform: translate(0, 0.5px);
+        transition: background-color 0.15s ease-out !important;
+
+        &.active {
+            background-color: $bcs-color-gray-95;
+            border-bottom-color: $bcs-color-red-75;
+            border-bottom-width: 2px;
+            border-bottom-style: solid;
+        }
+    }
+}
+
+// pills
+.nav-pills {
+    .show > .nav-link {
+        background-color: $white;
+    }
+
+    > .nav-item > .nav-link {
+        &.active {
+            background-color: $bcs-color-gray-95;
+        }
+
+        &:hover:not(.active) {
+            text-decoration-thickness: 1px;
+        }
+
+        &.disabled {
+            color: $bcs-color-gray-85;
+        }
+    }
+}
+
+// for both tabs and pills
+.nav-tabs,
+.nav-pills {
+    > .nav-item > .nav-link {
+        color: $bcs-color-indigo-35;
+        @include bcs-text-button;
+        font-size: 1rem;
+        @include bcs-transition-a;
+
+        &:hover:not(.active) {
+            background-color: rgba($bcs-color-gray-95, 50%);
+        }
+
+        &.disabled {
+            color: $bcs-color-gray-85;
+        }
+    }
+}
+
+.nav-tabs {
+    margin-bottom: 15px;
+}
+
+// small versions
+.nav-tabs-sm {
+    > .nav-item > .nav-link {
+        height: 32px;
+        font-size: 0.9rem;
+        padding: 5px 10px;
+    }
+}
+
+.bcs-vertical-tabs-sm {
+    .list-group-item-action {
+        padding-left: 0.5rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+}
+
+// dropdowns
+.dropdown {
+    .dropdown-menu {
+        &.show {
+            background-color: $white;
+            @include bcs-shadow-a;
+            border: none;
+
+            a.dropdown-item {
+                color: $bcs-color-gray-25;
+                @include bcs-transition-b;
+
+                &:hover {
+                    background-color: $bcs-color-gray-95;
+
+                    &:active {
+                        color: $bcs-color-gray-25;
+                    }
+                }
+
+                &:active {
+                    background-color: $bcs-color-gray-95;
+                }
+            }
+
+            .dropdown-divider {
+                border-top: 1px solid $bcs-color-gray-90;
+            }
+        }
+    }
+}
+
+// breadcrumb
+.breadcrumb {
+    background-color: transparent;
+    border-radius: 0px;
+    padding: 0rem;
+
+    .breadcrumb-item {
+        &.active {
+            color: $bcs-color-indigo-45;
+            font-weight: 500;
+
+            &::before {
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+// pagination
+.pagination {
+    > .page-item {
+        > .page-link {
+            margin-left: 0px;
+            border: none;
+            color: $bcs-color-gray-40;
+            font-weight: 500;
+            @include bcs-transition-b;
+            background-color: $bcs-color-gray-97;
+
+            &:hover {
+                color: $bcs-color-gray-25;
+                background-color: $bcs-color-gray-95;
+            }
+
+            &:focus {
+                @include bcs-shadow-form-control;
+            }
+        }
+
+        &.active > .page-link {
+            background-color: $bcs-color-gray-90;
+            color: $bcs-color-gray-25;
+            font-weight: 800;
+
+            &:hover {
+                background-color: $bcs-color-gray-90;
+                cursor: initial;
+            }
+        }
+
+        &.disabled > .page-link {
+            color: $bcs-color-gray-85;
+        }
+    }
+    // size
+    &.pagination > .page-item > .page-link {
+        padding: 0.3rem 0.75rem;
+    }
+
+    &.pagination-lg > .page-item > .page-link {
+        padding: 0.5rem 1.2rem;
+    }
+
+    &.pagination-sm > .page-item > .page-link {
+        padding: 0.15rem 0.6rem;
+    }
+}

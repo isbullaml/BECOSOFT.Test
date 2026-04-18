@@ -1,0 +1,306 @@
+@use "../global/variables" as *;
+
+// global button settings
+.btn {
+    box-sizing: border-box !important;
+    border-radius: $bcs-border-radius;
+    font-size: 1rem;
+    font-weight: 500;
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &.disabled, &:disabled {
+        cursor: default;
+    }
+
+    i {
+        font-size: 0.875rem;
+        margin-right: 0.35rem;
+    }
+
+    &.btn-icon-right i {
+        margin-right: 0rem;
+        margin-left: 0.35rem;
+    }
+}
+
+.btn-lg {
+    font-size: 1.25rem;
+
+    i {
+        font-size: 1rem;
+        margin-right: 0.4rem;
+    }
+}
+
+.btn-sm {
+    font-size: 0.875rem;
+
+    i {
+        font-size: 0.75rem;
+        margin-right: 0.3rem;
+    }
+}
+
+.btn-icon {
+    i {
+        margin-right: 0rem;
+    }
+}
+
+// button row
+.bcs-button-row,
+.bcs-button-row-end {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0rem;
+    gap: 0.5rem;
+}
+
+.bcs-button-row-end {
+    justify-content: end;
+}
+
+// filled buttons
+@mixin bcs-button($color-main, $color-hover, $color-active, $color-text) {
+    color: $color-text !important;
+    background-color: $color-main;
+    border: 1px solid $color-main;
+    @include bcs-transition-a;
+
+    &:not(.disabled):not(:disabled) {
+        &:hover, &:focus {
+            background-color: $color-hover;
+            border: 1px solid $color-hover;
+        }
+
+        &:focus, &:active:focus, &.focus {
+            box-shadow: 0 0 0 $bcs-shadow-size-a rgba($color-main, 25%);
+        }
+
+        &:active {
+            color: $color-text;
+            background-color: $color-active;
+            border: 1px solid $color-active;
+        }
+    }
+
+    i {
+        color: $color-text;
+    }
+}
+
+.btn.btn-primary {
+    @include bcs-button($bcs-color-indigo-55, $bcs-color-indigo-45, $bcs-color-indigo-40, $white);
+}
+
+.btn.btn-secondary {
+    @include bcs-button($bcs-color-red-75, $bcs-color-red-65, $bcs-color-red-60, $white);
+}
+
+.btn.btn-success,
+.btn.btn-info {
+    @include bcs-button($bcs-color-success-75, $bcs-color-success-65, $bcs-color-success-55, $white);
+}
+
+.btn.btn-warning,
+.btn.btn-danger {
+    @include bcs-button($bcs-color-warning-75, $bcs-color-warning-65, $bcs-color-warning-55, $white);
+}
+
+// outlined buttons
+@mixin bcs-button-outline($color-main) {
+    color: $color-main !important;
+    background-color: transparent;
+    border: 1px solid $color-main;
+    @include bcs-transition-a;
+
+    &:not(.disabled):not(:disabled) {
+        &:hover, &:focus {
+            background-color: rgba($color-main, 15%);
+            border: 1px solid $color-main;
+            color: $color-main !important;
+        }
+
+        &:focus, &:active:focus {
+            box-shadow: 0 0 0 $bcs-shadow-size-a rgba($color-main, 15%);
+
+            &.active {
+                color: $white !important;
+            }
+        }
+
+        &:active {
+            color: $color-main;
+            background-color: rgba($color-main, 20%);
+            border: 1px solid $color-main;
+        }
+
+        &.active {
+            background-color: $color-main;
+        }
+    }
+
+    i {
+        color: $color-main;
+    }
+}
+
+.btn.btn-outline-primary {
+    @include bcs-button-outline($bcs-color-indigo-55);
+}
+
+.btn.btn-outline-secondary {
+    @include bcs-button-outline($bcs-color-red-75);
+}
+
+.btn.btn-outline-success,
+.btn.btn-outline-info {
+    @include bcs-button-outline($bcs-color-success-75);
+}
+
+.btn.btn-outline-warning,
+.btn.btn-outline-danger {
+    @include bcs-button-outline($bcs-color-warning-75);
+}
+
+// text buttons
+@mixin bcs-button-text($color-main) {
+    color: $color-main !important;
+    background-color: transparent;
+    border: none;
+    @include bcs-transition-a;
+
+    &:not(.disabled):not(:disabled) {
+
+        &:focus, &:active:focus {
+            background-color: transparent;
+        }
+
+        &:hover {
+            background-color: rgba($color-main, 15%);
+            color: $color-main !important;
+        }
+
+        &:active {
+            color: $color-main;
+            background-color: rgba($color-main, 20%);
+        }
+    }
+
+    i {
+        color: $color-main;
+    }
+}
+
+.btn.btn-text-primary {
+    @include bcs-button-text($bcs-color-indigo-55);
+}
+
+.btn.btn-text-secondary {
+    @include bcs-button-text($bcs-color-red-75);
+}
+
+.btn.btn-text-success,
+.btn.btn-text-info {
+    @include bcs-button-text($bcs-color-success-75);
+}
+
+.btn.btn-text-warning,
+.btn.btn-text-danger {
+    @include bcs-button-text($bcs-color-warning-75);
+}
+
+// dropdown buttons I
+@mixin bcs-button-dropdown($color-main) {
+    background-color: $color-main;
+    border: 1px solid $color-main;
+}
+
+.btn-group.show > .btn.btn-primary {
+    @include bcs-button-dropdown($bcs-color-indigo-55);
+}
+
+.btn-group.show > .btn.btn-secondary {
+    @include bcs-button-dropdown($bcs-color-red-75);
+}
+
+.btn-group.show > .btn.btn-success,
+.btn-group.show > .btn.btn-info {
+    @include bcs-button-dropdown($bcs-color-success-75);
+}
+
+.btn-group.show > .btn.btn-warning,
+.btn-group.show > .btn.btn-danger {
+    @include bcs-button-dropdown($bcs-color-warning-75);
+}
+
+// toggle buttons
+.btn-group.btn-group-toggle > label.btn.btn-primary {
+    @include bcs-button-outline($bcs-color-indigo-55);
+}
+
+.btn-group.btn-group-toggle > label.btn.btn-primary.active {
+    @include bcs-button($bcs-color-indigo-55, $bcs-color-indigo-45, $bcs-color-indigo-40, $white);
+}
+
+// link buttons
+.btn.btn-link {
+    color: $bcs-color-red-75;
+}
+
+// XS buttons
+.btn.btn-xs {
+    font-size: 0.8rem;
+}
+
+// active buttons
+.btn.active {
+    &.btn-outline-secondary {
+        background-color: $bcs-color-red-75 !important;
+        border: 1px solid $bcs-color-red-75 !important;
+    }
+}
+
+// toggle buttons
+.btn-group-toggle {
+    .btn {
+        &.btn-outline-secondary,
+        &.btn-outline-primary {
+            &.active {
+                color: $white !important;
+
+                &:hover {
+                    color: $white !important;
+                }
+            }
+        }
+    }
+}
+
+// dropdown buttons II
+@mixin bcs-button-dropdown-outline($color-main) {
+    background-color: $white;
+    border-color: $color-main;
+}
+.show > .btn-outline-primary.dropdown-toggle {
+    @include bcs-button-dropdown-outline($bcs-color-indigo-55);
+}
+.show > .btn-outline-secondary.dropdown-toggle {
+    @include bcs-button-dropdown-outline($bcs-color-red-75);
+}
+.show > .btn-outline-success.dropdown-toggle,
+.show > .btn-outline-info.dropdown-toggle {
+    @include bcs-button-dropdown-outline($bcs-color-success-75);
+}
+.show > .btn-outline-secondary.dropdown-toggle {
+    @include bcs-button-dropdown-outline($bcs-color-warning-75);
+}
+
+
+
+
+

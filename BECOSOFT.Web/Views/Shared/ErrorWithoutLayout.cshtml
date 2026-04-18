@@ -1,0 +1,35 @@
+﻿@using System.Globalization
+@{
+    var primaryColor = "red";
+
+    if (Request.Cookies["primary-color"] != null) {
+        primaryColor = Request.Cookies["primary-color"].Value;
+    }
+
+    var styleSheetPath = $"~/Content/bootstrap-themes/{primaryColor}.css";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/Content/Images/favicon.png">
+
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render(styleSheetPath)
+    @Styles.Render("~/Content/style")
+</head>
+<body>
+<main id="content" class="container-fluid" role="main">
+    <div class="row">
+        <div id="main-content" class="col-12">
+            <p>@Resources.Error_FixAsSoonAsPossible</p>
+        </div>
+    </div>
+    <div id="culture-info" class="d-none" data-numberdecimalseparator="@CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator" data-numbergroupseparator="@CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator"></div>
+</main>
+</body>
+</html>

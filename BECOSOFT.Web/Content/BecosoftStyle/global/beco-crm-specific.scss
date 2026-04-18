@@ -1,0 +1,3236 @@
+@use "../global/variables" as *;
+
+// Helpers
+.left-0 {
+    left: 0 !important;
+}
+
+// modal backdrop
+.modal-backdrop {
+    background-color: $bcs-color-indigo-10 !important;
+}
+
+// get rid of weird white space at bottom of table-sm row with a checkbox in it
+.table-sm td.form-check {
+    padding-bottom: 0.5rem;
+}
+
+// space title on every page
+h2:first-of-type {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+// make label bigger for checkboxes
+.form-check {
+    .checkbox-label {
+        font-size: 1rem;
+        transform: translate(0.25rem, -0.0625rem);
+    }
+}
+
+// "add" button under table
+.bcs-button-add-undertable,
+.bcs-button-add-undertable-end {
+    width: 100%;
+    margin: auto;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 1rem;
+    color: $bcs-color-indigo-55;
+    background-color: transparent;
+
+    i {
+        color: $bcs-color-indigo-55;
+    }
+
+    &:hover:not([disabled]) {
+        color: $bcs-color-indigo-55;
+        background-color: rgba($bcs-color-indigo-55, 10%);
+    }
+}
+
+// expand/collapse buttons in table rows
+.button-toggle-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem !important;
+    box-shadow: none !important;
+
+    i {
+        min-width: 1rem;
+
+        &.fa-angle-right {
+            color: $bcs-color-gray-65 !important;
+        }
+
+        &.fa-angle-down {
+            color: $bcs-color-gray-40 !important;
+        }
+    }
+}
+
+// make bold/strong not too bold
+b, strong {
+    font-family: "Barlow" !important;
+    font-weight: 500 !important;
+}
+
+// sort button in table headers
+th .button-sort {
+    color: rgba($bcs-color-gray-65,80%);
+    padding: 0.25rem;
+    border-radius: $bcs-border-radius;
+    width: 2rem;
+    height: 2rem;
+
+    &:hover {
+        background-color: $bcs-color-gray-93;
+    }
+}
+
+// table data can word-break (otherwise it overflows horizontally)
+// commented out for now, not the ideal solution
+/*table.table > tbody > tr > td {
+    word-wrap: break-word;
+    word-break: break-all;
+}*/
+
+// fix nav styling (nav has to be a class to make the fixed tabs work)
+.nav.bcs-tabsbar-fixed {
+    flex-wrap: nowrap;
+}
+
+// remove large padding to the sides of inputs
+.form-control {
+    padding: 0.375rem;
+}
+
+// responsive search bar in index pages
+.bcs-search-filter {
+
+    @media (min-width: 768px) {
+        width: 50% !important;
+    }
+
+    @media (min-width: 900px) {
+        width: 35% !important;
+    }
+
+    @media (min-width: 1400px) {
+        width: 25% !important;
+    }
+
+    @media (max-width: 767px) {
+        width: 75% !important;
+    }
+}
+
+// image/file uploader
+#image-container,
+#file-container,
+#logo-image-container {
+
+    > div {
+        background-color: $bcs-color-gray-97;
+        border-radius: $bcs-border-radius;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .image-item,
+    .logo-image-item {
+
+        .card {
+            .upload-card {
+                max-height: 20rem;
+                max-width: 20rem;
+                min-height: 10rem;
+                min-width: 10rem;
+                object-fit: contain;
+            }
+
+            .card-footer {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
+            }
+        }
+    }
+
+    .images-part {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .upload-part,
+    .logo-upload-part {
+        .upload-card {
+            @include bcs-transition-a;
+
+            &:hover {
+                @include bcs-transition-a;
+                cursor: pointer;
+                background-color: $bcs-color-gray-97;
+            }
+        }
+    }
+}
+
+// style > BOM > style images
+.bcs-bom-style-info-images {
+    padding: 2rem;
+    border-radius: $bcs-border-radius;
+    border: 1px solid $bcs-color-gray-85;
+    margin-left: 1.875rem;
+}
+
+// no records found
+.bcs-no-records-found {
+    margin: 2rem -1rem 0rem -1rem;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    color: $bcs-color-warning-75;
+    background-color: rgba($bcs-color-warning-75, 12%);
+    font-size: 1rem;
+    border-radius: $bcs-border-radius;
+}
+
+// jQuery data table styling
+[id^=DataTables].dataTables_wrapper {
+    .dataTables_length {
+        label select {
+            border: 1px solid $bcs-color-gray-85 !important;
+            border-radius: $bcs-border-radius;
+
+            &:focus-visible,
+            &:focus {
+                @include bcs-shadow-form-control;
+                border: 1px solid rgba($bcs-color-indigo-55, 25%);
+                outline: none !important;
+            }
+        }
+    }
+
+    .dataTables_filter {
+        label input {
+            color: $bcs-color-gray-25;
+            background-color: $white;
+            border: 1px solid $bcs-color-gray-85;
+            border-radius: $bcs-border-radius;
+
+            &:focus-visible,
+            &:focus {
+                @include bcs-shadow-form-control;
+                border: 1px solid rgba($bcs-color-indigo-55, 25%);
+                outline: none !important;
+            }
+        }
+    }
+
+    table.table.dataTable {
+        border: 1px solid $bcs-color-gray-85 !important;
+    }
+
+    .dataTables_info {
+        font-style: italic;
+        color: $bcs-color-gray-65;
+    }
+
+    .dataTables_paginate {
+        a.paginate_button {
+            background-image: none !important;
+            border: none;
+            border-radius: $bcs-border-radius;
+            color: $bcs-color-gray-40;
+            font-weight: 500;
+            @include bcs-transition-b;
+
+
+
+            &.previous,
+            &.next {
+            }
+
+            &:hover:not(.disabled) {
+                background-color: $bcs-color-gray-97;
+                color: $bcs-color-gray-40 !important;
+                border: none !important;
+            }
+
+            &:focus {
+                @include bcs-shadow-form-control;
+            }
+
+            &.current {
+                background-color: $bcs-color-gray-95;
+                color: $bcs-color-gray-25;
+                font-weight: 800;
+
+                &:hover {
+                    background-color: $bcs-color-gray-95 !important;
+                }
+            }
+
+            &.disabled {
+                border: none !important;
+                color: $bcs-color-gray-85 !important;
+                font-weight: 400;
+
+                &:hover {
+                    background-color: none !important;
+                }
+
+                &:focus,
+                &:focus-visible {
+                    box-shadow: none !important;
+                    outline: none !important;
+                }
+            }
+        }
+    }
+}
+
+// links to component parts in Components > New > mandatory information
+.bcs-link-to-component-part {
+    padding: 0;
+    margin: 0;
+    float: right;
+
+    span {
+        display: inline-block;
+        font-size: 0.8rem;
+        transform: translate(0px, 3px);
+        color: rgba($bcs-color-red-75, 60%);
+    }
+
+    i {
+        transform: translateY(4px);
+        color: $bcs-color-gray-85;
+    }
+
+    &:hover {
+
+        span {
+            color: $bcs-color-red-75;
+            text-decoration: underline;
+        }
+
+        i {
+            cursor: pointer;
+            color: $bcs-color-red-75;
+        }
+    }
+}
+
+// validation errors
+.validation-summary-errors {
+    ul {
+        padding: 0.5rem;
+        padding-left: 0;
+        border-radius: $bcs-border-radius;
+        background-color: rgba($bcs-color-warning-75, 12%);
+
+
+        li {
+            list-style: none;
+            padding-left: 1rem;
+            color: $bcs-color-warning-75;
+            font-size: 1rem;
+        }
+    }
+}
+
+// row grabber icon
+.bcs-row-grabber {
+    td:first-child {
+        padding: 0.75rem !important;
+
+        i {
+            color: $bcs-color-gray-40;
+        }
+    }
+
+    &:hover {
+        cursor: grabbing;
+    }
+
+    td.form-check {
+        height: 3rem;
+
+        input {
+            transform: translate(0px, 0.5rem);
+        }
+    }
+}
+
+// align icons in list-group-flush
+.list-group.list-group-flush > a.list-group-item {
+    border: none;
+
+    i {
+        width: 1.25rem;
+
+        &::before {
+            display: block;
+            text-align: center;
+        }
+    }
+}
+
+// card header titles
+.card-header {
+    padding: 0.5rem;
+    padding: 0rem;
+
+    .card-title {
+        color: $bcs-color-gray-40;
+        font-size: 1rem;
+        margin: 0px;
+        font-weight: 500;
+        padding: 0.5rem;
+    }
+}
+
+
+
+// dashboard container
+.dashboard-period-data-red {
+    color: $bcs-color-warning-75 !important;
+}
+
+.dashboard-period-data-green {
+    color: $bcs-color-success-75 !important;
+}
+
+// statistics dashboard tables
+.bcs-table-small {
+    line-height: 1.1rem;
+}
+
+// expandable card headers
+.bcs-card-header {
+    width: 100%;
+    padding: 0px;
+
+    .card-title {
+        color: $bcs-color-gray-40;
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 0px !important;
+        width: 100%;
+        padding: 0px;
+
+        > a.accordion-toggle,
+        > p {
+            color: $bcs-color-gray-40;
+            width: 100%;
+            display: block;
+            padding: 0.25rem 0.5rem;
+            margin-bottom: 0rem;
+
+            &::after {
+                margin-top: 0.25rem;
+            }
+        }
+
+        > a.accordion-toggle {
+            @include bcs-transition-a;
+
+            &:hover {
+                text-decoration: none;
+                background-color: $bcs-color-gray-93;
+                @include bcs-transition-a;
+            }
+        }
+    }
+}
+
+// icons/links/headers in table
+.bcs-icon-in-table {
+    color: rgba($bcs-color-red-75, 65%);
+    @include bcs-transition-a;
+
+    &:hover {
+        color: $bcs-color-red-75;
+        cursor: pointer;
+        @include bcs-transition-a;
+    }
+}
+
+.bcs-link-in-table {
+    display: flex;
+
+    > i {
+        width: 1rem;
+        text-align: center;
+    }
+
+    i, label {
+        color: $bcs-color-red-75 !important;
+    }
+}
+
+.bcs-link-in-table-ext {
+    transform: translateY(-0.25rem);
+
+    a label, a i {
+        color: $bcs-color-red-75 !important;
+    }
+
+    a:active {
+        background: transparent;
+    }
+}
+
+.bcs-link-in-table-static {
+    display: flex;
+
+    > i {
+        transform: translate(-0.25rem,0.3rem);
+    }
+}
+
+
+th > .btn-sort {
+    font-weight: 400;
+    color: $bcs-color-gray-40 !important;
+}
+
+// pagination
+.bcs-pagination-columns {
+    .input-group {
+        border: 1px solid $bcs-color-gray-85 !important;
+    }
+
+    .input-group-prepend {
+        background-color: $bcs-color-gray-95;
+
+        .input-group-text {
+            margin-top: -0.5rem;
+            background-color: transparent;
+        }
+    }
+
+    select.custom-select {
+        border: none;
+        border-left: 1px solid $bcs-color-gray-85;
+        padding-left: 0.5rem !important;
+    }
+
+    #column-changer-button {
+        border-left: 1px solid $bcs-color-gray-85;
+    }
+}
+
+
+// dropdown menus
+.dropdown {
+    > span.btn[data-toggle="dropdown"] {
+        margin-right: 0.25rem;
+        margin-top: 0.25rem;
+    }
+
+    > span:hover:after {
+        background-color: rgb($bcs-color-gray-85, 60%);
+        border-radius: $bcs-border-radius;
+    }
+
+
+    &:not(.show) > span:after {
+        content: "";
+        background-image: url('/Content/icons/ellipsis-gray-40.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+    }
+
+    &.show > span:after {
+        content: "";
+        background-image: url('/Content/icons/ellipsis-gray-40.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        background-color: $bcs-color-gray-85;
+        border-radius: $bcs-border-radius;
+    }
+
+    .dropdown-menu {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        @include bcs-shadow-a;
+
+        a.dropdown-item {
+            i {
+                margin-left: 0.25rem;
+                width: 1rem;
+                text-align: center;
+            }
+
+            label {
+                margin-top: -0.25rem;
+                margin-left: 0.25rem;
+            }
+        }
+    }
+}
+
+// two-way-list
+.ms-container {
+
+    .ms-elem-selectable.ms-hover,
+    .ms-elem-selection.ms-hover {
+        background-color: $bcs-color-gray-95 !important;
+    }
+
+    .ms-list.ms-focus {
+        border: 1px solid $bcs-color-gray-85 !important;
+    }
+
+    .ms-focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+
+// expandable rows in tables
+tr[data-toggle="collapse"] {
+    td.arrow {
+        padding-top: 0.75rem;
+
+        &:before {
+            padding-right: 2rem;
+        }
+    }
+}
+
+// extra form stuff
+.input-group {
+    border: none !important;
+
+    > select.form-control[disabled="true"],
+    > select.form-control[disabled="disabled"] {
+        border: none;
+        color: $bcs-color-gray-65 !important;
+    }
+}
+
+select.form-control[disabled="true"],
+select.form-control[disabled="disabled"] {
+    border: none;
+    color: $bcs-color-gray-65 !important;
+}
+
+input.form-control {
+    border: 1px solid $bcs-color-gray-85 !important;
+}
+
+.input-group > .input-group-prepend > .input-group-text,
+.input-group > .input-group-append > .input-group-text {
+    border: 1px solid $bcs-color-gray-85 !important;
+}
+
+.bcs-pagination-columns > .input-group > .input-group-prepend > label.input-group-text {
+    border: none !important;
+}
+
+.form-control.text-box[type="date"][disabled="disabled"] {
+    border: none !important;
+}
+
+select.form-control[disabled="disabled"] {
+    background-color: $bcs-color-gray-95;
+}
+
+input[disabled],
+textarea[disabled] {
+    background-color: $bcs-color-gray-95 !important;
+    border: 1px solid $bcs-color-gray-95 !important;
+    color: $bcs-color-gray-65 !important;
+
+    &::placeholder {
+        color: $bcs-color-gray-65 !important;
+    }
+}
+
+.custom-control.custom-checkbox .custom-control-input:checked[disabled] ~ .custom-control-label::before {
+    border: none !important;
+}
+
+.custom-checkbox .custom-control-label::before {
+    background-color: $white !important;
+}
+
+.custom-checkbox .custom-control-input:disabled ~ .custom-control-label::before {
+    background-color: $bcs-color-gray-95 !important;
+}
+
+// validation styling for form controls
+input.form-control.is-invalid,
+select.form-control.is-invalid {
+    border: 1px solid $bcs-color-warning-75 !important;
+
+    &:focus {
+        border-color: $bcs-color-warning-75 !important;
+        box-shadow: 0 0 0 0.2rem rgba($bcs-color-warning-75, 0.25);
+    }
+}
+
+input.form-control.is-valid,
+select.form-control.is-valid {
+    border: 1px solid $bcs-color-success-75 !important;
+
+    &:focus {
+        border-color: $bcs-color-success-75 !important;
+        box-shadow: 0 0 0 0.2rem rgba($bcs-color-success-75, 0.25);
+    }
+}
+
+// html5 date picker
+::-webkit-calendar-picker-indicator {
+    @include bcs-transition-a;
+    filter: opacity(0.65);
+    border-radius: $bcs-border-radius;
+
+    &:hover {
+        @include bcs-transition-a;
+        background-color: $bcs-color-gray-95;
+        filter: opacity(0.8);
+        cursor: pointer;
+    }
+}
+
+// text color
+.bcs-color-text {
+    color: $bcs-color-gray-25 !important;
+}
+
+.bcs-color-text-secondary {
+    color: $bcs-color-red-75 !important;
+}
+
+.bcs-color-text-light {
+    color: $bcs-color-gray-40 !important;
+}
+
+.bcs-color-text-very-light {
+    color: $bcs-color-gray-65 !important;
+}
+
+// text size
+.bcs-text-small-a {
+    font-size: 0.875rem !important;
+}
+
+// table header links
+th > .bcs-table-header {
+    font-weight: 400;
+    padding: 0px;
+    margin: 0px;
+    color: $bcs-color-gray-40 !important;
+    @include bcs-transition-a;
+
+    &:hover {
+        @include bcs-transition-a;
+        color: $bcs-color-red-75 !important;
+    }
+}
+
+th > a[type="sort"] {
+    @include bcs-transition-a;
+
+    &:hover {
+        @include bcs-transition-a;
+        color: $bcs-color-red-75 !important;
+    }
+}
+
+// table total row
+table > tbody > tr.bcs-table-total-row {
+    td {
+        font-size: 1.25rem;
+        color: $bcs-color-gray-40;
+    }
+}
+
+// positive-negative backgrounds
+.stock-negative,
+.bg-negative {
+    background-color: $bcs-color-warning-75 !important;
+}
+
+.stock-positive,
+.bg-positive {
+    background-color: $bcs-color-success-75 !important;
+}
+
+table > tbody > tr.stock-negative-light,
+.stock-negative-light,
+.bg-negative-light {
+    background-color: rgba($bcs-color-warning-75, 0.2) !important;
+}
+
+table > tbody > tr.stock-positive-light,
+.stock-positive-light,
+.bg-positive-light {
+    background-color: rgba($bcs-color-success-75, 0.2) !important;
+}
+
+// "close modal" button
+.modal-content .modal-header button.close i {
+    font-size: 1.5rem;
+    color: $white;
+}
+
+// "close card" button
+.bcs-button-close-card {
+    background-color: transparent !important;
+    margin: 0.25rem;
+
+    i {
+        color: rgba($bcs-color-gray-40,75%) !important;
+        font-size: 1.35rem;
+    }
+
+    &:hover {
+        i {
+            color: $bcs-color-gray-15 !important;
+        }
+    }
+}
+
+.bcs-button-close-card-section {
+    transform: translate(1rem, -1rem);
+}
+
+// "back to top" button
+.bcs-button-back-to-top {
+    display: block;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 2rem;
+    z-index: 99;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 200rem;
+    @include bcs-shadow-a;
+
+    i {
+        text-align: center;
+        margin: auto;
+        font-size: 1.5rem;
+        padding-top: 0.35rem;
+    }
+}
+
+// fix nav tabs
+.nav-tabs > .nav-item > .nav-link {
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+// sortable widget
+.bcs-sortable-widget {
+    > .card {
+        min-height: 8rem;
+    }
+}
+
+.bcs-sortable-widget-placedown {
+    background-color: $bcs-color-gray-97;
+    border: none !important;
+}
+
+// card extensions (for dense info cards)
+.bcs-card-style-a {
+    background-color: $bcs-color-gray-97;
+}
+
+.bcs-card-subheader {
+    padding: 0.25rem 0.5rem;
+    background-color: $bcs-color-gray-97;
+    font-weight: 500;
+    color: $bcs-color-gray-40;
+}
+
+.bcs-card-subheader:not(:first-of-type) {
+    border-top: 1px solid $bcs-color-gray-85;
+}
+
+.bcs-card-element-label {
+    padding: 0.25rem 0.5rem;
+}
+
+.bcs-card-element-value {
+    border: 3px solid $bcs-color-gray-97;
+    padding: 0.15rem 0rem 0rem 0.5rem;
+    border-radius: $bcs-border-radius-big;
+    background-color: $white;
+    font-size: 0.875rem !important;
+
+    &.form-check > input {
+        transform: translate(0,0.2rem);
+    }
+}
+
+.bcs-card-element-label, .bcs-card-element-value {
+    line-height: 1.3;
+}
+
+// borders, or not
+.bcs-border {
+    border: 1px solid $bcs-color-gray-85 !important;
+}
+
+.bcs-border-vertical {
+    border-top: 1px solid $bcs-color-gray-85 !important;
+    border-bottom: 1px solid $bcs-color-gray-85 !important;
+}
+
+.bcs-border-horizontal {
+    border-left: 1px solid $bcs-color-gray-85 !important;
+    border-right: 1px solid $bcs-color-gray-85 !important;
+}
+
+.bcs-border-top {
+    border-top: 1px solid $bcs-color-gray-85 !important;
+}
+
+.bcs-border-bottom {
+    border-bottom: 1px solid $bcs-color-gray-85 !important;
+}
+
+.bcs-border-right {
+    border-right: 1px solid $bcs-color-gray-85 !important;
+}
+
+.bcs-border-left {
+    border-left: 1px solid $bcs-color-gray-85 !important;
+}
+
+.bcs-borderless {
+    border: none !important;
+}
+
+.bcs-borderless-vertical {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.bcs-borderless-horizontal {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.bcs-borderless-top {
+    border-top: none !important;
+}
+
+.bcs-borderless-bottom {
+    border-bottom: none !important;
+}
+
+.bcs-borderless-right {
+    border-right: none !important;
+}
+
+.bcs-borderless-left {
+    border-left: none !important;
+}
+
+// table hover fix
+table:not(.table-hover) tr td:hover {
+    cursor: default !important;
+}
+
+// sale details table specifics
+#bcs-sale-details-table {
+    #detailsTable td.arrow {
+        border-top: 1px solid $bcs-color-gray-90 !important;
+    }
+
+    #detailsTable td.arrow:hover {
+        cursor: pointer !important;
+    }
+}
+
+// placeholder color
+.form-control::placeholder {
+    color: $bcs-color-gray-85 !important;
+}
+
+// vertical tab list
+.bcs-tab-list-group {
+    padding-right: 0px;
+
+    .list-group-item {
+        padding: 0.25rem 1rem;
+        color: $bcs-color-gray-25;
+
+        &:hover {
+            background-color: $bcs-color-gray-97;
+        }
+
+        &.active {
+            background-color: $bcs-color-gray-95;
+            border-right: 2px solid $bcs-color-red-75 !important;
+            transition: none;
+
+            &:hover {
+                cursor: default;
+            }
+        }
+    }
+
+    @media screen and (min-width: 769px) {
+        border-right: 1px solid $bcs-color-gray-85;
+    }
+
+    @media screen and (max-width: 768px) {
+        border-bottom: 1px solid $bcs-color-gray-85;
+    }
+}
+
+// user rights group settings
+#user-rights-group-settings {
+    border: none;
+    padding: 1rem;
+
+    .bcs-rights-division {
+        border-top: 1px solid $bcs-color-gray-85;
+        margin: 1rem -1rem 0rem -1rem;
+    }
+
+    .bcs-rights-subtitle {
+        font-weight: 600;
+        color: $bcs-color-gray-40;
+        margin: 1.25rem 0rem 0.75rem 0rem;
+    }
+
+    [class^="sub-checkbox-"],
+    [class*=" sub-checkbox-"] {
+        transform: translate(0rem, -1rem);
+    }
+}
+
+// card header user signature
+.bcs-card-header-user-signature {
+    div.accordion-toggle {
+        @include bcs-transition-a;
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: none;
+            background-color: $bcs-color-gray-93;
+            @include bcs-transition-a;
+        }
+    }
+
+    .bcs-card-header-user-signature-title {
+        font-weight: 500;
+    }
+
+    .accordion-toggle.collapsed:after {
+        transform: translate(0px, -0.2rem) !important;
+    }
+
+    .accordion-toggle:after {
+        transform: translate(0px, -0.2rem) rotate(90deg) !important;
+    }
+}
+
+// group publications
+.bcs-group-publications {
+
+    .list-group-item {
+        border: 1px solid $bcs-color-gray-85 !important;
+    }
+
+    .list-group-item[data-level] {
+
+        &:hover {
+            background-color: $bcs-color-gray-15;
+        }
+
+        input[type='number'] {
+            text-align: right;
+        }
+
+        &[href]:not([href*='#']) {
+            cursor: pointer;
+        }
+
+        &[href] > div > span:before {
+            content: "";
+            width: 14px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        &[href]:not([href*='#']):not(.open) > div > span:before {
+            content: "";
+            background-image: url('/Content/icons/angle-right-gray-65.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 18px;
+            height: 18px;
+        }
+
+        &[href]:not([href*='#']).open > div > span:before {
+            content: "";
+            background-image: url('/Content/icons/angle-down-gray-40.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 18px;
+            height: 18px;
+        }
+
+        &.published {
+            background: linear-gradient(90deg, $bcs-color-success-75 10px, $white 0, $white 100%) no-repeat;
+
+            &:hover {
+                background: linear-gradient(90deg, $bcs-color-success-75 10px, $bcs-color-gray-97 0, $bcs-color-gray-97 100%) no-repeat;
+            }
+        }
+
+        &:not(.published) {
+            background: linear-gradient(90deg, $bcs-color-warning-75 5px, $white 0, $white 100%) no-repeat;
+
+            &:hover {
+                background: linear-gradient(90deg, $bcs-color-warning-75 5px, $bcs-color-gray-97 0, $bcs-color-gray-97 100%) no-repeat;
+            }
+        }
+    }
+
+    .list-group-item:first-child {
+        background-color: $bcs-color-gray-95;
+        border-bottom: 2px solid $bcs-color-gray-85;
+    }
+
+    a[data-action="moveup"] i,
+    a[data-action="movedown"] i {
+        padding: 0.25rem 0.5rem 0rem 0.8rem !important;
+    }
+
+    .list-group-item[data-level="1"] .bcs-group-publications-group-name {
+        padding-left: 0rem;
+    }
+
+    .list-group-item[data-level="2"] .bcs-group-publications-group-name {
+        padding-left: 1rem;
+    }
+
+    .list-group-item[data-level="3"] .bcs-group-publications-group-name {
+        padding-left: 2rem;
+    }
+
+    .list-group-item[data-level="4"] .bcs-group-publications-group-name {
+        padding-left: 3rem;
+    }
+
+    .list-group-item[data-level="5"] .bcs-group-publications-group-name {
+        padding-left: 4rem;
+    }
+
+    .hide-in-menu-icon {
+        padding: 0.25rem;
+        border-radius: $bcs-border-radius;
+        @include bcs-transition-a;
+
+        &:hover {
+            background-color: $bcs-color-gray-90;
+            @include bcs-transition-a;
+        }
+    }
+}
+
+.bcs-group-publications-group-name::before {
+    width: 1.5rem !important;
+}
+
+// undertable button positioned to the right
+.bcs-button-add-undertable-end {
+    justify-content: end;
+}
+
+// websitemenu items
+.bcs-websitemenu-items {
+    i {
+        padding-top: 0.35rem;
+    }
+
+    [id^="btn-add"] i {
+        font-size: 1rem;
+    }
+
+    [data-action="moveup"] i,
+    [data-action="movedown"] i {
+        font-size: 1.25rem !important;
+        padding-left: 0.3rem;
+        padding-top: 0rem;
+        margin-top: 0.3rem;
+        margin-bottom: 0.2rem;
+    }
+
+    [data-action="moveleft"] i,
+    [data-action="moveright"] i {
+        font-size: 1rem !important;
+        padding-left: 0.35rem;
+    }
+
+    [data-action="edititem"] i,
+    [data-action="removeitem"] i {
+        font-size: 1rem !important;
+        padding-top: 0.15rem;
+        margin: 0.25rem;
+    }
+
+    .bcs-websitemenu-item {
+        height: 2rem;
+    }
+}
+
+// tag picker
+.tag-picker {
+    border-radius: $bcs-border-radius;
+    border: 1px solid $bcs-color-gray-85 !important;
+
+    .tag:not(.editor) {
+        border-radius: $bcs-border-radius;
+        background-color: $bcs-color-gray-95;
+        @include bcs-transition-a;
+
+        &::before {
+            color: $bcs-color-gray-25;
+            position: relative;
+            top: -0.25rem;
+        }
+
+        &:hover {
+            background-color: $bcs-color-gray-93;
+            @include bcs-transition-a;
+        }
+
+        a {
+            &::before {
+                color: $bcs-color-gray-65 !important;
+                font-size: 1.5rem;
+            }
+
+            &:hover::before {
+                color: $bcs-color-gray-25 !important;
+            }
+        }
+    }
+}
+
+// select 2 multiselect
+.select2.select2-container {
+    .select2-selection {
+        border-radius: $bcs-border-radius;
+        border: 1px solid $bcs-color-gray-85 !important;
+
+        .select2-selection__choice {
+            border: none !important;
+
+            .select2-selection__choice__remove {
+                border: none !important;
+
+                &:hover {
+                    background-color: transparent;
+                }
+
+                span {
+                    color: $bcs-color-gray-65 !important;
+
+                    &:hover {
+                        color: $bcs-color-gray-25 !important;
+                    }
+                }
+            }
+
+            .select2-selection__choice__display {
+                color: $bcs-color-gray-40;
+            }
+        }
+    }
+}
+
+// info icon
+.bcs-info-icon {
+    padding-top: 1rem;
+
+    &::before {
+        color: $bcs-color-gray-65;
+    }
+
+    &:hover::before {
+        cursor: pointer;
+        color: $bcs-color-gray-25;
+    }
+}
+
+// tooltip
+.tooltip-inner {
+    p, b {
+        color: white !important;
+    }
+}
+
+// font-weight
+.bcs-font-weight-semibold {
+    font-weight: 600 !important;
+}
+
+// font size
+.bcs-font-size-small {
+    font-size: 0.85rem !important;
+}
+
+// parameter screen list items
+.bcs-parameters-card {
+    background: transparent !important;
+
+    .list-group-item.parameter-link {
+        background: transparent !important;
+        margin-bottom: 0.5px;
+        padding: 0.15rem 0.5rem !important;
+
+        &:hover {
+            background: $bcs-color-gray-95 !important;
+        }
+    }
+}
+
+// "no color" badge
+#noColorCell {
+    background-color: $white !important;
+    border: 3px solid $bcs-color-gray-95 !important;
+    color: $bcs-color-gray-85;
+    margin-top: 0.5rem;
+}
+
+// uploader +
+.bcs-image-uploader-icon {
+    margin-bottom: 0.5rem;
+
+    & i::before {
+        color: $bcs-color-indigo-55;
+    }
+}
+
+// alert heading inside positioning
+.alert-heading {
+    margin-bottom: 0.25rem;
+
+    i {
+        margin-right: 0.5rem;
+    }
+}
+
+// keep table-sm small
+table.table-sm td.fixed-column > .d-flex {
+    height: 1rem;
+}
+
+// transparent background
+.bcs-bg-transparent {
+    background-color: transparent !important;
+}
+
+// select
+select {
+
+    &[disabled] {
+
+        option:not([selected]) {
+            color: $bcs-color-gray-85;
+        }
+
+        option[selected] {
+            background-color: $bcs-color-gray-90 !important;
+        }
+    }
+
+    option[selected] {
+        background-color: transparent;
+    }
+
+    option {
+        padding: 0.25rem 0.4rem;
+
+        &:checked {
+            background-color: #ECECEF;
+        }
+    }
+}
+
+// condition builder stuff
+.error-container {
+    background-color: rgba($bcs-color-warning-75,40%) !important;
+    padding: 0.5rem;
+    border-radius: $bcs-border-radius;
+}
+
+.query-builder {
+    .rules-list > *:first-child::before {
+        top: -20px;
+        height: calc(50% + 20px);
+    }
+
+    .rules-list > *::before,
+    .rules-list > *::after {
+        border-color: #C5C6D4;
+        height: calc(50% + 14px);
+    }
+
+    .rules-group-container,
+    .rules-list .rule-container {
+        border: 1px solid #D5D7E1 !important;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+    }
+}
+
+// input group disabled border fix
+.input-group input[disabled] {
+    border: none !important;
+    background-color: $bcs-color-gray-95;
+}
+
+// condition builder button to toggle multiple/single
+.bcs-button-toggle-multiple-single {
+    background-color: $bcs-color-gray-95;
+    @include bcs-transition-a;
+
+    &:hover {
+        background-color: $bcs-color-gray-93;
+        @include bcs-transition-a;
+    }
+}
+
+// weird giant table checkboxes
+[name="countryWayToShip-row"] .form-check > input,
+[name="shipperpackagetype-row"] .form-check > input,
+#Lines .form-check > input,
+#Ranges .form-check > input,
+tr[data-opening-hour] > td.form-check > input {
+    height: 1rem;
+    width: 1rem;
+    margin-top: 0.5rem;
+}
+
+// form check in table
+.bcs-td-form-check > input {
+    height: 1rem;
+}
+
+// table header in table
+table.table tr.bcs-table-header-in-table {
+    background-color: $bcs-color-gray-97 !important;
+
+    &:hover {
+        cursor: default !important;
+    }
+
+    & > td {
+        font-weight: 600;
+        color: $bcs-color-gray-40;
+    }
+}
+
+// modal corner radius prevent hairline behind modal header
+.modal-content {
+    border-radius: 0.4rem !important;
+}
+
+// custom select
+select.custom-select {
+    padding-left: 0.5rem !important;
+}
+
+// 2-way multiselect background color
+.ms-container .ms-selectable li.disabled,
+.ms-container .ms-selection li.disabled {
+    background-color: $bcs-color-gray-95 !important;
+}
+
+.ms-container .ms-selectable.ms-hover li {
+    background-color: red !important;
+}
+
+// checkbox placement correction
+.bcs-checkbox-placement-correction {
+    transform: translateY(-0.75rem);
+}
+
+// fix for radio buttons' background
+.custom-control-label::before {
+    background-color: white !important;
+}
+
+// add shadows to containers for more depth
+.bcs-upperbar, .card, .bcs-sidebar, .table {
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+}
+
+.bcs-shadowless {
+    box-shadow: none !important;
+}
+// list group stuff
+.bcs-list-group-header {
+    border-bottom: none !important;
+    text-align: right;
+
+    &:hover {
+        background-color: transparent !important;
+    }
+}
+
+.bcs-icon-btn-in-list-group {
+    font-size: 2rem;
+    padding: 0rem 0.5rem;
+    border-radius: $bcs-border-radius;
+    @include bcs-transition-a;
+
+    i {
+        color: $bcs-color-red-75;
+    }
+
+    &:hover {
+        background-color: rgba($bcs-color-red-75,20%);
+        @include bcs-transition-a;
+    }
+}
+
+.list-group-item.active .bcs-icon-btn-in-list-group:hover {
+    background-color: $bcs-color-indigo-45;
+}
+
+.importable-file-link:hover {
+    text-decoration: none !important;
+}
+
+// vertical nav menu, nav-link
+.bcs-nav-link-vertical {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+
+    &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+    }
+}
+
+// Plu stuff
+.bcs-plu-button-highlighter {
+    display: block;
+    position: static;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    content: "";
+    animation-name: pluButtonHighlighter;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pluButtonHighlighter {
+    0%, 100% {
+        background-color: $white;
+    }
+
+    50% {
+        background-color: $bcs-color-gray-65;
+    }
+}
+
+.bcs-plu-button-type {
+    a.btn {
+        &.active {
+            background-color: $bcs-color-red-75 !important;
+            border: 1px solid $bcs-color-red-75 !important;
+
+            &:hover {
+                color: white !important;
+                background-color: $bcs-color-red-65 !important;
+            }
+        }
+    }
+}
+
+#article-example-zone {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+// HomeTemplate stuff
+.templatebutton {
+    .card-header {
+        @include bcs-transition-a;
+    }
+
+    &:hover .card-header {
+        background-color: #D5D7E1;
+        cursor: pointer;
+        @include bcs-transition-a;
+    }
+
+    > div {
+        > span.buttontranslation {
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
+        }
+    }
+}
+
+.bcs-hometemplate-contentpanel {
+    background-color: $bcs-color-gray-95;
+    border-radius: $bcs-border-radius;
+}
+
+// Kanban
+#edit-kanban {
+    background-color: white !important;
+    border-width: 2px !important;
+    @include bcs-transition-a;
+
+    &:hover {
+        background-color: $bcs-color-indigo-90 !important;
+        @include bcs-transition-a;
+    }
+}
+
+#lock-kanban {
+}
+
+// email dialog stuff
+.btn-icon-delete-mail-recipient {
+    padding: 0px;
+    @include bcs-transition-a;
+
+    &hover {
+        background-color: red;
+        color: white;
+        @include bcs-transition-a;
+    }
+}
+
+// content builder (temporary "good enough" before full redesign)
+#content-page-panel {
+    background-color: $bcs-color-gray-15 !important;
+}
+
+.bcs-contentbuilder {
+    #nav-tabContent {
+        background-color: $bcs-color-gray-25 !important;
+
+        .panel-element div {
+            border: none !important;
+            color: $bcs-color-gray-95;
+            flex-direction: column;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border-radius: $bcs-border-radius;
+            background-color: $bcs-color-gray-15 !important;
+            @include bcs-transition-a;
+
+            &:hover {
+                color: $white;
+                background-color: rgba($bcs-color-gray-15, 35%) !important;
+                @include bcs-transition-a;
+            }
+
+            i {
+                color: $bcs-color-gray-95;
+                font-size: 2.5rem;
+            }
+        }
+    }
+
+    .panel-body label {
+        color: white !important;
+        font-weight: 400 !important;
+    }
+
+    h4.panel-title,
+    .actions,
+    .nav.nav-tabs {
+        background-color: $bcs-color-gray-15 !important;
+    }
+
+
+    .nav-item.nav-link.active {
+        background-color: $bcs-color-gray-25 !important;
+    }
+
+    .nav-item.nav-link:not(.active) {
+        @include bcs-transition-a;
+        background-color: $bcs-color-gray-15 !important;
+        border-bottom: 1px solid $bcs-color-gray-15 !important;
+    }
+
+    .nav-item.nav-link:not(.active):hover {
+        @include bcs-transition-a;
+        color: white !important;
+        background-color: rgba($bcs-color-gray-25, 65%) !important;
+    }
+}
+
+.popover {
+    border-radius: $bcs-border-radius !important;
+}
+
+.popover-body {
+    background-color: $bcs-color-gray-15 !important;
+    border-radius: $bcs-border-radius !important;
+
+    .row-structures {
+        background-color: $bcs-color-gray-15 !important;
+        padding: 0.5rem !important;
+
+        a.row-structure {
+            border: none !important;
+            background-color: $bcs-color-gray-25 !important;
+
+            .row {
+                .row-block {
+                    @include bcs-transition-a;
+                    border: 1px solid $bcs-color-gray-15 !important;
+                    border-width: 0px 3px !important;
+
+                    .placeholder {
+                        border: none !important;
+                    }
+                }
+
+                &:hover {
+                    .row-block {
+                        transition: all 0.025s ease-in;
+                        background-color: $bcs-color-gray-40 !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.websiteContentImageParent {
+    .btn-remove-image.ui-sortable i {
+        color: $bcs-color-red-75;
+        @include bcs-transition-a;
+
+        &:hover {
+            color: $bcs-color-red-80;
+            @include bcs-transition-a;
+            cursor: pointer;
+        }
+    }
+}
+
+// border radius
+.bcs-border-radius {
+    border-radius: $bcs-border-radius !important;
+}
+
+.bcs-no-border-radius {
+    border-radius: 0 !important;
+}
+
+// extra bg color
+.bcs-bg-blue {
+    background-color: #266ca6 !important;
+}
+
+// user tree view collapsible row
+.user-treeview-collapsible-row th {
+    @include bcs-transition-a;
+
+    &:hover {
+        background-color: $bcs-color-gray-93;
+        @include bcs-transition-a;
+    }
+}
+
+// extra highlight for td
+.bcs-td-extra-highlight:hover {
+    background-color: $bcs-color-red-90;
+    cursor: pointer !important;
+}
+
+// kbd
+kbd {
+    background-color: #d5d7e1;
+    color: #505162;
+    font-weight: 600;
+}
+
+// summernote cards
+.note-editor.note-frame.card {
+    box-shadow: none !important;
+}
+
+// template step 3 radio buttons
+[id$=-instruction-button] {
+    border: none;
+    min-width: 2.5rem;
+    @include bcs-transition-a;
+
+    i {
+        text-align: center;
+        width: 100%;
+        padding: 0.15rem;
+        color: $bcs-color-gray-25;
+        font-size: 1.1rem;
+    }
+
+    &.selected {
+        background-color: transparent !important;
+        border: 1px solid $bcs-color-red-75;
+
+        i {
+            color: $bcs-color-red-75;
+        }
+    }
+
+    &:hover {
+        background-color: $bcs-color-gray-95;
+        @include bcs-transition-a;
+
+        &.selected {
+            cursor: default;
+        }
+    }
+}
+
+// internal areas stuff
+.bcs-internal-title {
+    margin: 1.5rem;
+    margin-left: 1rem;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: $bcs-color-gray-40;
+}
+
+.bcs-internal-settings-menu {
+
+    a {
+        display: block;
+    }
+
+    .list-group-item.card {
+        border: none;
+        box-shadow: none;
+        padding-left: 0.75rem;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        @include bcs-transition-a;
+
+        &:hover {
+            box-shadow: none;
+            background-color: $bcs-color-gray-97;
+            @include bcs-transition-a;
+        }
+    }
+
+    .list-group-item:first-child {
+        border: none;
+        padding: 0.5rem;
+        background-color: $bcs-color-gray-95;
+
+        &:hover {
+            background-color: $bcs-color-gray-95;
+            cursor: default;
+        }
+    }
+
+    .active-link {
+
+        .subItem {
+            padding-left: 1rem;
+
+            &:hover {
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+// website file manager
+.websitefilemanager {
+    .websitefilemanager-tree {
+        border: 1px solid $bcs-color-gray-85;
+        border-radius: $bcs-border-radius;
+        margin-right: -1px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        padding-top: 1rem;
+
+        .websitefilemanager-tree-item {
+            transform: translateY(-0.3rem);
+            position: relative;
+            height: 1.65rem;
+            @include bcs-transition-a;
+
+            &:hover {
+
+                .websitefilemanager-tree-name {
+                    .websitefilemanager-tree-name-content {
+                        background-color: $bcs-color-gray-95;
+                        border-radius: $bcs-border-radius;
+                        @include bcs-transition-b;
+                    }
+                }
+
+                .websitefilemanager-tree-folder-icons {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+            }
+
+            .websitefilemanager-tree-name {
+                height: 38px;
+                display: flex;
+                align-items: center;
+                color: $bcs-color-gray-25;
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                .websitefilemanager-tree-name-space {
+                    margin-right: 0.8rem;
+                }
+
+                i {
+                    margin-right: 0.45rem;
+                }
+
+                i.websitefilemanager-folder-open {
+                    color: $bcs-color-indigo-55;
+                }
+
+                i.websitefilemanager-folder-closed {
+                    color: $bcs-color-gray-85;
+                }
+
+                .websitefilemanager-tree-name-content {
+                    width: 100%;
+                    padding: 0.1rem 0rem 0.1rem 0.5rem;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    flex-wrap: nowrap;
+                    overflow: hidden;
+                    @include bcs-transition-b;
+
+                    .websitefilemanager-tree-name-content-inside {
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            .websitefilemanager-tree-folder-icons {
+                padding-top: 0.3rem;
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: none;
+
+                .websitefilemanager-tree-folder-icon {
+                    max-height: 1.5rem;
+                    width: 1.5rem;
+                    padding: 0.25rem;
+
+                    i {
+                        transform: translateY(-0.35rem);
+                    }
+                }
+            }
+        }
+    }
+
+    .websitefilemanager-tree-detail {
+        border: 1px solid $bcs-color-gray-85;
+        border-radius: $bcs-border-radius;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+
+        .websitefilemanager-tree-detail-path {
+            background-color: $bcs-color-gray-95;
+            border-bottom: 1px solid $bcs-color-gray-85;
+            height: 2rem;
+            padding-top: 0.25rem;
+        }
+
+        .websitefilemanager-tree-detail-actions {
+            margin-bottom: 1rem;
+
+            .websitefilemanager-tree-detail-add-folder {
+                .websitefilemanager-tree-detail-add-folder-text {
+                    text-wrap: wrap;
+                    color: $bcs-color-indigo-55;
+                }
+            }
+
+            .websitefilemanager-tree-detail-add-files {
+                .btn {
+                    border: 1px dashed $bcs-color-indigo-55;
+
+                    .websitefilemanager-tree-detail-add-files-text {
+                        text-wrap: wrap;
+                        color: $bcs-color-indigo-55;
+                    }
+                }
+            }
+
+            .websitefilemanager-tree-detail-delete-files {
+                button {
+                    text-wrap: wrap;
+                }
+            }
+        }
+
+        .websitefilemanager-tree-details {
+            /*
+                would like to use flex here to fill up the whitespace in the container by putting files in columns
+                run into a couple of issues:
+                1) the container grows vertically to accomodate all items, but I don't want that
+                   if I give it a specific max height, it'll work and we get columns
+                   but if we then have too many items, it'll start filling up a column next to the container
+                   unsure how to resolve this
+                2) need to handle overflow on items
+
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                flex-wrap: wrap;
+            */
+
+            .websitefilemanager-tree-details-item {
+                // if going flex, make this block and specify width (and handle the checkbox-above-text issue)
+                height: 1.75rem;
+            }
+
+            .websitefilemanager-tree-details-back,
+            .websitefilemanager-tree-details-folders {
+                a {
+                    font-weight: 500;
+
+                    i {
+                        width: 1rem;
+                    }
+                }
+            }
+
+            .websitefilemanager-tree-details-back {
+                a {
+                    color: $bcs-color-indigo-55;
+
+                    i {
+                        color: $bcs-color-indigo-55;
+                    }
+                }
+            }
+
+            .websitefilemanager-tree-details-folders {
+                a {
+                    color: $bcs-color-red-75;
+
+                    i {
+                        color: $bcs-color-red-75;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// watermark
+#watermark {
+    span {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding-left: 0.5rem;
+        color: $bcs-color-indigo-75 !important;
+    }
+}
+
+// expand/collapse arrow in table cell
+tr td.arrow {
+    &:hover {
+        cursor: pointer !important;
+    }
+
+    &:before {
+        @include bcs-transition-a;
+        padding-right: 0 !important;
+        content: "";
+        background-image: url('/Content/icons/angle-right-gray-40.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 150%;
+        height: 18px;
+        -ms-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+        float: right;
+        margin: -0.2rem;
+        opacity: 0.5;
+
+        &:hover {
+            cursor: pointer !important;
+        }
+    }
+}
+
+// focus visible outline
+*:focus-visible {
+    outline-color: $bcs-color-red-80;
+    outline-style: solid;
+    outline-width: 1px;
+    border-radius: 3px;
+}
+
+// active table row
+.table-active > td {
+    background-color: rgba($bcs-color-indigo-90, 0.5);
+}
+
+// shadow classes
+.bcs-shadow {
+    @include bcs-shadow-a;
+}
+
+.bcs-shadow-light {
+    @include bcs-shadow-b;
+}
+
+.bcs-glow {
+    @include bcs-glow-a;
+}
+
+// opacity classes
+.bcs-opacity-0 {
+    opacity: 0% !important;
+}
+
+.bcs-opacity-50 {
+    opacity: 50% !important;
+}
+
+.bcs-opacity-100 {
+    opacity: 100% !important;
+}
+
+// card titles with buttons (used in non-modal dialogs)
+.bcs-card-title-with-buttons {
+    display: flex;
+
+    .btn {
+        @include bcs-transition-a;
+        padding: 0.25rem 0.5rem;
+        background-color: transparent;
+
+        i {
+            @include bcs-transition-a;
+            font-size: 14px;
+            color: $bcs-color-gray-40;
+        }
+
+        &:hover {
+            @include bcs-transition-a;
+            background-color: $bcs-color-gray-93;
+
+            i {
+                @include bcs-transition-a;
+                color: $bcs-color-gray-25;
+            }
+        }
+    }
+
+    button.btn:not(:first-child):not(:last-child) {
+        border-radius: 0;
+    }
+
+    button.btn:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    button.btn:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    button.btn + a.accordion-toggle {
+        border-left: 1px solid $bcs-color-gray-85;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    button.btn i {
+        min-width: 0.8rem;
+    }
+
+    a.accordion-toggle:has(+ button.btn) {
+        border-right: 1px solid $bcs-color-gray-85;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+// colored card headers
+.bcs-card-header-bgcolor-red {
+    background-color: rgba($bcs-color-red-80, 0.5) !important;
+
+    .card-title > a.accordion-toggle:hover {
+        background-color: rgba($bcs-color-red-80, 0.2) !important;
+    }
+}
+
+.bcs-card-header-bgcolor-indigo {
+    background-color: $bcs-color-indigo-90 !important;
+
+    .card-title > a.accordion-toggle:hover {
+        background-color: rgba($bcs-color-indigo-55, 0.15) !important;
+    }
+}
+
+.bcs-card-header-bgcolor-red,
+.bcs-card-header-bgcolor-indigo {
+    a.accordion-toggle {
+        color: $bcs-color-gray-25 !important;
+    }
+}
+
+// colored card headers in card titles with buttons
+.bcs-card-header-bgcolor-red {
+    .bcs-card-title-with-buttons {
+        .btn {
+            &:hover {
+                background-color: rgba($bcs-color-red-80, 0.2);
+            }
+        }
+    }
+}
+
+.bcs-card-header-bgcolor-indigo {
+    .bcs-card-title-with-buttons {
+        .btn {
+            &:hover {
+                background-color: rgba($bcs-color-indigo-55, 0.15);
+            }
+        }
+    }
+}
+
+.bcs-card-header-bgcolor-red,
+.bcs-card-header-bgcolor-indigo {
+    .bcs-card-title-with-buttons {
+        .btn {
+
+            i {
+                color: $bcs-color-gray-25;
+            }
+
+            &:hover {
+                i {
+                    color: $bcs-color-gray-15;
+                }
+            }
+        }
+
+        button.btn + a.accordion-toggle {
+            border-left: none;
+        }
+
+        a.accordion-toggle:has(+ button.btn) {
+            border-right: none;
+        }
+    }
+}
+
+// invalid input
+input.bcs-input-invalid.form-control {
+    border: 1px solid $bcs-color-warning-75 !important;
+}
+
+input.bcs-input-valid.form-control {
+    border: 1px solid $bcs-color-success-75 !important;
+}
+
+// article details
+.articleStockDetails {
+    table.table.table-hover > tbody > tr.backorder-line.active,
+    table.table.table-hover > tbody > tr.stock-line.active {
+        background-color: $bcs-color-gray-97 !important
+    }
+
+    .warehouse-item.active {
+        border-right-style: solid !important;
+        background-color: $bcs-color-gray-95 !important;
+        border-right-color: $bcs-color-red-75 !important;
+        border-right-width: 2px !important;
+    }
+
+    .warehouse-item,
+    .warehouse-item.active {
+        color: $bcs-color-indigo-35;
+        font-size: 0.875rem;
+        font-family: "Barlow";
+        font-weight: 500;
+        font-size: 1rem;
+        transition: background-color 0.15s ease-in-out;
+        border: none;
+        border-radius: 0;
+    }
+
+    .warehouse-item:not(.active) {
+        border-right: 2px solid $bcs-color-gray-85;
+    }
+
+    .warehouse-item.disabled {
+        color: $bcs-color-gray-85;
+    }
+
+    .warehouse-item-count {
+        color: $bcs-color-red-75 !important;
+        transition: all 0.15s ease-in-out;
+    }
+
+    #list-tab {
+        border-radius: 0;
+    }
+
+    .articleStockListGroup {
+        max-height: 75vh;
+        overflow: auto;
+    }
+}
+
+// stock table sizes
+.bcs-stock-size, .bcs-stock-size-amount {
+    margin: 0rem;
+    padding: 0rem;
+    font-size: 14px;
+    height: 18px;
+}
+
+.bcs-stock-size-amount {
+    font-weight: 500;
+}
+
+#stockRows {
+    .size-column {
+        font-size: 12px;
+        font-weight: 500;
+        text-align: right;
+    }
+
+    th.size-column {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        padding: 0.25rem 0;
+    }
+
+    td.size-column {
+        border-left: 1px solid $bcs-color-gray-90;
+        font-weight: 500;
+    }
+
+    td.size-column + td[colspan] {
+        border-left: 1px solid $bcs-color-gray-90;
+    }
+
+    td {
+        line-height: 1;
+    }
+
+    .stock-size-header {
+        border-top: 1px solid $bcs-color-gray-90;
+        background-color: $bcs-color-gray-97;
+    }
+}
+
+// overflow utility classes
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden;
+}
+
+// customer followup file uploader
+.customer-followup-uploader {
+    min-height: 240px;
+    padding: 0;
+
+    .upload-card {
+        background-color: $bcs-color-gray-97;
+        @include bcs-transition-a;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $bcs-color-gray-95;
+            @include bcs-transition-a;
+        }
+    }
+
+    #file-container {
+        max-height: 240px;
+        overflow-y: scroll;
+    }
+
+    .file-item {
+        background-color: $white !important;
+        border-radius: 0 !important;
+        border-top: 1px solid $bcs-color-gray-85;
+
+        &:last-of-type {
+            border-bottom: 1px solid $bcs-color-gray-85;
+        }
+
+        .filename-display {
+            padding-top: 0.6rem;
+        }
+
+        a[data-delete-file-button],
+        a[data-download-file-button] {
+            padding-left: 12px;
+            padding-right: 12px;
+
+            i {
+                font-size: 20px;
+            }
+        }
+
+        a[data-download-file-button] {
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+
+// properly fill nav-fill
+.nav-fill {
+    width: 100%;
+}
+// fix fr-box editor style
+.fr-box {
+    .fr-toolbar {
+        border-radius: $bcs-border-radius $bcs-border-radius 0 0;
+    }
+
+    .fr-second-toolbar {
+        border-radius: 0 0 $bcs-border-radius $bcs-border-radius;
+    }
+}
+
+// compact view switch container
+.bcs-compact-view-switch-container {
+    display: flex;
+    justify-content: end;
+    margin-top: 1rem;
+}
+
+// vertical tabs
+.bcs-vertical-tabs {
+    max-height: 75vh;
+    overflow: auto;
+
+    a.active {
+        border-right-style: solid !important;
+        background-color: $bcs-color-gray-95 !important;
+        border-right-color: $bcs-color-red-75 !important;
+        border-right-width: 2px !important;
+    }
+
+    a,
+    a.active {
+        color: $bcs-color-indigo-35;
+        font-size: 0.875rem;
+        font-family: "Barlow";
+        font-weight: 500;
+        font-size: 1rem;
+        transition: background-color 0.15s ease-in-out;
+        border-left: 0 !important;
+        border-bottom: 0 !important;
+        border-top: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    a:not(.active) {
+        border-right: 2px solid $bcs-color-gray-85;
+    }
+
+    a.disabled {
+        color: $bcs-color-gray-85;
+    }
+
+    .count {
+        color: $bcs-color-red-75 !important;
+        transition: all 0.15s ease-in-out;
+    }
+
+    #list-tab {
+        border-radius: 0;
+    }
+}
+
+// document followup file uploader
+.document-followup-uploader {
+    min-height: 240px;
+    padding: 0;
+
+    .upload-card {
+        background-color: $bcs-color-gray-97;
+        @include bcs-transition-a;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $bcs-color-gray-95;
+            @include bcs-transition-a;
+        }
+    }
+
+    #file-container {
+        max-height: 240px;
+        overflow-y: scroll;
+    }
+
+    .file-item {
+        background-color: $white !important;
+        border-radius: 0 !important;
+        border-top: 1px solid $bcs-color-gray-85;
+
+        &:last-of-type {
+            border-bottom: 1px solid $bcs-color-gray-85;
+        }
+
+        .filename-display {
+            padding-top: 0.6rem;
+        }
+
+        a[data-delete-file-button],
+        a[data-download-file-button] {
+            padding-left: 12px;
+            padding-right: 12px;
+
+            i {
+                font-size: 20px;
+            }
+        }
+
+        a[data-download-file-button] {
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+// image thumbnails
+.img-thumbnail {
+    padding: 0 !important;
+    border: 1px solid $bcs-color-gray-85 !important;
+}
+
+// loading screen
+#loading-screen {
+    .card {
+        min-width: 480px;
+        max-width: 480px;
+
+        i {
+            font-size: 48px;
+            color: $bcs-color-red-75;
+        }
+    }
+}
+
+.bcs-discount-voucher-currency-input {
+    display: flex;
+    align-items: center;
+}
+
+// tooltip
+.bcs-tooltip {
+
+    i {
+        color: $bcs-color-gray-40;
+    }
+
+    &:hover {
+        i {
+            color: $bcs-color-red-80;
+            font-weight: 800;
+            cursor: help;
+        }
+    }
+}
+
+// horizontal rule
+hr {
+    border-color: $bcs-color-gray-85;
+}
+
+// buyingReport table
+.buyingReportTable {
+    tr.warehouseRow:last-of-type {
+        td {
+            border-bottom: 1px solid $bcs-color-gray-25 !important;
+        }
+    }
+}
+// plu template changes
+#drawersList .bcs-plu-drawers-list {
+    max-height: 65vh;
+    overflow: auto;
+}
+
+.jstree-default {
+
+    .jstree-icon {
+        margin-top: 5px !important;
+        border-radius: $bcs-border-radius;
+        @include bcs-transition-b;
+
+        &:hover {
+            @include bcs-transition-b;
+        }
+    }
+
+    .jstree-node {
+        margin-left: 16px !important;
+    }
+
+    .jstree-anchor {
+        width: -webkit-fill-available;
+        height: 32px !important;
+        line-height: 32px !important;
+        padding-left: 10px !important;
+    }
+
+    .jstree-clicked {
+        background: $bcs-color-gray-95 !important;
+        border-radius: $bcs-border-radius;
+        box-shadow: none !important;
+    }
+
+    .jstree-hovered {
+        background: $bcs-color-gray-97 !important;
+        border-radius: $bcs-border-radius;
+        box-shadow: none !important;
+    }
+    // first node
+    .jstree-container-ul > .jstree-node {
+        margin-left: 0 !important;
+    }
+}
+
+#pluTemplateDiv {
+    .bcs-category-tree {
+        height: 60vh;
+        overflow: auto;
+        border: 1px solid $bcs-color-gray-85;
+        border-radius: $bcs-border-radius;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .bcs-plu-article-table {
+        height: 200px;
+        overflow-y: scroll;
+        block-size: auto;
+    }
+}
+
+#reOrderCategoriesDiv {
+    .jstree-default .jstree-anchor {
+        line-height: 24px;
+        height: 23px;
+        width: -webkit-fill-available;
+    }
+
+    .bcs-sort-category-tree-div {
+        height: 60vh;
+        overflow: auto;
+        border: 1px solid $bcs-color-gray-85;
+        border-radius: $bcs-border-radius;
+        padding: 0;
+        box-sizing: border-box;
+        width: 300px;
+    }
+
+    .bcs-sort-category-tree {
+        list-style: none;
+
+        .node {
+            position: relative;
+            margin: 5px 0;
+
+            .expand-collapse {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                margin-right: 5px;
+                cursor: pointer;
+
+                &::before {
+                    color: $bcs-color-gray-65;
+                    font-family: "Font Awesome 6 Pro";
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    transform: translate(0.5rem, 0.1rem);
+                    content: "›";
+                    margin-left: auto;
+                    display: inline-block;
+                    height: 1rem;
+                    position: relative;
+                    border: none;
+                }
+
+                &.expanded::before {
+                    transform: translate(0.3rem, 0.1rem);
+                    color: $bcs-color-gray-25;
+                    content: "⌄";
+                }
+
+                &.hidden::before {
+                    transform: translate(0.3rem, 0.1rem);
+                    color: $bcs-color-gray-25;
+                    content: " ";
+                }
+            }
+
+            .children {
+                padding-left: 20px;
+            }
+
+            .bcs-sort-category-tree .hidden {
+                display: none;
+            }
+
+            .bcs-article-sortable-item {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .handle {
+        cursor: grab;
+    }
+
+    .node-name {
+        cursor: pointer;
+        width: -webkit-fill-available !important;
+    }
+
+    .bcs-category-drag-handle {
+        cursor: move;
+        padding-right: 5px;
+        color: $bcs-color-gray-25;
+        position: relative;
+    }
+}
+
+.bcs-plu-color-picker-wrapper {
+    @include bcs-transition-a;
+    position: relative;
+    height: 30px;
+    text-align: center;
+    border: 1px solid $bcs-color-gray-85;
+    border-radius: $bcs-border-radius;
+    background-color: $white;
+    font-size: 1rem;
+    color: $bcs-color-warning-75;
+
+    &:hover {
+        @include bcs-transition-a;
+        cursor: pointer;
+        border-color: $bcs-color-gray-25;
+    }
+
+    input[type="color"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+}
+
+.bcs-plu-search-article-list {
+    overflow-y: scroll;
+    max-height: 35vh;
+    display: block;
+}
+
+.bcs-plu-search-existing-article-list {
+    overflow-y: scroll;
+    max-height: 35vh;
+    display: block;
+}
+
+.bcs-plu-existing-article-list {
+    overflow-y: scroll;
+    max-height: 52vh;
+    display: block;
+}
+
+.bcs-plu-existing-article-detail-list {
+    overflow-y: scroll;
+    max-height: 45vh;
+    display: block;
+}
+
+.bcs-plu-reorder-article-list {
+    overflow-y: scroll;
+    max-height: 60vh;
+    display: block;
+}
+
+table.table > tbody > tr.bcs-plu-tr-highlight {
+    background: $bcs-color-gray-95 !important;
+}
+
+// widgets
+.bcs-widget {
+    min-width: 340px;
+
+    .card {
+        .bcs-widget-main-part { // upper part
+            margin: 12px;
+            width: calc(100% - 24px);
+            height: 104px;
+
+            &:has(.bcs-widget-no-progress) {
+                height: 88px;
+            }
+
+            .bcs-widget-title-zone { // title
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                width: calc(100% - 48px);
+
+                .bcs-widget-title {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: $bcs-color-gray-40;
+                    max-height: 48px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: block;
+                    line-height: 1.25;
+                }
+
+                .bcs-widget-subtitle {
+                    span {
+                        font-size: 12px;
+                        color: $bcs-color-gray-65;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+
+            .bcs-widget-controls-zone { // controls
+                position: absolute;
+                top: -2px;
+                right: 4px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .bcs-widget-control {
+                    margin: 6px;
+                    margin-bottom: 0;
+
+                    a {
+                        @include bcs-transition-a;
+                        padding: 0;
+                        background: none !important;
+
+                        i {
+                            @include bcs-transition-a;
+                            font-size: 1rem;
+                            color: $bcs-color-gray-85;
+                        }
+
+                        &:hover {
+                            @include bcs-transition-a;
+                            cursor: pointer;
+
+                            i {
+                                @include bcs-transition-a;
+                                color: $bcs-color-gray-65;
+                            }
+                        }
+                    }
+
+                    &.bcs-widget-control-favorite.favorite-on {
+                        a {
+                            i {
+                                color: $bcs-color-indigo-55;
+                            }
+
+                            &:hover {
+
+                                i {
+                                    color: $bcs-color-indigo-40;
+                                }
+                            }
+                        }
+                    }
+
+                    &:last-of-type {
+                        margin-top: 0;
+                    }
+                }
+            }
+
+            .bcs-widget-progress-zone {
+                position: absolute;
+                top: 70px;
+                height: 37px;
+                width: calc(100% - 24px);
+                display: block;
+                margin-top: 10px;
+
+                .bcs-widget-progress-number {
+                    height: 100%;
+                    width: 40px;
+                    padding-top: 3px;
+
+
+                    p {
+                        font-weight: 500;
+                        font-size: 20px;
+                        text-align: right;
+
+                        &.progress-color-warning {
+                            color: $bcs-color-warning-75;
+                        }
+
+                        &.progress-color-medium {
+                            color: $bcs-color-medium-75;
+                        }
+
+                        &.progress-color-success {
+                            color: $bcs-color-success-75;
+                        }
+
+                        &.progress-color-neutral {
+                            color: $bcs-color-red-75;
+                        }
+
+                        span {
+                            font-size: 12px;
+                            color: inherit;
+                        }
+                    }
+                }
+
+                &.bcs-widget-no-progress {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 0px;
+                    height: auto;
+
+
+                    .bcs-widget-progress-number {
+                        width: auto;
+                    }
+                }
+
+                .bcs-widget-progress-bar {
+                    position: absolute;
+                    left: 50px;
+                    height: 100%;
+                    top: 0px;
+                    width: calc(100% - 96px);
+                    padding: 8px;
+                    background-color: $bcs-color-gray-95;
+                    border-radius: $bcs-border-radius;
+
+                    .bcs-widget-progress-bar-value {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 20%;
+                        height: 100%;
+                        border-radius: $bcs-border-radius;
+                        background-color: $bcs-color-warning-75;
+
+                        &.progress-color-warning {
+                            background-color: $bcs-color-warning-75;
+                        }
+
+                        &.progress-color-medium {
+                            background-color: $bcs-color-medium-75;
+                        }
+
+                        &.progress-color-success {
+                            background-color: $bcs-color-success-75;
+                        }
+                    }
+
+                    .bcs-widget-progress-bar-text {
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: $bcs-color-gray-65;
+                        padding-top: 1px;
+                        position: relative;
+                        z-index: 1;
+
+                        &.progress-bar-text-position-right {
+                            text-align: right;
+                        }
+
+                        &.progress-bar-text-position-left {
+                            color: $white;
+                            text-align: left;
+                        }
+
+                        &.progress-bar-text-position-center {
+                            color: $white;
+                            text-align: center;
+                        }
+                    }
+                }
+
+                .bcs-widget-progress-button {
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                }
+            }
+        }
+
+        .bcs-widget-ai-part {
+            width: 100%;
+            height: 76px;
+            background-color: $bcs-color-gray-97;
+            // .bcs-widget-ai-process part extracted outside here for use in ArticleInformation/Step2
+
+            .bcs-widget-ai-pending-approvals {
+                margin: 6px;
+                margin-top: -6px;
+                height: 34px;
+                width: 100%;
+
+                a {
+                    width: calc(100% - 12px);
+
+                    span {
+                        color: inherit;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bcs-widget-ai-process { // used in ArticleInformation/Step2 as well
+    margin: 12px;
+    margin-top: 8px;
+    height: 28px;
+    position: relative;
+
+    &.bcs-articleinformation-step2-ai-process {
+        min-width: 250px;
+        margin: 0px;
+
+        .bcs-widget-ai-process-name {
+            font-size: 13px;
+            font-weight: 500;
+            text-align: right;
+            padding-right: 12px;
+            padding-top: 3px;
+        }
+    }
+
+    .bcs-widget-ai-process-name {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 60%;
+        height: 100%;
+    }
+
+    .bcs-widget-ai-process-state-zone {
+        width: 40%;
+        display: inline;
+        height: 100%;
+        position: absolute;
+        left: 60%;
+        top: 0;
+
+        .bcs-widget-ai-process-state {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: calc(100% - 32px);
+            height: 100%;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13px;
+            padding-top: 4px;
+            color: $bcs-color-indigo-55;
+        }
+
+        .bcs-widget-ai-process-action {
+            position: absolute;
+            left: calc(100% - 38px);
+
+            a {
+                padding: 0 16px;
+                margin-top: -4px;
+                background: transparent !important;
+                @include bcs-transition-a;
+
+                i {
+                    @include bcs-transition-a;
+                    color: $bcs-color-red-75;
+                }
+
+                &:hover {
+                    @include bcs-transition-a;
+
+                    i {
+                        @include bcs-transition-a;
+                        color: $bcs-color-red-65;
+                    }
+                }
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            border-image: linear-gradient(to right, transparent 0%, $bcs-color-indigo-55 100%) 1;
+            border-width: 2px;
+            border-style: solid;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            animation: ai-action-pulsate-running 1s infinite;
+
+            @keyframes ai-action-pulsate-running {
+
+                0% {
+                    left: 0;
+                    width: 0;
+                }
+
+                100% {
+                    left: 0;
+                    width: 100%;
+                }
+            }
+        }
+
+        &.ai-process-paused {
+            .bcs-widget-ai-process-state {
+                color: $bcs-color-gray-85;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 100%;
+                bottom: 0;
+                border: 2px dashed $bcs-color-gray-85;
+                border-width: 2px;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                animation: none;
+            }
+        }
+    }
+}
+
+// dropdowns
+.dropdown-item {
+    color: $bcs-color-gray-25;
+
+    &:hover {
+        background-color: $bcs-color-gray-95;
+    }
+
+    &:active {
+        color: $bcs-color-gray-25;
+        background-color: $bcs-color-gray-90;
+    }
+}
+
+// /HomeTemplate
+#content-page-panel,
+.bcs-hometemplate-contentpanel,
+.bcs-hometemplate-contentpanel-background {
+    background-color: $bcs-color-gray-97 !important;
+}
+
+.bcs-hometemplate-contentpanel {
+    border-radius: $bcs-border-radius;
+}
+
+// horizontal scrollbar
+.bcs-top-horizontal-scrollbar {
+    height: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    div {
+        height: 16px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    & + .table-responsive {
+        table.table {
+            overflow: auto;
+        }
+    }
+}
+
+
+.bcs-return-reference-date-to {
+    width: 50px;
+}

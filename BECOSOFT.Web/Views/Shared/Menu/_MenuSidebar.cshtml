@@ -1,0 +1,45 @@
+<header class="bcs-brand">
+    <a class="bcs-brand-home-link" href="@Url.Action("Index", "Home")"></a>
+    <div class="bcs-menu-toggle">
+        @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.AnglesLeft, IconWeight.Solid)
+    </div>
+    <picture>
+        <source id="logo-big1" srcset="" />
+        <source id="logo-big2" srcset="~/content/images/Becosoft logo big.svg" />
+        <img class="bcs-brand-logo-big bcs-brand-logo-show" src="~/content/images/Becosoft logo big.svg" alt="logo" onerror="this.onerror = null;document.getElementById('logo-big1').srcset = document.getElementById('logo-big2').srcset = this.src;" />
+    </picture>
+    <picture>
+        <source id="logo-small1" srcset="" />
+        <source id="logo-small2" srcset="~/content/images/Becosoft logo small.svg" />
+        <img class="bcs-brand-logo-small" src="~/content/images/Becosoft logo small.svg" alt="logo" onerror="this.onerror = null;document.getElementById('logo-small1').srcset = document.getElementById('logo-small2').srcset = this.src;" />
+    </picture>
+</header>
+<div class="bcs-sidebar">
+    <nav id="primary-accordion-for-menu" class="bcs-sidebar-list">
+        <a class="bcs-sidebar-item" href="@Url.Action("Index", "Home")" title="@BECOSOFT.Core.Resources.General_Overview">
+            @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.Home)
+            @BECOSOFT.Core.Resources.General_Overview
+        </a>
+        <!-- Mobile menu additions -->
+
+        <div class="bcs-sidebar-divider bcs-sidebar-divider-mobile"></div>
+        <a href="#" class="bcs-sidebar-item bcs-sidebar-item-mobile">
+            @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.User)
+            @BECOSOFT.Core.Resources.User_Profile
+        </a>
+
+        <a href="#" class="bcs-sidebar-item bcs-sidebar-item-mobile">
+            @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.ArrowRightFromBracket)
+            @BECOSOFT.Core.Resources.General_Logout
+        </a>
+
+    </nav>
+    <div id="watermark" class="text-center w-100 d-flex align-items-end justify-content-center p-2">
+        <a href="https://www.becosoft.com" title="Go to Becosoft website" target="_blank">
+            <img src="~/Content/images/Logo-watermark.svg" alt="Becosoft watermark" title="Becosoft watermark" width="137" height="25" />
+        </a>
+    </div>
+</div>
+<div class="bcs-tablet-menu-backdrop d-none">
+
+</div>

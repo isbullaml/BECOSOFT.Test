@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "Content/BecosoftStyle/main.css",
+    "inputFile": "Content/BecosoftStyle/main.scss"
+  },
+  {
+    "outputFile": "Content/BecosoftStyle/global/general.css",
+    "inputFile": "Content/BecosoftStyle/global/general.scss"
+  },
+  {
+    "outputFile": "Content/website-user.css",
+    "inputFile": "Content/website-user.scss"
+  }
+]

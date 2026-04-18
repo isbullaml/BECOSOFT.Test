@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DayOfWeek_Friday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="DayOfWeek_Friday_Short" xml:space="preserve">
+    <value>Fri</value>
+  </data>
+  <data name="DayOfWeek_Monday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="DayOfWeek_Monday_Short" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="DayOfWeek_Saturday" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="DayOfWeek_Saturday_Short" xml:space="preserve">
+    <value>Sat</value>
+  </data>
+  <data name="DayOfWeek_Sunday" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="DayOfWeek_Sunday_Short" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="DayOfWeek_Thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="DayOfWeek_Thursday_Short" xml:space="preserve">
+    <value>Thu</value>
+  </data>
+  <data name="DayOfWeek_Tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="DayOfWeek_Tuesday_Short" xml:space="preserve">
+    <value>Tue</value>
+  </data>
+  <data name="DayOfWeek_Wednesday" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="DayOfWeek_Wednesday_Short" xml:space="preserve">
+    <value>Wed</value>
+  </data>
+  <data name="FilterOperator_Contains" xml:space="preserve">
+    <value>Contains</value>
+  </data>
+  <data name="FilterOperator_EndsWith" xml:space="preserve">
+    <value>Ends with</value>
+  </data>
+  <data name="FilterOperator_EqualTo" xml:space="preserve">
+    <value>Equal to</value>
+  </data>
+  <data name="FilterOperator_GreaterThan" xml:space="preserve">
+    <value>Greater than</value>
+  </data>
+  <data name="FilterOperator_GreaterThanOrEqualTo" xml:space="preserve">
+    <value>Greater than or equal to</value>
+  </data>
+  <data name="FilterOperator_In" xml:space="preserve">
+    <value>Is equal to</value>
+  </data>
+  <data name="FilterOperator_Is" xml:space="preserve">
+    <value>Is</value>
+  </data>
+  <data name="FilterOperator_LengthEqualTo" xml:space="preserve">
+    <value>Length equal to</value>
+  </data>
+  <data name="FilterOperator_LengthGreaterThan" xml:space="preserve">
+    <value>Length greater than</value>
+  </data>
+  <data name="FilterOperator_LengthGreaterThanOrEqualTo" xml:space="preserve">
+    <value>Length greater than or equal to</value>
+  </data>
+  <data name="FilterOperator_LengthLessThan" xml:space="preserve">
+    <value>Length less than</value>
+  </data>
+  <data name="FilterOperator_LengthLessThanOrEqualTo" xml:space="preserve">
+    <value>Length less than or equal to</value>
+  </data>
+  <data name="FilterOperator_LengthNotEqualTo" xml:space="preserve">
+    <value>Length not equal to</value>
+  </data>
+  <data name="FilterOperator_LessThan" xml:space="preserve">
+    <value>Less than</value>
+  </data>
+  <data name="FilterOperator_LessThanOrEqualTo" xml:space="preserve">
+    <value>Less than or equal to</value>
+  </data>
+  <data name="FilterOperator_NotContains" xml:space="preserve">
+    <value>Not contains</value>
+  </data>
+  <data name="FilterOperator_NotEqualTo" xml:space="preserve">
+    <value>Not equal to</value>
+  </data>
+  <data name="FilterOperator_NotIn" xml:space="preserve">
+    <value>Not equal to</value>
+  </data>
+  <data name="FilterOperator_StartsWith" xml:space="preserve">
+    <value>Starts with</value>
+  </data>
+  <data name="General_False" xml:space="preserve">
+    <value>False</value>
+  </data>
+  <data name="General_True" xml:space="preserve">
+    <value>True</value>
+  </data>
+  <data name="Mask_ToExceedsMaskLength" xml:space="preserve">
+    <value>The value of "To" exceeds the length of the mask.</value>
+  </data>
+  <data name="Measurement_Gross" xml:space="preserve">
+    <value>Gross</value>
+  </data>
+  <data name="Measurement_Height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="Measurement_Height_Abbreviation" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="Measurement_Length" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="Measurement_Length_Abbreviation" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="Measurement_Net" xml:space="preserve">
+    <value>Net</value>
+  </data>
+  <data name="Measurement_Tare" xml:space="preserve">
+    <value>Tare</value>
+  </data>
+  <data name="Measurement_Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="Measurement_Width" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="Measurement_Width_Abbreviation" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="MetricLengthUnit_Centimetre" xml:space="preserve">
+    <value>Centimetre</value>
+  </data>
+  <data name="MetricLengthUnit_CubicCentimetre" xml:space="preserve">
+    <value>Cubic centimetre</value>
+  </data>
+  <data name="MetricLengthUnit_CubicDecametre" xml:space="preserve">
+    <value>Cubic decametre</value>
+  </data>
+  <data name="MetricLengthUnit_CubicDecimetre" xml:space="preserve">
+    <value>Cubic decimetre</value>
+  </data>
+  <data name="MetricLengthUnit_CubicHectometre" xml:space="preserve">
+    <value>Cubic hectometre</value>
+  </data>
+  <data name="MetricLengthUnit_CubicKilometre" xml:space="preserve">
+    <value>Cubic kilometre</value>
+  </data>
+  <data name="MetricLengthUnit_CubicMetre" xml:space="preserve">
+    <value>Cubic metre</value>
+  </data>
+  <data name="MetricLengthUnit_CubicMillimetre" xml:space="preserve">
+    <value>Cubic millimetre</value>
+  </data>
+  <data name="MetricLengthUnit_Decametre" xml:space="preserve">
+    <value>Decametre</value>
+  </data>
+  <data name="MetricLengthUnit_Decimetre" xml:space="preserve">
+    <value>Decimetre</value>
+  </data>
+  <data name="MetricLengthUnit_Hectometre" xml:space="preserve">
+    <value>Hectometre</value>
+  </data>
+  <data name="MetricLengthUnit_Kilometre" xml:space="preserve">
+    <value>Kilometre</value>
+  </data>
+  <data name="MetricLengthUnit_Metre" xml:space="preserve">
+    <value>Metre</value>
+  </data>
+  <data name="MetricLengthUnit_Micrometre" xml:space="preserve">
+    <value>Micrometre</value>
+  </data>
+  <data name="MetricLengthUnit_Millimetre" xml:space="preserve">
+    <value>Millimetre</value>
+  </data>
+  <data name="MetricLengthUnit_Nanometre" xml:space="preserve">
+    <value>Nanometre</value>
+  </data>
+  <data name="MetricLengthUnit_Picometre" xml:space="preserve">
+    <value>Picometre</value>
+  </data>
+  <data name="MetricLengthUnit_SquareCentimetre" xml:space="preserve">
+    <value>Square centimetre</value>
+  </data>
+  <data name="MetricLengthUnit_SquareDecametre" xml:space="preserve">
+    <value>Square decametre</value>
+  </data>
+  <data name="MetricLengthUnit_SquareDecimetre" xml:space="preserve">
+    <value>Square decimetre</value>
+  </data>
+  <data name="MetricLengthUnit_SquareHectometre" xml:space="preserve">
+    <value>Square hectometre</value>
+  </data>
+  <data name="MetricLengthUnit_SquareKilometre" xml:space="preserve">
+    <value>Square kilometre</value>
+  </data>
+  <data name="MetricLengthUnit_SquareMetre" xml:space="preserve">
+    <value>Square metre</value>
+  </data>
+  <data name="MetricLengthUnit_SquareMillimetre" xml:space="preserve">
+    <value>Square millimetre</value>
+  </data>
+  <data name="MetricWeightUnit_Decagram" xml:space="preserve">
+    <value>Decagram</value>
+  </data>
+  <data name="MetricWeightUnit_Gram" xml:space="preserve">
+    <value>Gram</value>
+  </data>
+  <data name="MetricWeightUnit_Hectogram" xml:space="preserve">
+    <value>Hectogram</value>
+  </data>
+  <data name="MetricWeightUnit_Kilogram" xml:space="preserve">
+    <value>Kilogram</value>
+  </data>
+  <data name="MetricWeightUnit_Microgram" xml:space="preserve">
+    <value>Microgram</value>
+  </data>
+  <data name="MetricWeightUnit_Milligram" xml:space="preserve">
+    <value>Milligram</value>
+  </data>
+  <data name="MetricWeightUnit_Nanogram" xml:space="preserve">
+    <value>Nanogram</value>
+  </data>
+  <data name="MetricWeightUnit_Picogram" xml:space="preserve">
+    <value>Picogram</value>
+  </data>
+  <data name="MetricWeightUnit_Tonne" xml:space="preserve">
+    <value>Tonne</value>
+  </data>
+  <data name="Month_April" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="Month_August" xml:space="preserve">
+    <value>Augustus</value>
+  </data>
+  <data name="Month_December" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="Month_February" xml:space="preserve">
+    <value>February</value>
+  </data>
+  <data name="Month_January" xml:space="preserve">
+    <value>January</value>
+  </data>
+  <data name="Month_July" xml:space="preserve">
+    <value>July</value>
+  </data>
+  <data name="Month_June" xml:space="preserve">
+    <value>June</value>
+  </data>
+  <data name="Month_March" xml:space="preserve">
+    <value>March</value>
+  </data>
+  <data name="Month_May" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="Month_November" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="Month_October" xml:space="preserve">
+    <value>October</value>
+  </data>
+  <data name="Month_September" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="OffsetType_Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="OffsetType_Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="OffsetType_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="OffsetType_Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="Orientation_Landscape" xml:space="preserve">
+    <value>Landscape</value>
+  </data>
+  <data name="Orientation_Portrait" xml:space="preserve">
+    <value>Portrait</value>
+  </data>
+  <data name="PromotionActionArticleType_Cheapest" xml:space="preserve">
+    <value>Cheapest</value>
+  </data>
+  <data name="PromotionActionArticleType_MostExpensive" xml:space="preserve">
+    <value>Most expensive</value>
+  </data>
+  <data name="PromotionActionArticleType_MostExpensiveLine" xml:space="preserve">
+    <value>Most expensive line</value>
+  </data>
+  <data name="PromotionActionArticleType_MostExpensiveLineConsolidated" xml:space="preserve">
+    <value>Most expensive line (consolidated)</value>
+  </data>
+  <data name="PromotionConditionType_AllArticles" xml:space="preserve">
+    <value>All articles</value>
+  </data>
+  <data name="PromotionConditionType_ArticleID" xml:space="preserve">
+    <value>Article ID</value>
+  </data>
+  <data name="PromotionConditionType_Brand" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="PromotionConditionType_BrandValue" xml:space="preserve">
+    <value>Brand value</value>
+  </data>
+  <data name="PromotionConditionType_DiscountGroup" xml:space="preserve">
+    <value>Discount group</value>
+  </data>
+  <data name="PromotionConditionType_DocumentValue" xml:space="preserve">
+    <value>Document value</value>
+  </data>
+  <data name="PromotionConditionType_DocumentValueExcludingOtherPromotion" xml:space="preserve">
+    <value>Document value (excluding other promotions)</value>
+  </data>
+  <data name="PromotionConditionType_FashionCollection" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="PromotionConditionType_FashionColor" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="PromotionConditionType_FashionFabric" xml:space="preserve">
+    <value>Fabric</value>
+  </data>
+  <data name="PromotionConditionType_Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="PromotionConditionType_Matrix" xml:space="preserve">
+    <value>Size bar article</value>
+  </data>
+  <data name="PromotionConditionType_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="PromotionConditionType_ProductValue" xml:space="preserve">
+    <value>Product value</value>
+  </data>
+  <data name="PromotionConditionType_PromotionArticleFilter" xml:space="preserve">
+    <value>Promotion article filter</value>
+  </data>
+  <data name="PromotionConditionType_Season" xml:space="preserve">
+    <value>Season</value>
+  </data>
+  <data name="PromotionConditionType_Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="PromotionConditionType_Type" xml:space="preserve">
+    <value>Type (article)</value>
+  </data>
+  <data name="PromotionConditionType_Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="PromotionTypeOperator_DifferentFrom" xml:space="preserve">
+    <value>Different from</value>
+  </data>
+  <data name="PromotionTypeOperator_EqualTo" xml:space="preserve">
+    <value>Equal to</value>
+  </data>
+  <data name="RelativeDateConstant_EndOfMonth" xml:space="preserve">
+    <value>End of month</value>
+  </data>
+  <data name="RelativeDateConstant_EndOfYear" xml:space="preserve">
+    <value>End of year</value>
+  </data>
+  <data name="RelativeDateConstant_Now" xml:space="preserve">
+    <value>Now</value>
+  </data>
+  <data name="RelativeDateConstant_StartOfMonth" xml:space="preserve">
+    <value>Start of month</value>
+  </data>
+  <data name="RelativeDateConstant_StartOfYear" xml:space="preserve">
+    <value>Start of year</value>
+  </data>
+  <data name="RelativeDateConstant_Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="RelativeDateConstant_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+</root>

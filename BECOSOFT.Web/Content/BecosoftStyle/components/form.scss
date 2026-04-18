@@ -1,0 +1,374 @@
+@use "../global/variables" as *;
+
+// general
+input.form-control,
+input.custom-file-input,
+select.form-control,
+select.custom-select,
+textarea.form-control,
+.input-group {
+    color: $bcs-color-gray-25;
+    background-color: $white;
+    border: 1px solid $bcs-color-gray-85;
+    border-radius: $bcs-border-radius;
+}
+
+.form-control:focus {
+    @include bcs-shadow-form-control;
+    border: 1px solid rgba($bcs-color-indigo-55, 25%);
+}
+// label
+label[for],
+label.control-label {
+    @include bcs-text-info;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0;
+    transform: translate(0,0.125rem);
+}
+// helper text
+small.form-text.text-muted {
+    @include bcs-text-info;
+    color: $bcs-color-gray-65 !important;
+}
+// feedback text
+.has-success {
+    input {
+        border: 1px solid $bcs-color-success-75;
+
+        &:focus {
+            box-shadow: 0 0 0 $bcs-shadow-size-a rgba($bcs-color-success-75, 20%);
+            border: 1px solid rgba($bcs-color-success-75, 100%);
+        }
+    }
+
+    .valid-feedback {
+        color: $bcs-color-success-75;
+    }
+}
+
+.has-danger {
+    input {
+        border: 1px solid $bcs-color-warning-75;
+
+        &:focus {
+            box-shadow: 0 0 0 $bcs-shadow-size-a rgba($bcs-color-warning-75, 20%);
+            border: 1px solid rgba($bcs-color-warning-75, 100%);
+        }
+    }
+
+    .invalid-feedback {
+        color: $bcs-color-warning-75;
+    }
+}
+// readonly input
+input[readonly] {
+    background-color: $bcs-color-gray-95;
+    border: none;
+    border-radius: $bcs-border-radius;
+    padding-left: 0.5rem;
+    color: $bcs-color-gray-65;
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+// input with pre/appendices
+.input-group:not(.has-validation) > .form-control:not(:last-child) {
+    border: 1px solid $bcs-color-gray-85;
+    background-color: $white;
+    border-top-style: none;
+    border-bottom-style: none;
+}
+
+.input-group > .input-group-prepend > .input-group-text,
+.input-group > .input-group-append > .input-group-text {
+    border: none;
+}
+// disabled field
+input.form-control[disabled] {
+    background-color: $bcs-color-gray-95;
+    border: 1px solid $bcs-color-gray-95;
+    color: $bcs-color-gray-65;
+
+    &::placeholder {
+        color: $bcs-color-gray-65;
+    }
+}
+// standard radio buttons/checkboxes
+.form-check {
+    input[type="radio"],
+    input[type="checkbox"] {
+        accent-color: $bcs-color-indigo-55;
+        transform: translate(0,0.0625rem);
+
+        &[disabled]:after:not([checked]) {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: $bcs-color-gray-90;
+        }
+    }
+
+    input[type="checkbox"][disabled]:after {
+        border-radius: 3px;
+    }
+
+    &.disabled > label {
+        color: $bcs-color-gray-65;
+    }
+}
+// custom radio buttons/checkboxes/switches
+.custom-control.custom-radio,
+.custom-control.custom-checkbox,
+.custom-control.custom-switch {
+
+    label.custom-control-label {
+        font-size: 1rem;
+        transform: translate(0,-0.0625rem);
+
+        &::before {
+            transform: translate(0,0.0625rem);
+            border: 1px solid $bcs-color-gray-65;
+        }
+
+        &::after {
+            transform: translate(0,0.0625rem);
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .custom-control-input {
+        &:hover ~ .custom-control-label::before {
+            background-color: rgba($bcs-color-indigo-90, 25%) !important;
+        }
+
+        &:focus ~ .custom-control-label::before {
+            @include bcs-shadow-form-control;
+        }
+
+        &:checked ~ .custom-control-label::before {
+            border-color: $bcs-color-indigo-55 !important;
+            background-color: $bcs-color-indigo-55 !important;
+        }
+
+        &:not(:disabled):active ~ .custom-control-label::before {
+            background-color: rgba($bcs-color-indigo-55, 25%) !important;
+        }
+    }
+
+    .custom-control-input[disabled] ~ .custom-control-label,
+    .custom-control-input:disabled ~ .custom-control-label {
+        color: $bcs-color-gray-65;
+        cursor: default !important;
+
+        &::before {
+            background-color: $bcs-color-gray-95;
+            border: 1px solid $bcs-color-gray-95;
+        }
+    }
+
+    .custom-control-input:checked[disabled] ~ .custom-control-label,
+    .custom-control-input:checked:disabled ~ .custom-control-label {
+
+        &::before {
+            background-color: $bcs-color-gray-85 !important;
+            border: 1px solid $bcs-color-gray-85;
+        }
+    }
+
+    &.custom-checkbox {
+        .custom-control-input[disabled]:hover ~ .custom-control-label::before {
+            background-color: $bcs-color-gray-95 !important;
+        }
+
+        .custom-control-input[disabled]:checked:hover ~ .custom-control-label::before {
+            background-color: $bcs-color-gray-85 !important;
+        }
+    }
+}
+
+.custom-control.custom-radio .custom-control-input:checked[disabled] ~ .custom-control-label::after,
+.custom-control.custom-radio .custom-control-input:checked:disabled ~ .custom-control-label::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%239092A2'/%3e%3c/svg%3e");
+}
+
+.custom-control.custom-checkbox .custom-control-input:checked[disabled] ~ .custom-control-label::after,
+.custom-control.custom-checkbox .custom-control-input:checked:disabled ~ .custom-control-label::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%239092A2' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
+}
+
+.custom-control.custom-switch .custom-control-input:checked[disabled] ~ .custom-control-label::after,
+.custom-control.custom-switch .custom-control-input:checked:disabled ~ .custom-control-label::after {
+    background-color: $bcs-color-gray-65;
+}
+
+
+
+.custom-control.custom-switch {
+    .custom-control-input {
+        & ~ .custom-control-label::after {
+            transform: translate(0, 0.0625rem) scale(0.85);
+        }
+
+        &:checked ~ .custom-control-label::after {
+            transform: translate(0.75rem, 0.0625rem) scale(0.85);
+        }
+    }
+
+    padding-left: 2.2rem;
+
+    .custom-control-label::before {
+        left: -2.25rem;
+        width: 1.75rem;
+        pointer-events: all;
+        border-radius: 0.5rem;
+        background-color: $white !important;
+    }
+
+    .custom-control-label::after {
+        top: calc(0.25rem + 2px);
+        left: calc(-2.25rem + 2px);
+        width: calc(1rem - 4px);
+        height: calc(1rem - 4px);
+        background-color: $bcs-color-gray-85;
+        border-radius: 0.5rem;
+        @include bcs-transition-a;
+    }
+}
+
+
+.custom-control.custom-switch {
+    .custom-control-input {
+        &:checked ~ .custom-control-label::after {
+            background-color: $bcs-color-gray-97 !important;
+        }
+
+        &[disabled] ~ .custom-control-label::before {
+            background-color: $bcs-color-gray-95 !important;
+            border: none !important;
+        }
+
+        &[disabled] ~ .custom-control-label::after {
+            background-color: $bcs-color-gray-85 !important;
+        }
+
+        &[disabled]:checked ~ .custom-control-label::after {
+            background-color: $bcs-color-gray-65 !important;
+        }
+    }
+}
+
+// checkbox labels line height fix
+.custom-control.custom-checkbox {
+    .custom-control-label {
+        line-height: 1.15;
+        padding-top: 4px;
+    }
+}
+
+
+// custom number input
+[data-custom-number-input] {
+
+    input {
+        padding-right: 2rem;
+        border-radius: $bcs-border-radius !important;
+    }
+
+    .input-group-btn {
+        position: absolute;
+        width: 24px;
+        height: 50%;
+        top: 0;
+        right: 0;
+
+        &:last-of-type {
+            top: 50%;
+        }
+
+        .btn-number {
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            top: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $bcs-color-gray-95;
+            border: 1px solid $bcs-color-gray-85;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            transition: background-color .15s ease-in-out;
+
+            &:hover:not([disabled]) {
+                transition: background-color .15s ease-in-out;
+                background-color: $bcs-color-gray-93;
+            }
+
+            &[data-custom-number-button-type=plus] {
+                border-bottom-right-radius: 0;
+            }
+
+            &[data-custom-number-button-type=minus] {
+                border-top-width: 0;
+                border-top-right-radius: 0;
+            }
+
+            i {
+                color: $bcs-color-gray-65;
+                padding: 0;
+                margin: 0;
+            }
+
+            &[disabled] {
+                cursor: initial;
+                border-top: none;
+                border-right: none;
+                border-bottom: none;
+            }
+        }
+
+        &:has(button[disabled]) + .input-group-btn {
+            .btn-number {
+                border-top: 1px solid $bcs-color-gray-85;
+            }
+        }
+    }
+}
+
+// checkbox placement fixes for compact table / card style A
+.bcs-table-xs .custom-control.custom-checkbox,
+.bcs-card-element-value .custom-control.custom-checkbox {
+    transform: translateY(-8px) !important;
+}
+
+// input groups with disabled inputs
+.input-group:has(input[disabled]) {
+    .input-group-prepend,
+    .input-group-append {
+        z-index: 1;
+
+        .input-group-text {
+            background-color: $bcs-color-gray-95;
+            border: none !important;
+        }
+    }
+
+    .input-group-prepend {
+        border-right: 1px solid $bcs-color-gray-85 !important;
+    }
+
+    .input-group-append {
+        border-left: 1px solid $bcs-color-gray-85 !important;
+    }
+}

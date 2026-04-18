@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = Resources.Error_NotFound_Title;
+}
+
+
+<div id="main-content" class="col-12">
+    <p>@Resources.Error_NotFound</p>
+    <div class="btn-group" role="group">
+        <a onclick="goBackWithRefresh()" class="btn btn-primary btn-sm" href="#">
+            @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.AngleLeft) @Resources.Error_GoBack
+        </a>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function goBackWithRefresh() {
+            window.history.back(-2);
+        }
+    </script>
+}

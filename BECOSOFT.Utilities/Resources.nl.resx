@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DayOfWeek_Friday" xml:space="preserve">
+    <value>Vrijdag</value>
+  </data>
+  <data name="DayOfWeek_Friday_Short" xml:space="preserve">
+    <value>Vr</value>
+  </data>
+  <data name="DayOfWeek_Monday" xml:space="preserve">
+    <value>Maandag</value>
+  </data>
+  <data name="DayOfWeek_Monday_Short" xml:space="preserve">
+    <value>Ma</value>
+  </data>
+  <data name="DayOfWeek_Saturday" xml:space="preserve">
+    <value>Zaterdag</value>
+  </data>
+  <data name="DayOfWeek_Saturday_Short" xml:space="preserve">
+    <value>Za</value>
+  </data>
+  <data name="DayOfWeek_Sunday" xml:space="preserve">
+    <value>Zondag</value>
+  </data>
+  <data name="DayOfWeek_Sunday_Short" xml:space="preserve">
+    <value>Zo</value>
+  </data>
+  <data name="DayOfWeek_Thursday" xml:space="preserve">
+    <value>Donderdag</value>
+  </data>
+  <data name="DayOfWeek_Thursday_Short" xml:space="preserve">
+    <value>Do</value>
+  </data>
+  <data name="DayOfWeek_Tuesday" xml:space="preserve">
+    <value>Dinsdag</value>
+  </data>
+  <data name="DayOfWeek_Tuesday_Short" xml:space="preserve">
+    <value>Di</value>
+  </data>
+  <data name="DayOfWeek_Wednesday" xml:space="preserve">
+    <value>Woensdag</value>
+  </data>
+  <data name="DayOfWeek_Wednesday_Short" xml:space="preserve">
+    <value>Wo</value>
+  </data>
+  <data name="FilterOperator_Contains" xml:space="preserve">
+    <value>Bevat</value>
+  </data>
+  <data name="FilterOperator_EndsWith" xml:space="preserve">
+    <value>Eindigt op</value>
+  </data>
+  <data name="FilterOperator_EqualTo" xml:space="preserve">
+    <value>Gelijk aan</value>
+  </data>
+  <data name="FilterOperator_GreaterThan" xml:space="preserve">
+    <value>Groter dan</value>
+  </data>
+  <data name="FilterOperator_GreaterThanOrEqualTo" xml:space="preserve">
+    <value>Groter dan of gelijk aan</value>
+  </data>
+  <data name="FilterOperator_In" xml:space="preserve">
+    <value>Is gelijk aan</value>
+  </data>
+  <data name="FilterOperator_Is" xml:space="preserve">
+    <value>Is</value>
+  </data>
+  <data name="FilterOperator_LengthEqualTo" xml:space="preserve">
+    <value>Lengte gelijk aan</value>
+  </data>
+  <data name="FilterOperator_LengthGreaterThan" xml:space="preserve">
+    <value>Lengte groter dan</value>
+  </data>
+  <data name="FilterOperator_LengthGreaterThanOrEqualTo" xml:space="preserve">
+    <value>Lengte groter dan of gelijk aan</value>
+  </data>
+  <data name="FilterOperator_LengthLessThan" xml:space="preserve">
+    <value>Lengte kleiner dan</value>
+  </data>
+  <data name="FilterOperator_LengthLessThanOrEqualTo" xml:space="preserve">
+    <value>Lengte kleiner dan of gelijk aan</value>
+  </data>
+  <data name="FilterOperator_LengthNotEqualTo" xml:space="preserve">
+    <value>Lengte niet gelijk aan</value>
+  </data>
+  <data name="FilterOperator_LessThan" xml:space="preserve">
+    <value>Kleiner dan</value>
+  </data>
+  <data name="FilterOperator_LessThanOrEqualTo" xml:space="preserve">
+    <value>Kleiner dan of gelijk aan</value>
+  </data>
+  <data name="FilterOperator_NotContains" xml:space="preserve">
+    <value>Bevat niet</value>
+  </data>
+  <data name="FilterOperator_NotEqualTo" xml:space="preserve">
+    <value>Niet gelijk aan</value>
+  </data>
+  <data name="FilterOperator_NotIn" xml:space="preserve">
+    <value>Niet gelijk aan</value>
+  </data>
+  <data name="FilterOperator_StartsWith" xml:space="preserve">
+    <value>Begint met</value>
+  </data>
+  <data name="General_False" xml:space="preserve">
+    <value>Onwaar</value>
+  </data>
+  <data name="General_True" xml:space="preserve">
+    <value>Waar</value>
+  </data>
+  <data name="Measurement_Gross" xml:space="preserve">
+    <value>Bruto</value>
+  </data>
+  <data name="Measurement_Height" xml:space="preserve">
+    <value>Hoogte</value>
+  </data>
+  <data name="Measurement_Height_Abbreviation" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="Measurement_Length" xml:space="preserve">
+    <value>Lengte</value>
+  </data>
+  <data name="Measurement_Length_Abbreviation" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="Measurement_Net" xml:space="preserve">
+    <value>Netto</value>
+  </data>
+  <data name="Measurement_Tare" xml:space="preserve">
+    <value>Tarra</value>
+  </data>
+  <data name="Measurement_Weight" xml:space="preserve">
+    <value>Gewicht</value>
+  </data>
+  <data name="Measurement_Width" xml:space="preserve">
+    <value>Breedte</value>
+  </data>
+  <data name="Measurement_Width_Abbreviation" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="MetricLengthUnit_Centimetre" xml:space="preserve">
+    <value>Centimeter</value>
+  </data>
+  <data name="MetricLengthUnit_CubicCentimetre" xml:space="preserve">
+    <value>Kubieke centimeter</value>
+  </data>
+  <data name="MetricLengthUnit_CubicDecametre" xml:space="preserve">
+    <value>Kubieke decameter</value>
+  </data>
+  <data name="MetricLengthUnit_CubicDecimetre" xml:space="preserve">
+    <value>Kubieke decimeter</value>
+  </data>
+  <data name="MetricLengthUnit_CubicHectometre" xml:space="preserve">
+    <value>Kubieke hectometer</value>
+  </data>
+  <data name="MetricLengthUnit_CubicKilometre" xml:space="preserve">
+    <value>Kubieke kilometer</value>
+  </data>
+  <data name="MetricLengthUnit_CubicMetre" xml:space="preserve">
+    <value>Kubieke meter</value>
+  </data>
+  <data name="MetricLengthUnit_CubicMillimetre" xml:space="preserve">
+    <value>Kubieke millimeter</value>
+  </data>
+  <data name="MetricLengthUnit_Decametre" xml:space="preserve">
+    <value>Decameter</value>
+  </data>
+  <data name="MetricLengthUnit_Decimetre" xml:space="preserve">
+    <value>Decimeter</value>
+  </data>
+  <data name="MetricLengthUnit_Hectometre" xml:space="preserve">
+    <value>Hectometer</value>
+  </data>
+  <data name="MetricLengthUnit_Kilometre" xml:space="preserve">
+    <value>Kilometer</value>
+  </data>
+  <data name="MetricLengthUnit_Metre" xml:space="preserve">
+    <value>Meter</value>
+  </data>
+  <data name="MetricLengthUnit_Micrometre" xml:space="preserve">
+    <value>Micrometer</value>
+  </data>
+  <data name="MetricLengthUnit_Millimetre" xml:space="preserve">
+    <value>Millimeter</value>
+  </data>
+  <data name="MetricLengthUnit_Nanometre" xml:space="preserve">
+    <value>Nanometer</value>
+  </data>
+  <data name="MetricLengthUnit_Picometre" xml:space="preserve">
+    <value>Picometer</value>
+  </data>
+  <data name="MetricLengthUnit_SquareCentimetre" xml:space="preserve">
+    <value>Vierkante centimeter</value>
+  </data>
+  <data name="MetricLengthUnit_SquareDecametre" xml:space="preserve">
+    <value>Vierkante decameter</value>
+  </data>
+  <data name="MetricLengthUnit_SquareDecimetre" xml:space="preserve">
+    <value>Vierkante decimeter</value>
+  </data>
+  <data name="MetricLengthUnit_SquareHectometre" xml:space="preserve">
+    <value>Vierkante hectometer</value>
+  </data>
+  <data name="MetricLengthUnit_SquareKilometre" xml:space="preserve">
+    <value>Vierkante kilometer</value>
+  </data>
+  <data name="MetricLengthUnit_SquareMetre" xml:space="preserve">
+    <value>Vierkante meter</value>
+  </data>
+  <data name="MetricLengthUnit_SquareMillimetre" xml:space="preserve">
+    <value>Vierkante millimeter</value>
+  </data>
+  <data name="MetricWeightUnit_Decagram" xml:space="preserve">
+    <value>Decagram</value>
+  </data>
+  <data name="MetricWeightUnit_Gram" xml:space="preserve">
+    <value>Gram</value>
+  </data>
+  <data name="MetricWeightUnit_Hectogram" xml:space="preserve">
+    <value>Hectogram</value>
+  </data>
+  <data name="MetricWeightUnit_Kilogram" xml:space="preserve">
+    <value>Kilogram</value>
+  </data>
+  <data name="MetricWeightUnit_Microgram" xml:space="preserve">
+    <value>Microgram</value>
+  </data>
+  <data name="MetricWeightUnit_Milligram" xml:space="preserve">
+    <value>Milligram</value>
+  </data>
+  <data name="MetricWeightUnit_Nanogram" xml:space="preserve">
+    <value>Nanogram</value>
+  </data>
+  <data name="MetricWeightUnit_Picogram" xml:space="preserve">
+    <value>Picogram</value>
+  </data>
+  <data name="MetricWeightUnit_Tonne" xml:space="preserve">
+    <value>Ton</value>
+  </data>
+  <data name="Month_April" xml:space="preserve">
+    <value>april</value>
+  </data>
+  <data name="Month_August" xml:space="preserve">
+    <value>augustus</value>
+  </data>
+  <data name="Month_December" xml:space="preserve">
+    <value>december</value>
+  </data>
+  <data name="Month_February" xml:space="preserve">
+    <value>februari</value>
+  </data>
+  <data name="Month_January" xml:space="preserve">
+    <value>januari</value>
+  </data>
+  <data name="Month_July" xml:space="preserve">
+    <value>juli</value>
+  </data>
+  <data name="Month_June" xml:space="preserve">
+    <value>juni</value>
+  </data>
+  <data name="Month_March" xml:space="preserve">
+    <value>maart</value>
+  </data>
+  <data name="Month_May" xml:space="preserve">
+    <value>mei</value>
+  </data>
+  <data name="Month_November" xml:space="preserve">
+    <value>november</value>
+  </data>
+  <data name="Month_October" xml:space="preserve">
+    <value>oktober</value>
+  </data>
+  <data name="Month_September" xml:space="preserve">
+    <value>september</value>
+  </data>
+  <data name="OffsetType_Day" xml:space="preserve">
+    <value>Dag</value>
+  </data>
+  <data name="OffsetType_Month" xml:space="preserve">
+    <value>Maand</value>
+  </data>
+  <data name="OffsetType_None" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="OffsetType_Year" xml:space="preserve">
+    <value>Jaar</value>
+  </data>
+  <data name="Orientation_Landscape" xml:space="preserve">
+    <value>Landschap</value>
+  </data>
+  <data name="Orientation_Portrait" xml:space="preserve">
+    <value>Portret</value>
+  </data>
+  <data name="PromotionActionArticleType_Cheapest" xml:space="preserve">
+    <value>Goedkoopste</value>
+  </data>
+  <data name="PromotionActionArticleType_MostExpensive" xml:space="preserve">
+    <value>Duurste</value>
+  </data>
+  <data name="PromotionActionArticleType_MostExpensiveLine" xml:space="preserve">
+    <value>Duurste lijn</value>
+  </data>
+  <data name="PromotionActionArticleType_MostExpensiveLineConsolidated" xml:space="preserve">
+    <value>Duurste lijn (geconsolideerd)</value>
+  </data>
+  <data name="PromotionConditionType_AllArticles" xml:space="preserve">
+    <value>Alle artikelen</value>
+  </data>
+  <data name="PromotionConditionType_ArticleID" xml:space="preserve">
+    <value>Artikelnummer</value>
+  </data>
+  <data name="PromotionConditionType_Brand" xml:space="preserve">
+    <value>Merk</value>
+  </data>
+  <data name="PromotionConditionType_BrandValue" xml:space="preserve">
+    <value>Merkwaarde</value>
+  </data>
+  <data name="PromotionConditionType_DiscountGroup" xml:space="preserve">
+    <value>Kortingsgroep</value>
+  </data>
+  <data name="PromotionConditionType_DocumentValue" xml:space="preserve">
+    <value>Documentwaarde</value>
+  </data>
+  <data name="PromotionConditionType_DocumentValueExcludingOtherPromotion" xml:space="preserve">
+    <value>Documentwaarde (zonder andere promoties)</value>
+  </data>
+  <data name="PromotionConditionType_FashionCollection" xml:space="preserve">
+    <value>Collectie</value>
+  </data>
+  <data name="PromotionConditionType_FashionColor" xml:space="preserve">
+    <value>Kleur</value>
+  </data>
+  <data name="PromotionConditionType_FashionFabric" xml:space="preserve">
+    <value>Stof</value>
+  </data>
+  <data name="PromotionConditionType_Group" xml:space="preserve">
+    <value>Groep</value>
+  </data>
+  <data name="PromotionConditionType_Matrix" xml:space="preserve">
+    <value>Maatbalkartikel</value>
+  </data>
+  <data name="PromotionConditionType_None" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="PromotionConditionType_ProductValue" xml:space="preserve">
+    <value>Productwaarde</value>
+  </data>
+  <data name="PromotionConditionType_PromotionArticleFilter" xml:space="preserve">
+    <value>Promotieartikel filter</value>
+  </data>
+  <data name="PromotionConditionType_Season" xml:space="preserve">
+    <value>Seizoen</value>
+  </data>
+  <data name="PromotionConditionType_Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="PromotionConditionType_Type" xml:space="preserve">
+    <value>Type (artikel)</value>
+  </data>
+  <data name="PromotionConditionType_Weight" xml:space="preserve">
+    <value>Gewicht</value>
+  </data>
+  <data name="PromotionTypeOperator_DifferentFrom" xml:space="preserve">
+    <value>Verschillend van</value>
+  </data>
+  <data name="PromotionTypeOperator_EqualTo" xml:space="preserve">
+    <value>Gelijk aan</value>
+  </data>
+  <data name="RelativeDateConstant_EndOfMonth" xml:space="preserve">
+    <value>Einde van de maand</value>
+  </data>
+  <data name="RelativeDateConstant_EndOfYear" xml:space="preserve">
+    <value>Einde van het jaar</value>
+  </data>
+  <data name="RelativeDateConstant_Now" xml:space="preserve">
+    <value>Nu</value>
+  </data>
+  <data name="RelativeDateConstant_StartOfMonth" xml:space="preserve">
+    <value>Begin van de maand</value>
+  </data>
+  <data name="RelativeDateConstant_StartOfYear" xml:space="preserve">
+    <value>Begin van het jaar</value>
+  </data>
+  <data name="RelativeDateConstant_Today" xml:space="preserve">
+    <value>Vandaag</value>
+  </data>
+  <data name="RelativeDateConstant_Unknown" xml:space="preserve">
+    <value>Onbekend</value>
+  </data>
+</root>

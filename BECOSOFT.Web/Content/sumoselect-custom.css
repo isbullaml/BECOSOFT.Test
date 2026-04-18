@@ -1,0 +1,38 @@
+.SumoSelect > .optWrapper > .options li.opt {
+    padding: 5px !important;
+    color: #495057 !important;
+}
+
+.SumoSelect.open > .CaptionCont, .SumoSelect:focus > .CaptionCont, .SumoSelect:hover > .CaptionCont {
+    box-shadow: 0 0 0 #7799D0 !important;
+}
+
+.SumoSelect > .optWrapper > .options li label {
+    margin-bottom: 0 !important;
+}
+
+.SumoSelect > .CaptionCont {
+    margin: 0 !important;
+    min-height: calc(1.8125rem + 2px) !important;
+    border-color: #CED4DA !important;
+    border-radius: 0.2rem !important;
+}
+
+    .SumoSelect > .CaptionCont > span {
+        font-size: 0.875rem !important;
+        color: #495057 !important;
+        padding-left: 4px;
+    }
+
+.SelectBox {
+    padding: 0.25rem 0.5rem !important;
+}
+
+.SumoSelect > .optWrapper > .options li.opt {
+    padding: 5px !important;
+}
+
+.SumoSelect > .CaptionCont > label > i {
+    margin-bottom: 0 !important;
+    margin-right: 2px !important;
+}

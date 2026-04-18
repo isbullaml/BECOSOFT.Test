@@ -1,0 +1,217 @@
+@using System.Globalization
+@using BECOSOFT.Web.Helpers
+@{
+    var primaryColor = "red";
+
+    if (Request.Cookies["primary-color"] != null) {
+        primaryColor = Request.Cookies["primary-color"].Value;
+    }
+
+    var styleSheetPath = $"~/Content/bootstrap-themes/{primaryColor}.css";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>@ViewBag.Title - BECOSOFT</title>
+    <link rel="icon" href="~/Content/Images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d3450b0a19.js" crossorigin="anonymous"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render(styleSheetPath)
+    @Styles.Render("~/Content/style")
+    @* Allows specific styles to be included when defined in the child view.  (https://blogs.msdn.microsoft.com/marcinon/2010/12/15/razor-nested-layouts-and-redefined-sections/) *@
+    @RenderSection("StylesSection", false)
+    @{ var colorTxt = "bg-primary"; }
+</head>
+<body>
+    <div class="bcs-main">
+        @{
+            Html.RenderPartial("Menu/_MenuSidebar");
+        }
+        <div class="bcs-not-sidebar">
+            <header class="bcs-upperbar">
+                <div class="bcs-titlebar">
+                    <div class="bcs-titlebar-left">
+                        <span style="margin-left: 12px"></span>
+                        <a class="bcs-titlebar-title">@Html.ViewBag.Title</a>
+                    </div>
+                    <div class="bcs-titlebar-right">
+                        <div id="showHelp" class="d-inline-block align-middle bcs-titlebar-icon-bar">
+                            @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.QuestionCircle, IconWeight.Light, IconSize.Medium, "bcs-titlebar-icon bcs-titlebar-icon-help")
+                        </div>
+                        <div class="bcs-titlebar-account dropdown">
+                            <a class="bcs-titlebar-account-dropdown dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <p class="bcs-titlebar-title">User 123</p>
+                                @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.CircleUser, IconWeight.Solid, IconSize.Medium, "bcs-titlebar-icon")
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">
+                                    @BECOSOFT.Core.Resources.User_Profile
+                                </a>
+                                <a class="dropdown-item" id="changeUserProfileButton" change-userprofile-button href="#">
+                                    @BECOSOFT.Core.Resources.General_ChangeUserProfile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    @BECOSOFT.Core.Resources.General_Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main id="content" class="bcs-content container-fluid content-offset" role="main">
+                <div class="row">
+                    <div id="page-content" class="w-100">
+                        @RenderBody()
+                    </div>
+                </div>
+                <div id="culture-info" class="d-none" data-numberdecimalseparator="@CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator" data-numbergroupseparator="@CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator"></div>
+            </main>
+        </div>
+    </div>
+
+    <div id="modal-container">
+        @RenderSection("modalData", false)
+    </div>
+    <div id="column-modal-container">
+    </div>
+    <div id="help-modal-container">
+        <div class="modal fade" id="helpModal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="modal-title">@BECOSOFT.Core.Resources.Help_Help</p>
+                    </div>
+                    <div class="modal-body">
+                        @{ Html.RenderPartial("Help"); }
+                        @RenderSection("helpModalData", false)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="login-modal-container" data-url="#" data-verification-url="#" data-base-url="@Url.Action("Index", "Home")" data-user="0"></div>
+    <div class="d-none" id="general-urls">
+        <div id="loading-icon-url" data-url="#"></div>
+        <div id="loading-icon">
+            <div class="col-12">
+                <p class="text-center">
+                    <span class="spinning d-inline-flex mt-3">
+                        @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.ArrowsRotate, IconWeight.Light)
+                    </span>
+                </p>
+                <p id="loading-icon-text" class="text-center text-muted mb-2">
+                    @BECOSOFT.Core.Resources.StagingConfirmation_PleaseWait
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="userprofile-modal-container">
+        <div class="modal fade" id="changeUserProfileModal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="modal-title">@BECOSOFT.Core.Resources.General_ChangeUserProfile</p>
+                    </div>
+                    <div class="modal-body">
+                        <p>@BECOSOFT.Core.Resources.General_ChangeUserProfile</p>
+                        <select class="form-control" data-userprofile-select></select>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="bcs-button-row-end">
+                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">@BECOSOFT.Core.Resources.General_Close</button>
+                            <button type="button" class="btn btn-primary" data-modal-changeuserprofile-button data-userprofile-url="#">@BECOSOFT.Core.Resources.General_ChangeUserProfile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="userProfileNoResultModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title">@BECOSOFT.Core.Resources.General_ChangeUserProfile</p>
+                </div>
+                <div class="modal-body">
+                    <p>@BECOSOFT.Core.Resources.General_ChangeUserProfile_NoProfiles</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="bcs-button-row-end">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">@BECOSOFT.Core.Resources.General_Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dvArticleSelectionPopup" tabindex="-1">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title">@BECOSOFT.Core.Resources.BatchUpdate_PopupHeader</p>
+                </div>
+                <div class="modal-body">
+                    <div id="bodyArticleSelectionPopup">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dvSelectedArticlesPopup" tabindex="-1">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100 text-center">@BECOSOFT.Core.Resources.BatchUpdate_SelectedArticlesPopupHeader</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="bodySelectedArticlesPopup">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dvExecutionConfirmationPopup" tabindex="-1">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">@BECOSOFT.Core.Resources.BatchUpdate_ExecutionConfirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="bodyExecutionConfirmationPopup">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nonmodaldialogcontainer"></div>
+    <div id="emaildialogcontainer"></div>
+    <div id="emailaddressbookcontainer"></div>
+    <div id="loader">
+        <img src="~/Content/Images/loader.gif" alt="loader" />
+    </div>
+
+    @RenderSection("customModals", false)
+    @Scripts.Render("~/bundles/dashboard")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/general")
+    @Scripts.Render("/Scripts/tableSettings.js")
+    <script src="https://kit.fontawesome.com/c39db474e2.js" crossorigin="anonymous"></script>
+
+    @RenderSection("scripts", false)
+    @Html.EmitRequiredScripts()
+</body>
+</html>

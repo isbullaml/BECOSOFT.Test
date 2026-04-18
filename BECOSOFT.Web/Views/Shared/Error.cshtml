@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = Resources.Error_Oops;
+}
+
+
+<div id="main-content" class="col-12">
+    <p>@Resources.Error_FixAsSoonAsPossible</p>
+    <div class="bcs-button-row">
+        <a onclick="goBackWithRefresh()" class="btn btn-primary btn-sm" href="#">
+            @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.AngleLeft) @Resources.Error_GoBack
+        </a>
+        <a onclick="retry()" class="btn btn-outline-primary btn-sm" href="#">
+            @FontAwesomeIconHelper.GenerateIcon(FontAwesomeIcons.ArrowsRotate) @Resources.Error_Retry
+        </a>
+    </div>
+</div>
+
+<div class="d-none">
+    <input type="hidden" class="d-none" id="aspxerrorpath" value="@ViewBag.ErrorPath"/>
+</div>
+
+@section scripts {
+    <script>
+        function goBackWithRefresh() {
+            window.history.back(-2);
+        }
+
+        function retry() {
+            var url = $("#aspxerrorpath").val();
+            console.log(url);
+            window.location = url;
+        }
+    </script>
+}

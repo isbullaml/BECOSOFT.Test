@@ -1,0 +1,50 @@
+﻿@use "../global/variables" as *;
+
+// built on jQuery-ui slider
+
+.bcs-slider.ui-slider {
+    background: $bcs-color-indigo-55;
+    border: none !important;
+    height: 2px;
+    margin-top: 8px;
+    margin-bottom: 1rem;
+    width: calc(100% - 10px);
+    margin-left: 5px;
+
+    .ui-slider-range {
+        background-color: $bcs-color-gray-90;
+    }
+
+    .ui-slider-handle {
+        transform: translate(2px, -2px);
+        transition: background .15s ease-in-out;
+        width: 16px;
+        height: 16px;
+        border-radius: 1000px;
+        border: none;
+        background: $bcs-color-indigo-55;
+
+        &:hover {
+            transition: background .15s ease-in-out;
+            background: $bcs-color-indigo-40;
+        }
+
+        &:focus {
+            transition: outline .15s ease-in-out;
+            outline: 6px solid rgba($bcs-color-indigo-55, 25%);
+        }
+    }
+
+    &.ui-slider-disabled {
+        opacity: 1;
+        background: $bcs-color-gray-85;
+
+        .ui-slider-range {
+            background-color: $bcs-color-gray-93;
+        }
+
+        .ui-slider-handle {
+            background: $bcs-color-gray-85;
+        }
+    }
+}

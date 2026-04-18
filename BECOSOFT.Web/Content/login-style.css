@@ -1,0 +1,146 @@
+﻿.login-bg {
+    background-color: #323759;
+}
+
+#login-background-two {
+    background-color: #282b42;
+    position: fixed;
+    width: 100vw;
+    height: 60vh;
+    top: 0px;
+}
+
+h2 {
+    color: #c73456;
+    font-weight: 300;
+}
+
+h6 {
+    color: #323759;
+    font-weight: 500;
+}
+
+.one-time-password-input .input-group .input-group-prepend .input-group-text {
+    border-top-left-radius: 0px;
+    border-top: none !important;
+}
+
+.one-time-password-input .input-group input.login-input {
+    border-top-right-radius: 0px;
+    border-top: none !important;
+}
+
+#reset-password-link {
+    color: #d65674 !important;
+}
+
+.vertical-mid {
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.container {
+    max-width: 1050px;
+}
+
+.login-side {
+    position: fixed;
+    width: 42vw;
+    max-width: 500px;
+    min-width: 250px;
+    right: 51vw;
+    bottom: calc(40vh + 30px)
+}
+
+#return-button {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 1rem;
+    border-bottom-right-radius: 9px;
+    transition: all .15s ease-out;
+}
+
+    #return-button:hover {
+        cursor: pointer;
+        background-color: rgba(0,0,0,15%);
+        transition: all .15s ease-out;
+    }
+
+    #return-button i::before {
+        position: relative;
+        display: block;
+        font-size: 3rem;
+        color: white !important;
+        transition: all .15s ease-out;
+    }
+
+    #return-button:hover i::before {
+        transition: all .15s ease-out;
+    }
+
+/* desktop */
+@media (min-width: 768px) {
+    .login-side {
+        display: block;
+    }
+
+    #login-side-container {
+        position: relative;
+    }
+
+    .form-group.username-input,
+    .form-group.password-input {
+        width: 100%;
+        margin: auto;
+    }
+
+    #return-button {
+        display: block;
+    }
+}
+
+/* tablet */
+@media (max-width: 767px) {
+    .login-side {
+        position: static;
+    }
+
+    #login-side-container {
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+/* mobile */
+@media (max-width: 500px) {
+    .login-side {
+        position: static;
+    }
+
+    #login-side-container {
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        margin: auto;
+    }
+
+    #return-button {
+        display: none;
+    }
+}

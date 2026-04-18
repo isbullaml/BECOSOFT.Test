@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdditionalInformation" xml:space="preserve">
+    <value>Optioneel: aanvullende informatie over de inhoud. Wil je specifieke zaken aanbod laten komen, vermeld dit dan hier.</value>
+  </data>
+  <data name="AdditionalKeywords" xml:space="preserve">
+    <value>Aanvullende trefwoorden</value>
+  </data>
+  <data name="AIGenerator" xml:space="preserve">
+    <value>AI omschrijving generator</value>
+  </data>
+  <data name="ArticleImage_BulkUpload" xml:space="preserve">
+    <value>Afbeeldingen - Bulk upload</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_AlreadyUploadedAlert" xml:space="preserve">
+    <value>De volgende afbeeldingen bestonden al in de upload en zijn niet nogmaals toegevoegd:</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_ConfirmImages" xml:space="preserve">
+    <value>Bevestig afbeeldingen</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_ConfirmSettings" xml:space="preserve">
+    <value>Bevestig instellingen</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_ConfirmSettingsAlert" xml:space="preserve">
+    <value>U moet eerst de instellingen bevestigen voor dat afbeeldingen kunnen worden toegevoegd.</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_DownloadingResponse" xml:space="preserve">
+    <value>Antwoord downloaden...</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_EstimatedPosition" xml:space="preserve">
+    <value>Geschatte positie</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_FetchingInformation" xml:space="preserve">
+    <value>Informatie ophalen</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_MatchedArticle" xml:space="preserve">
+    <value>Gevonden artikel</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_MaximumPosition" xml:space="preserve">
+    <value>Maximum toegestane positie is {0}</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_MaximumSize" xml:space="preserve">
+    <value>De totale bestandsgrootte ({0}GB) is groter dan {1}GB, gelieve minder afbeeldingen te nemen.</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_ParsingImages" xml:space="preserve">
+    <value>Afbeeldingen verwerken...</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_RotateLeft" xml:space="preserve">
+    <value>Draai naar links</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_RotateRight" xml:space="preserve">
+    <value>Draai naar rechts</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_SavedPosition" xml:space="preserve">
+    <value>Bewaarde positie</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_SaveImages" xml:space="preserve">
+    <value>Afbeeldingen bewaren</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_SavingImages" xml:space="preserve">
+    <value>Afbeeldingen bewaren</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_Settings" xml:space="preserve">
+    <value>Upload instellingen</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_StartNewUpload" xml:space="preserve">
+    <value>Nieuwe upload starten</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_UploadConfirmedAlert" xml:space="preserve">
+    <value>U kan geen afbeeldingen meer toevoegen nadat de uploads bevestigd zijn.</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_UploadImages" xml:space="preserve">
+    <value>Afbeeldingen uploaden</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_UploadingData" xml:space="preserve">
+    <value>Data aan het uploaden...</value>
+  </data>
+  <data name="ArticleInformation_BingSearchResult_Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="ArticleInformation_SearchOnline" xml:space="preserve">
+    <value>Zoek afbeeldingen online</value>
+  </data>
+  <data name="ArticleInformation_SearchOnBing" xml:space="preserve">
+    <value>Zoek op Bing</value>
+    </data>
+  <data name="ArticleImage_Continue" xml:space="preserve">
+    <value>Doorgaan</value>
+  </data>
+  <data name="ArticleImage_CurrentWidth" xml:space="preserve">
+    <value>Opgelet u upload een afbeelding met lage kwaliteit. De breedte van deze afbeelding bedraagt</value>
+  </data>
+  <data name="ArticleImage_SelectOtherImage" xml:space="preserve">
+    <value>Selecteer een andere afbeelding</value>
+  </data>
+  <data name="ArticleImage_UploadImages" xml:space="preserve">
+    <value>Afbeeldingen uploaden</value>
+  </data>
+  <data name="ArticleImage_WarningImageToSmall" xml:space="preserve">
+    <value>Er wordt ten sterkste aangeraden afbeeldingen van minimum 750px breed te uploaden voor een correcte weergave.</value>
+  </data>
+  <data name="DescribeContent" xml:space="preserve">
+    <value>Beschrijf in max 25 woorden waarover de inhoud moet gaan.</value>
+  </data>
+  <data name="DownloadOrderConfirmation" xml:space="preserve">
+    <value>Download orderbevestiging</value>
+  </data>
+  <data name="EmailOrderConfirmation" xml:space="preserve">
+    <value>E-mail orderbevestiging</value>
+  </data>
+  <data name="Error_FixAsSoonAsPossible" xml:space="preserve">
+    <value>We zullen proberen dit zo snel mogelijk op te lossen.</value>
+  </data>
+  <data name="Error_GoBack" xml:space="preserve">
+    <value>Ga terug</value>
+  </data>
+  <data name="Error_InvalidUrlError" xml:space="preserve">
+    <value>Ongeldige URL, de aanvraag kan niet verwerkt worden.</value>
+  </data>
+  <data name="Error_NotFound" xml:space="preserve">
+    <value>De pagina die u probeert te bezoeken, bestaat niet.</value>
+  </data>
+  <data name="Error_NotFound_Title" xml:space="preserve">
+    <value>Deze pagina bestaat niet.</value>
+  </data>
+  <data name="Error_Oops" xml:space="preserve">
+    <value>Oeps, het lijkt erop dat er iets mis is gegaan.</value>
+  </data>
+  <data name="Error_Retry" xml:space="preserve">
+    <value>Probeer opnieuw</value>
+  </data>
+  <data name="ImportantKeywords" xml:space="preserve">
+    <value>Belangrijke trefwoorden</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Informatie</value>
+  </data>
+  <data name="KeywordsContentMustContain" xml:space="preserve">
+    <value>Belangrijkste trefwoorden dat de inhoud moet bevatten(SEO)</value>
+  </data>
+  <data name="KeywordsInContent" xml:space="preserve">
+    <value>Trefwoorden die ook verwerkt moeten worden in de inhoud</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Onderwerp</value>
+  </data>
+  <data name="WebsiteUser_AddFilteredContacts" xml:space="preserve">
+    <value>Gefilterde klanten toevoegen</value>
+  </data>
+  <data name="WebsiteUser_RemoveFilteredContacts" xml:space="preserve">
+    <value>Gefilterde klanten verwijderen</value>
+  </data>
+</root>

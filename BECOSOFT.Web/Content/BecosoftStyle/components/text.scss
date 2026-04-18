@@ -1,0 +1,33 @@
+@use "../global/variables" as *;
+
+a, .card-link {
+    color: $bcs-color-red-75;
+
+    &:hover {
+        color: $bcs-color-red-75;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+    }
+}
+
+.text-muted {
+    color: $bcs-color-gray-65 !important;
+}
+.text-primary {
+    color: $bcs-color-indigo-55 !important;
+}
+.text-secondary {
+    color: $bcs-color-red-75 !important;
+}
+.text-warning {
+    color: $bcs-color-warning-75 !important;
+}
+.text-danger {
+    color: $bcs-color-warning-75 !important;
+}
+.text-success {
+    color: $bcs-color-success-75 !important;
+}
+.text-info {
+    color: $bcs-color-success-75 !important;
+}

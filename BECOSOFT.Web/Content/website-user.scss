@@ -1,0 +1,25 @@
+﻿table.data-table tr {
+    cursor: pointer;
+}
+
+table.data-table tr.selected {
+    background-color: lightgray;
+}
+
+#contactImportModalTable table {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    max-height: calc(100vh - 450px);
+}
+
+#contactImportModalTable tbody {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#contactImportModalTable tr {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}

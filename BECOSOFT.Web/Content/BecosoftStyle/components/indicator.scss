@@ -1,0 +1,142 @@
+@use "../global/variables" as *;
+
+// alerts
+.alert {
+    color: $white;
+    border: none;
+    display: flex;
+    align-items: start;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+    &.bcs-alert-popup {
+        position: fixed;
+        z-index: 9999;
+        left: 6rem;
+        right: 6rem;
+        bottom: 2rem;
+        max-width: 30vw;
+        margin: auto;
+        padding: 0.5rem 0.5rem 0.5rem 1rem;
+        @include bcs-shadow-a;
+
+        @media (max-width: 1200px) {
+            max-width: 45vw;
+        }
+
+        @media (max-width: 768px) {
+            max-width: 60vw;
+        }
+    }
+
+    * {
+        color: $white !important;
+    }
+
+    .alert-link,
+    strong {
+        font-weight: 600;
+        letter-spacing: 0.25px;
+    }
+
+    .btn-close-notification,
+    button.close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 1rem;
+        opacity: 80%;
+
+        &:hover {
+            background-color: rgba(0,0,0,15%);
+        }
+
+        i {
+            font-size: 1rem;
+        }
+    }
+
+    &.alert-warning,
+    &.alert-danger {
+        background-color: $bcs-color-warning-75;
+    }
+
+    &.alert-success,
+    &.alert-info {
+        background-color: $bcs-color-success-75;
+    }
+
+    &.alert-primary {
+        background-color: $bcs-color-indigo-55;
+    }
+
+    &.alert-secondary {
+        background-color: $bcs-color-red-75;
+    }
+
+    &.alert-light {
+        background-color: $bcs-color-gray-95;
+        color: $bcs-color-gray-25;
+
+        * {
+            color: $bcs-color-gray-25 !important;
+        }
+
+        button.close {
+            color: $bcs-color-gray-65;
+
+            &:hover {
+                background-color: rgba($bcs-color-gray-25, 8%);
+            }
+        }
+    }
+}
+
+
+.bcs-alert {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    bottom: 2rem;
+    width: 60vw;
+    min-width: 30rem;
+    @include bcs-shadow-a;
+}
+
+
+// badges
+.badge {
+    font-weight: 500;
+    padding: 0.25rem 0.45rem;
+}
+
+.badge-primary {
+    background-color: $bcs-color-indigo-55 !important;
+}
+
+.badge-secondary {
+    background-color: $bcs-color-red-75 !important;
+}
+
+.badge-info,
+.badge-success {
+    background-color: $bcs-color-success-75 !important;
+}
+
+.badge-warning,
+.badge-danger {
+    background-color: $bcs-color-warning-75 !important;
+    color: $white;
+}
+
+.badge-dark {
+    background-color: $bcs-color-gray-40 !important;
+}
+
+.badge-light {
+    background-color: $bcs-color-gray-95 !important;
+    color: $bcs-color-gray-25;
+}

@@ -1,0 +1,19 @@
+﻿@use "../global/variables" as *;
+
+@media (min-width: 768px) {
+    .login-side {
+        display: fixed !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .card.login {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .card.login {
+        width: 75% !important;
+    }
+}

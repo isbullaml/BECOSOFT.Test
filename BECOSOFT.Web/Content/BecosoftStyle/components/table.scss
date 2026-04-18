@@ -1,0 +1,158 @@
+@use "../global/variables" as *;
+
+table.table {
+    // basic table settings
+    border: none;
+    border-collapse: separate !important;
+    border-spacing: 0;
+    border-radius: $bcs-border-radius;
+    border: 1px solid $bcs-color-gray-85;
+
+    > thead > tr > th,
+    > tbody > tr > th {
+        background-color: $bcs-color-gray-95;
+        color: $bcs-color-gray-40;
+        @include bcs-text-body;
+        font-size: 1rem;
+        border: none;
+    }
+
+    &.table-sm > thead > tr > td,
+    &.table-sm > tbody > tr > td,
+    &.table-sm > thead > tr > th,
+    &.table-sm > tbody > tr > th {
+        padding-left: 0.5rem;
+    }
+
+    &.table-hover > tbody > tr:hover {
+        background-color: transparent !important;
+        cursor: pointer;
+
+        & > td {
+            background-color: rgba($bcs-color-gray-95, 50%);
+        }
+    }
+
+    > tbody > tr {
+        background-color: $white !important;
+
+        > td {
+            color: $bcs-color-gray-25;
+            @include bcs-text-body;
+            border: 1px solid $bcs-color-gray-90;
+            border-left-style: none;
+            border-bottom-style: none;
+            border-right-style: none;
+            font-size: 1rem;
+
+            > label {
+                font-size: 1rem;
+            }
+
+            &:first-of-type {
+                border: 1px solid $bcs-color-gray-90;
+                border-bottom-style: none;
+                border-right-style: none;
+            }
+
+            &:first-child {
+                border-left-style: none;
+            }
+        }
+    }
+
+    > tbody:first-child > tr:first-child > td {
+        border-top-style: none;
+    }
+    // prevent transition from lagging switch from compact view
+    > thead > tr > td,
+    > tbody > tr > td,
+    > thead > tr > th,
+    > tbody > tr > th,
+    > thead > tr > th a,
+    > tbody > tr > th a,
+    > thead > tr > th button,
+    > tbody > tr > th button {
+        transition: none !important;
+    }
+    // xs table
+    &.bcs-table-xs > thead > tr > td,
+    &.bcs-table-xs > tbody > tr > td,
+    &.bcs-table-xs > thead > tr > th,
+    &.bcs-table-xs > tbody > tr > th,
+    &.bcs-table-xs > thead > tr > th a,
+    &.bcs-table-xs > tbody > tr > th a,
+    &.bcs-table-xs > thead > tr > th button,
+    &.bcs-table-xs > tbody > tr > th button {
+        padding: 0.1rem !important;
+        padding-top: 0.2rem !important;
+        font-size: 13px !important;
+        letter-spacing: -0.35px;
+        line-height: 1;
+        transition: none !important;
+
+        .custom-control {
+            min-height: 0;
+        }
+
+        a.bcs-link-in-table.bcs-link-in-table-static i {
+            transform: none;
+        }
+
+        &.fixed-column-after .dropdown > span {
+            margin: 0;
+            transform: translate(-1px, -3px);
+        }
+    }
+
+    &.bcs-table-xs > thead > tr > th a,
+    &.bcs-table-xs > tbody > tr > th a,
+    &.bcs-table-xs > thead > tr > th button,
+    &.bcs-table-xs > tbody > tr > th button {
+        padding-top: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    &.bcs-table-xs > thead > tr > td:first-of-type,
+    &.bcs-table-xs > tbody > tr > td:first-of-type,
+    &.bcs-table-xs > thead > tr > th:first-of-type,
+    &.bcs-table-xs > tbody > tr > th:first-of-type {
+        padding-left: 0.25rem !important;
+    }
+    // explicitely keep line height for dropdowns in non-xs tables
+    > thead > tr > td,
+    > tbody > tr > td {
+        &.fixed-column-after .dropdown .dropdown-menu .dropdown-item {
+            line-height: 1.5 !important;
+        }
+    }
+    // border radius
+    > thead > tr > th:first-child {
+        border-top-left-radius: $bcs-border-radius;
+    }
+
+    > thead > tr > th:last-child {
+        border-top-right-radius: $bcs-border-radius;
+    }
+
+    > tbody > tr:last-child > th {
+        border-bottom-left-radius: $bcs-border-radius;
+    }
+
+    > tbody > tr:last-child > td:last-child {
+        border-bottom-right-radius: $bcs-border-radius;
+    }
+}
+
+table.sticky-header {
+    position: relative;
+    overflow-x: visible;
+}
+
+/* table.sticky-header thead: table with thead. Whole thead becomes sticky (multiple tr -> th supported). */
+/* table.sticky-header > th: table with no thead, tr -> th gets stickyness. This excludes th elements in tbody -> tr. */
+table.sticky-header thead, table.sticky-header > th {
+    position: sticky;
+    z-index: 1000;
+    top: -1.5rem;
+}

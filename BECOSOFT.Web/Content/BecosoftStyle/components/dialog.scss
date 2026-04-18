@@ -1,0 +1,123 @@
+@use "../global/variables" as *;
+
+// toast
+.toast {
+    @include bcs-shadow-b;
+    border: 1px solid $bcs-color-gray-90;
+
+    .toast-header {
+        background-color: $bcs-color-gray-95;
+        border: none;
+
+        button.close {
+            @include bcs-transition-a;
+        }
+
+        button.close::before {
+            font-size: 1rem;
+        }
+    }
+}
+
+
+// popover
+.popover {
+    @include bcs-shadow-b;
+
+    .popover-body {
+        background-color: $white !important;
+        border: none;
+    }
+
+    .popover-header {
+        background-color: $white !important;
+        border: none;
+    }
+
+    .arrow:after {
+        border-top-color: $white !important;
+    }
+}
+
+// tooltip
+.tooltip-inner,
+.bs-tooltip-inner {
+    background-color: $bcs-color-indigo-35;
+}
+
+.bs-tooltip-right .arrow::before,
+.bs-tooltip-auto[x-placement^="right"] .arrow::before {
+    border-right-color: $bcs-color-indigo-35 !important;
+}
+
+.bs-tooltip-top .arrow::before,
+.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+    border-top-color: $bcs-color-indigo-35 !important;
+}
+
+.bs-tooltip-bottom .arrow::before,
+.bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
+    border-bottom-color: $bcs-color-indigo-35 !important;
+}
+
+.bs-tooltip-left .arrow::before,
+.bs-tooltip-auto[x-placement^="left"] .arrow::before {
+    border-left-color: $bcs-color-indigo-35 !important;
+}
+
+
+// modal
+.modal-content {
+    @include bcs-shadow-a;
+    border: none;
+
+    .modal-header {
+        padding: 0.5rem 1rem;
+        background-color: $bcs-color-indigo-55;
+        border: none;
+
+        .modal-title {
+            color: $white;
+            font-size: 1.25rem;
+            font-family: "Barlow";
+            font-weight: 500;
+        }
+
+        button.close {
+            color: $white;
+            opacity: 75%;
+            transform: translate(0.1rem,0.2rem);
+            @include bcs-transition-a;
+
+            &:not(.disabled):not(:disabled):hover {
+                opacity: 100%;
+            }
+        }
+
+        button.close::before {
+            color: $white;
+        }
+    }
+
+    .modal-footer {
+        border: none;
+    }
+}
+
+.modal-style-warning .modal-header,
+.modal-style-danger .modal-header {
+    background-color: $bcs-color-warning-75;
+}
+
+.modal-style-success .modal-header,
+.modal-style-info .modal-header {
+    background-color: $bcs-color-success-75;
+}
+
+.modal-style-primary .modal-header {
+    background-color: $bcs-color-indigo-55;
+}
+
+.modal-style-secondary .modal-header {
+    background-color: $bcs-color-red-75;
+}

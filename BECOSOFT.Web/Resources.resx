@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdditionalInformation" xml:space="preserve">
+    <value>Optional: additional information about the content. If you would like to have specific items offered, please mention this here.</value>
+  </data>
+  <data name="AdditionalKeywords" xml:space="preserve">
+    <value>Additional keywords</value>
+  </data>
+  <data name="AIGenerator" xml:space="preserve">
+    <value>AI text generator</value>
+  </data>
+  <data name="ArticleImage_BulkUpload" xml:space="preserve">
+    <value>Images - Bulk upload</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_AlreadyUploadedAlert" xml:space="preserve">
+    <value>The following images already existed in the upload and have not been added again:</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_ConfirmImages" xml:space="preserve">
+    <value>Confirm images</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_ConfirmSettings" xml:space="preserve">
+    <value>Confirm settings</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_ConfirmSettingsAlert" xml:space="preserve">
+    <value>You must confirm the settings before images can be added.</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_DownloadingResponse" xml:space="preserve">
+    <value>Downloading response...</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_EstimatedPosition" xml:space="preserve">
+    <value>Estimated position</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_FetchingInformation" xml:space="preserve">
+    <value>Fetching information</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_MatchedArticle" xml:space="preserve">
+    <value>Matched article</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_MaximumPosition" xml:space="preserve">
+    <value>Maximum allowed position is {0}</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_MaximumSize" xml:space="preserve">
+    <value>The total file size ({0}GB) exceeds {1}GB, please choose fewer images.</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_ParsingImages" xml:space="preserve">
+    <value>Parsing images...</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_RotateLeft" xml:space="preserve">
+    <value>Rotate left</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_RotateRight" xml:space="preserve">
+    <value>Rotate right</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_SavedPosition" xml:space="preserve">
+    <value>Saved position</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_SaveImages" xml:space="preserve">
+    <value>Save images</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_SavingImages" xml:space="preserve">
+    <value>Saving images</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_Settings" xml:space="preserve">
+    <value>Upload settings</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_StartNewUpload" xml:space="preserve">
+    <value>Start new upload</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_UploadConfirmedAlert" xml:space="preserve">
+    <value>You cannot add images after uploads have been confirmed.</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_UploadImages" xml:space="preserve">
+    <value>Upload images</value>
+  </data>
+  <data name="ArticleImage_BulkUpload_UploadingData" xml:space="preserve">
+    <value>Uploading data...</value>
+  </data>
+  <data name="ArticleImage_Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="ArticleImage_CurrentWidth" xml:space="preserve">
+    <value>Please note that you are uploading an image with low quality. The width of this image is</value>
+  </data>
+  <data name="ArticleImage_SelectOtherImage" xml:space="preserve">
+    <value>Select other image</value>
+  </data>
+  <data name="ArticleImage_UploadImages" xml:space="preserve">
+    <value>Upload images</value>
+  </data>
+  <data name="ArticleImage_WarningImageToSmall" xml:space="preserve">
+    <value>It is strongly recommended that you upload images at least 750px wide for proper display.</value>
+    </data>
+  <data name="ArticleInformation_BingSearchResult_Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="ArticleInformation_SearchOnline" xml:space="preserve">
+    <value>Search images online</value>
+  </data>
+  <data name="ArticleInformation_SearchOnBing" xml:space="preserve">
+    <value>Search on Bing</value>
+  </data>
+  <data name="DescribeContent" xml:space="preserve">
+    <value>Describe in maximum 25 words what the content should be about.</value>
+  </data>
+  <data name="DownloadOrderConfirmation" xml:space="preserve">
+    <value>Download order confirmation</value>
+  </data>
+  <data name="EmailOrderConfirmation" xml:space="preserve">
+    <value>Mail order confirmation</value>
+  </data>
+  <data name="Error_FixAsSoonAsPossible" xml:space="preserve">
+    <value>We will try to fix this as soon as possible.</value>
+  </data>
+  <data name="Error_GoBack" xml:space="preserve">
+    <value>Go back</value>
+  </data>
+  <data name="Error_InvalidUrlError" xml:space="preserve">
+    <value>Invalid URL, request cannot be processed.</value>
+  </data>
+  <data name="Error_NotFound" xml:space="preserve">
+    <value>The page you are trying to visit, does not exist.</value>
+  </data>
+  <data name="Error_NotFound_Title" xml:space="preserve">
+    <value>This page does not exist.</value>
+  </data>
+  <data name="Error_Oops" xml:space="preserve">
+    <value>Oops, looks like something went wrong.</value>
+  </data>
+  <data name="Error_Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="ImportantKeywords" xml:space="preserve">
+    <value>Important keywords</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="KeywordsContentMustContain" xml:space="preserve">
+    <value>Key keywords the content should contain (SEO)</value>
+  </data>
+  <data name="KeywordsInContent" xml:space="preserve">
+    <value>Keywords that must also be incorporated into the content</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="WebsiteUser_AddFilteredContacts" xml:space="preserve">
+    <value>Add filtered contacts</value>
+  </data>
+  <data name="WebsiteUser_RemoveFilteredContacts" xml:space="preserve">
+    <value>Remove filtered contacts</value>
+  </data>
+</root>
