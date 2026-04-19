@@ -9,5 +9,7 @@ namespace BECOSOFT.ThirdParty {
     }
 
     public class ThirdPartyBuildOptions : BaseBuildOptions {
+        public ThirdPartyBuildOptions(string connection) : base(connection) { }
+        public ThirdPartyBuildOptions() : base() { }
     }
 }

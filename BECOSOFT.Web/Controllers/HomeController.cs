@@ -1,31 +1,26 @@
-﻿using BECOSOFT.ThirdParty.EuropeanCommission.Models;
-using BECOSOFT.ThirdParty.EuropeanCommission.Services;
+using BECOSOFT.Data.Validation;
+using BECOSOFT.ThirdParty.EuropeanCommission.Models;
 using BECOSOFT.ThirdParty.EuropeanCommission.Services.Interfaces;
-using BECOSOFT.ThirdParty.EuropeanCommission.Validators;
 using BECOSOFT.Web.Helpers;
 using BECOSOFT.Web.Models;
-using System.Activities.Statements;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace BECOSOFT.Web.Controllers {
     public class HomeController : Controller {
-        private IVatNumberValidationService _service;
-        private IViesValidationService _viesValidationService;
-        private VatNumberValidator _validator;
-        public HomeController()
-        {
-            _viesValidationService = new ViesValidationService();
-            _validator = new VatNumberValidator();
-            _service = new VatNumberValidationService(_validator, _viesValidationService);
-        }
-        public ActionResult Index() {
-            return View();
+        private readonly IVatNumberCacheService _vatNumberCacheService;
+        private readonly IValidator<VatNumber> _validator;
+
+        public HomeController(IVatNumberCacheService vatNumberCacheService,
+                              IValidator<VatNumber> validator) {
+            _vatNumberCacheService = vatNumberCacheService;
+            _validator = validator;
         }
 
+        public ActionResult Index() => View();
+
         [HttpPost]
-        public async Task<JsonResult> Search(VatSearchViewModel model)
-        {
+        public async Task<JsonResult> Search(VatSearchViewModel model) {
             if (!ModelState.IsValid)
                 return Json(new Result<VatResult>(false, null, Resources.Error_InvalidVatNumber));
 
@@ -33,13 +28,12 @@ namespace BECOSOFT.Web.Controllers {
             if (!_validator.Validate(vatNumber).IsValid())
                 return Json(new Result<VatResult>(false, null, Resources.Error_InvalidVatNumber));
 
-            var result = await _service.GetVatNumberInfoAsync(vatNumber);
+            var result = await _vatNumberCacheService.GetVatNumberInfoAsync(vatNumber);
 
             if (!result.IsValid)
                 return Json(new Result<VatResult>(false, null, Resources.Error_VatNumberNotExist));
 
             var vies = result.ViesResponse;
-
             var vatResult = new VatResult(
                 name: vies?.Name,
                 street: vies?.Address?.Street,
@@ -49,11 +43,7 @@ namespace BECOSOFT.Web.Controllers {
                 countryCode: vies?.Address?.CountryCode
             );
 
-            return Json(new Result<VatResult>(
-                true,
-                vatResult,
-                Resources.Vat_Result
-            ));
+            return Json(new Result<VatResult>(true, vatResult, Resources.Vat_Result));
         }
     }
 }

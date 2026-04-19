@@ -1,4 +1,5 @@
-﻿using BECOSOFT.Utilities.Extensions;
+﻿using BECOSOFT.Data.Models.Thirdparty;
+using BECOSOFT.Utilities.Extensions;
 using System;
 
 namespace BECOSOFT.ThirdParty.EuropeanCommission.Models {
@@ -34,6 +35,17 @@ namespace BECOSOFT.ThirdParty.EuropeanCommission.Models {
             Valid = valid;
             Name = name;
             Address = ViesAddressParser.Parse(CountryCode, address);
+        }
+
+        internal static ViesValidationResponse FromDetails(VatNumberDetails details) {
+            return new ViesValidationResponse(
+                details.CountryCode,
+                details.VatNumber,
+                details.LastUpdated,
+                details.IsValid,
+                details.Name,
+                details.Address ?? string.Empty
+            );
         }
     }
 

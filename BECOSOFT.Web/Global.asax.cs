@@ -172,7 +172,8 @@ namespace BECOSOFT.Web {
             } catch (Exception e) {
                 Logger.Error(e, "Failed to retrieve version information for assembly");
             }
-            var buildOptions = new ThirdPartyBuildOptions() {
+            var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Main"]?.ConnectionString;
+            var buildOptions = new ThirdPartyBuildOptions(connectionString) {
                 BuilderAction = BuilderAction,
             };
             var container = ThirdPartyModule.Build(buildOptions);
