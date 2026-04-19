@@ -2,6 +2,7 @@
 using BECOSOFT.ThirdParty.EuropeanCommission.Services;
 using BECOSOFT.ThirdParty.EuropeanCommission.Services.Interfaces;
 using BECOSOFT.ThirdParty.EuropeanCommission.Validators;
+using BECOSOFT.Web.Helpers;
 using BECOSOFT.Web.Models;
 using System.Web.Mvc;
 
@@ -34,7 +35,7 @@ namespace BECOSOFT.Web.Controllers {
 
             var street = $"{address?.Street} {address?.Number}".Trim();
             var place = $"{address?.PostalCode} {address?.Place}".Trim();
-            var country = address?.CountryCode == "BE" ? "Belgium" : address?.CountryCode;///TODO: Map country code to country name
+            var country = CountryHelper.GetCountryName(address.CountryCode);
 
             var fullAddress = string.Format(Resources.Vat_Result, $"{name} / {street}, {place}, {country}");
 

@@ -283,6 +283,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Helpers\CountryHelper.cs" />
     <Compile Include="Helpers\MaxSizeJsonValueProviderFactory.cs" />
     <Compile Include="Helpers\CustomJsonResult.cs" />
     <Compile Include="Extensions\Icons\FontAwesomeIconAttribute.cs" />
