@@ -4,6 +4,7 @@ using BECOSOFT.ThirdParty.EuropeanCommission.Services.Interfaces;
 using BECOSOFT.ThirdParty.EuropeanCommission.Validators;
 using BECOSOFT.Web.Helpers;
 using BECOSOFT.Web.Models;
+using System.Activities.Statements;
 using System.Web.Mvc;
 
 namespace BECOSOFT.Web.Controllers {
@@ -24,22 +25,34 @@ namespace BECOSOFT.Web.Controllers {
         [HttpPost]
         public JsonResult Search(VatSearchViewModel model)
         {
+            if (!ModelState.IsValid)
+                return Json(new Result<VatResult>(false, null, Resources.Error_InvalidVatNumber));
+
             var vatNumber = new VatNumber(model.VatNumber);
-            if (!_validator.Validate(vatNumber).IsValid()) return Json(new Result<VatResult>(false, null, Resources.Error_InvalidVatNumber));
+            if (!_validator.Validate(vatNumber).IsValid())
+                return Json(new Result<VatResult>(false, null, Resources.Error_InvalidVatNumber));
 
             var result = _service.GetVatNumberInfo(vatNumber);
-            if(!result.IsValid) return Json(new Result<VatResult>(false,null,Resources.Error_VatNumberNotExist));
-            var name = result.ViesResponse?.Name;
 
-            var address = result.ViesResponse?.Address;
+            if (!result.IsValid)
+                return Json(new Result<VatResult>(false, null, Resources.Error_VatNumberNotExist));
 
-            var street = $"{address?.Street} {address?.Number}".Trim();
-            var place = $"{address?.PostalCode} {address?.Place}".Trim();
-            var country = CountryHelper.GetCountryName(address.CountryCode);
+            var vies = result.ViesResponse;
 
-            var fullAddress = string.Format(Resources.Vat_Result, $"{name} / {street}, {place}, {country}");
+            var vatResult = new VatResult(
+                name: vies?.Name,
+                street: vies?.Address?.Street,
+                number: vies?.Address?.Number,
+                postalCode: vies?.Address?.PostalCode,
+                place: vies?.Address?.Place,
+                countryCode: vies?.Address?.CountryCode
+            );
 
-            return Json(new Result<VatResult>(true, new VatResult(fullAddress), Resources.Vat_Result));
+            return Json(new Result<VatResult>(
+                true,
+                vatResult,
+                Resources.Vat_Result
+            ));
         }
     }
 }

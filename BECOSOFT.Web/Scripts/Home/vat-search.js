@@ -1,45 +1,71 @@
-$("#vatForm").on("submit", function (e) {
-    e.preventDefault();
+﻿$(function () {
 
-    var form = $(this);
+    var form = $("#vatForm");
+    var input = $("#VatNumber");
 
-    if (!form.valid()) {
-        return;
+    var validator = form.data("validator");
+    if (validator) {
+        validator.settings.onkeyup = function (element) {
+            $(element).valid();
+        };
     }
 
-    $("#vat-loader").show();
-    $("#vatResultContainer").hide();
+    input.on("input", function () {
+        var value = $(this).val().trim();
 
-    becosoft.ajax(
-        "/Home/Search",
-        {
-            type: "POST",
-            data: form.serialize()
-        },
-        function (result) {
-            $("#vat-loader").hide();
-            $("#vatResultContainer").show();
+        if (value === "") {
+            $("#vatResultContainer").hide();
+            $("#vatResultMessage").text("");
+        }
+    });
 
-            if (result.IsSuccess) {
-                $("#vatResultMessage")
-                    .removeClass("text-danger")
-                    .addClass("text-success")
-                    .text(result.Data.FullAddress);
-            } else {
+    form.on("submit", function (e) {
+        e.preventDefault();
+
+        var $form = $(this);
+
+        if (!$form.valid()) {
+            $("#vatResultContainer").hide();
+            return;
+        }
+
+        $("#vat-loader").show();
+        $("#vatResultContainer").hide();
+
+        becosoft.ajax(
+            "/Home/Search",
+            {
+                type: "POST",
+                data: $form.serialize()
+            },
+            function (result) {
+
+                $("#vat-loader").hide();
+                $("#vatResultContainer").show();
+
+                if (result.IsSuccess) {
+                    $("#vatResultMessage")
+                        .removeClass("text-danger")
+                        .addClass("text-success")
+                        .text(result.Data.FullAddress);
+                } else {
+                    $("#vatResultMessage")
+                        .removeClass("text-success")
+                        .addClass("text-danger")
+                        .text(result.Message);
+                }
+            },
+            function () {
+
+                $("#vat-loader").hide();
+
+                $("#vatResultContainer").show();
                 $("#vatResultMessage")
                     .removeClass("text-success")
                     .addClass("text-danger")
-                    .text(result.Message || "Validation failed");
+                    .text("Something went wrong");
             }
-        },
-        function () {
-            $("#vat-loader").hide();
+        );
+    });
 
-            $("#vatResultContainer").show();
-            $("#vatResultMessage")
-                .removeClass("text-success")
-                .addClass("text-danger")
-                .text("Something went wrong");
-        }
-    );
 });

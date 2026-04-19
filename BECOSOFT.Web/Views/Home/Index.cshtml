@@ -23,9 +23,12 @@
                         </div>
                     </div>
 
+                    @Html.ValidationMessageFor(m => m.VatNumber, "", new { @class = "text-danger font-italic" })
+
                     <div id="vatResultContainer" class="mt-3" style="display:none;">
                         <div id="vatResultMessage" class="small p-2 rounded"></div>
                     </div>
+
                 </div>
             }
 
