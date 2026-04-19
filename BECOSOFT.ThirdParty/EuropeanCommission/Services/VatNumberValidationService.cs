@@ -5,6 +5,7 @@ using BECOSOFT.ThirdParty.EuropeanCommission.Validators;
 using BECOSOFT.Utilities.Extensions.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BECOSOFT.ThirdParty.EuropeanCommission.Services {
     public sealed class VatNumberValidationService : IVatNumberValidationService {
@@ -16,7 +17,19 @@ namespace BECOSOFT.ThirdParty.EuropeanCommission.Services {
             _viesValidationService = viesValidationService;
         }
 
-
+        public async Task<VatNumberInfo> GetVatNumberInfoAsync(VatNumber vatNumber)
+        {
+            var vatNumberInfo = new VatNumberInfo(vatNumber)
+            {
+                ValidationResult = Validate(vatNumber)
+            };
+            if (vatNumberInfo.ValidationResult.IsValid() && VatNumberValidator.IsEuropean(vatNumberInfo.VatNumber))
+            {
+                vatNumberInfo.ViesResponse = await _viesValidationService.ValidateAsync(vatNumber);
+                vatNumberInfo.VatNumber.ValidatedVatNumber = vatNumberInfo.VatNumber.CleanedCountryCode + vatNumberInfo.ViesResponse.VatNumber;
+            }
+            return vatNumberInfo;
+        }
         public VatNumberInfo GetVatNumberInfo(VatNumber vatNumber) {
             var vatNumberInfo = new VatNumberInfo(vatNumber) {
                 ValidationResult = Validate(vatNumber)

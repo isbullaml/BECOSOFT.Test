@@ -5,6 +5,7 @@ using BECOSOFT.ThirdParty.EuropeanCommission.Validators;
 using BECOSOFT.Web.Helpers;
 using BECOSOFT.Web.Models;
 using System.Activities.Statements;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace BECOSOFT.Web.Controllers {
@@ -23,7 +24,7 @@ namespace BECOSOFT.Web.Controllers {
         }
 
         [HttpPost]
-        public JsonResult Search(VatSearchViewModel model)
+        public async Task<JsonResult> Search(VatSearchViewModel model)
         {
             if (!ModelState.IsValid)
                 return Json(new Result<VatResult>(false, null, Resources.Error_InvalidVatNumber));
@@ -32,7 +33,7 @@ namespace BECOSOFT.Web.Controllers {
             if (!_validator.Validate(vatNumber).IsValid())
                 return Json(new Result<VatResult>(false, null, Resources.Error_InvalidVatNumber));
 
-            var result = _service.GetVatNumberInfo(vatNumber);
+            var result = await _service.GetVatNumberInfoAsync(vatNumber);
 
             if (!result.IsValid)
                 return Json(new Result<VatResult>(false, null, Resources.Error_VatNumberNotExist));
