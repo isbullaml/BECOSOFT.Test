@@ -1,6 +1,5 @@
-using BECOSOFT.Data.Models.Thirdparty;
-using BECOSOFT.Data.Repositories.Interfaces.Thirdparty;
 using BECOSOFT.ThirdParty.EuropeanCommission.Models;
+using BECOSOFT.ThirdParty.EuropeanCommission.Repositories.Interfaces;
 using BECOSOFT.ThirdParty.EuropeanCommission.Services.Interfaces;
 using System;
 using System.Threading.Tasks;

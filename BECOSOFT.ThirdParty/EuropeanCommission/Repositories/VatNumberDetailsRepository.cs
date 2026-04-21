@@ -1,12 +1,12 @@
 using BECOSOFT.Data.Context;
-using BECOSOFT.Data.Models.Thirdparty;
-using BECOSOFT.Data.Repositories.Interfaces.Thirdparty;
 using BECOSOFT.Data.Services.Interfaces;
+using BECOSOFT.ThirdParty.EuropeanCommission.Models;
+using BECOSOFT.ThirdParty.EuropeanCommission.Repositories.Interfaces;
 using System;
 using System.Linq;
 
-namespace BECOSOFT.Data.Repositories.Thirdparty {
-    public class VatNumberDetailsRepository : Repository<VatNumberDetails>, IVatNumberDetailsRepository {
+namespace BECOSOFT.ThirdParty.EuropeanCommission.Repositories {
+    public class VatNumberDetailsRepository : BECOSOFT.Data.Repositories.Repository<VatNumberDetails>, IVatNumberDetailsRepository {
         public VatNumberDetailsRepository(IDbContextFactory dbContextFactory,
                                           IDatabaseCommandFactory databaseCommandFactory)
             : base(dbContextFactory, databaseCommandFactory) {
@@ -27,7 +27,7 @@ namespace BECOSOFT.Data.Repositories.Thirdparty {
             var existing = GetByVatNumber(details.VatNumber);
             if (existing != null) {
                 details.Id = existing.Id;
-                details.IsDirty = true; // Repository<T>.Save() skips update when IsDirty==false
+                details.IsDirty = true;
             }
             Save(details);
 

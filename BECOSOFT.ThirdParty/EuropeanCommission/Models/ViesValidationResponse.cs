@@ -1,5 +1,4 @@
-﻿using BECOSOFT.Data.Models.Thirdparty;
-using BECOSOFT.Utilities.Extensions;
+﻿using BECOSOFT.Utilities.Extensions;
 using System;
 
 namespace BECOSOFT.ThirdParty.EuropeanCommission.Models {
